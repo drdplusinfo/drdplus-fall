@@ -8,7 +8,7 @@ namespace DrdPlus\Fight;
         <label><select name="<?= $controller::BODY_ARMOR ?>">
                 <?php foreach ($controller->getPossibleBodyArmors() as $bodyArmor) { ?>
                     <option value="<?= $bodyArmor->getValue() ?>"
-                            <?php if ($controller->getSelectedBodyArmor()->getValue() === $bodyArmor->getValue()){ ?>selected<?php } ?>>
+                            <?php if ($controller->isBodyArmorSelected($bodyArmor)){ ?>selected<?php } ?>>
                         <?= $bodyArmor->translateTo('cs') . ' ' . ($controller->getProtectionOfBodyArmor($bodyArmor) > 0 ? ('+' . $controller->getProtectionOfBodyArmor($bodyArmor)) : '') ?>
                     </option>
                 <?php } ?>
@@ -20,7 +20,7 @@ namespace DrdPlus\Fight;
             <select name="<?= $controller::HELM ?>">
                 <?php foreach ($controller->getPossibleHelms() as $helm) { ?>
                     <option value="<?= $helm->getValue() ?>"
-                            <?php if ($controller->getSelectedHelm()->getValue() === $helm->getValue()){ ?>selected<?php } ?>>
+                            <?php if ($controller->isHelmSelected($helm)){ ?>selected<?php } ?>>
                         <?= $helm->translateTo('cs') . ' ' . ($controller->getProtectionOfHelm($helm) > 0 ? ('+' . $controller->getProtectionOfHelm($helm)) : '') ?>
                     </option>
                 <?php } ?>

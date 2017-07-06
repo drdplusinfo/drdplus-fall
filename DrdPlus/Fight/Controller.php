@@ -19,7 +19,7 @@ class Controller extends \DrdPlus\Configurator\Skeleton\Controller
     const FALLING_FROM_HEIGHT = 'falling_from_height';
     const HEIGHT_OF_FALL = 'height_of_fall';
     const RIDING_MOVEMENT = 'riding_movement';
-    const RIDING_ANIMAL = 'riding_animal';
+    const RIDING_ANIMAL_HEIGHT = 'riding_animal_height';
     const JUMPING = 'jumping';
 
     public function __construct()
@@ -37,14 +37,9 @@ class Controller extends \DrdPlus\Configurator\Skeleton\Controller
         }, BodyArmorCode::getPossibleValues());
     }
 
-    public function getSelectedBodyArmor(): BodyArmorCode
+    public function isBodyArmorSelected(BodyArmorCode $bodyArmorCode): bool
     {
-        $selectedBodyArmor = $this->getHistory()->getValue(self::BODY_ARMOR);
-        if (!$selectedBodyArmor) {
-            return BodyArmorCode::getIt(BodyArmorCode::WITHOUT_ARMOR);
-        }
-
-        return BodyArmorCode::getIt($selectedBodyArmor);
+        return $this->getHistory()->getValue(self::BODY_ARMOR) === $bodyArmorCode->getValue();
     }
 
     public function getSelectedAgility(): Agility
@@ -57,16 +52,6 @@ class Controller extends \DrdPlus\Configurator\Skeleton\Controller
         return Agility::getIt($selectedAgility);
     }
 
-    public function getProtectionOfBodyArmor(BodyArmorCode $bodyArmorCode): int
-    {
-        return Tables::getIt()->getBodyArmorsTable()->getProtectionOf($bodyArmorCode);
-    }
-
-    public function getProtectionOfSelectedBodyArmor(): int
-    {
-        return $this->getProtectionOfBodyArmor($this->getSelectedBodyArmor());
-    }
-
     /**
      * @return array|HelmCode[]
      */
@@ -77,24 +62,9 @@ class Controller extends \DrdPlus\Configurator\Skeleton\Controller
         }, HelmCode::getPossibleValues());
     }
 
-    public function getSelectedHelm(): HelmCode
+    public function isHelmSelected(HelmCode $helmCode): bool
     {
-        $selectedHelm = $this->getHistory()->getValue(self::HELM);
-        if (!$selectedHelm) {
-            return HelmCode::getIt(HelmCode::WITHOUT_HELM);
-        }
-
-        return HelmCode::getIt($selectedHelm);
-    }
-
-    public function getProtectionOfHelm(HelmCode $helmCode): int
-    {
-        return Tables::getIt()->getHelmsTable()->getProtectionOf($helmCode);
-    }
-
-    public function getProtectionOfSelectedHelm(): int
-    {
-        return $this->getProtectionOfHelm($this->getSelectedHelm());
+        return $this->getHistory()->getValue(self::HELM) === $helmCode->getValue();
     }
 
     public function isFallingFromHorseback(): bool
@@ -155,7 +125,7 @@ class Controller extends \DrdPlus\Configurator\Skeleton\Controller
 
     public function isRidingAnimalSelected(float $heightInMeters): bool
     {
-        return (float)$this->getValueFromRequest(self::RIDING_ANIMAL) === $heightInMeters;
+        return (float)$this->getValueFromRequest(self::RIDING_ANIMAL_HEIGHT) === $heightInMeters;
     }
 
     /**
@@ -177,4 +147,45 @@ class Controller extends \DrdPlus\Configurator\Skeleton\Controller
     {
         return (bool)$this->getValueFromRequest(self::JUMPING);
     }
+
+    public function getProtectionOfBodyArmor(BodyArmorCode $bodyArmorCode): int
+    {
+        return Tables::getIt()->getBodyArmorsTable()->getProtectionOf($bodyArmorCode);
+    }
+
+    public function getProtectionOfSelectedBodyArmor(): int
+    {
+        return $this->getProtectionOfBodyArmor($this->getSelectedBodyArmor());
+    }
+
+    private function getSelectedBodyArmor(): BodyArmorCode
+    {
+        $selectedBodyArmor = $this->getHistory()->getValue(self::BODY_ARMOR);
+        if (!$selectedBodyArmor) {
+            return BodyArmorCode::getIt(BodyArmorCode::WITHOUT_ARMOR);
+        }
+
+        return BodyArmorCode::getIt($selectedBodyArmor);
+    }
+
+    public function getProtectionOfHelm(HelmCode $helmCode): int
+    {
+        return Tables::getIt()->getHelmsTable()->getProtectionOf($helmCode);
+    }
+
+    public function getProtectionOfSelectedHelm(): int
+    {
+        return $this->getProtectionOfHelm($this->getSelectedHelm());
+    }
+
+    private function getSelectedHelm(): HelmCode
+    {
+        $selectedHelm = $this->getHistory()->getValue(self::HELM);
+        if (!$selectedHelm) {
+            return HelmCode::getIt(HelmCode::WITHOUT_HELM);
+        }
+
+        return HelmCode::getIt($selectedHelm);
+    }
+
 }

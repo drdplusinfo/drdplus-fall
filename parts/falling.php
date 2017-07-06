@@ -19,7 +19,7 @@ use DrdPlus\Codes\Transport\RidingAnimalCode;
         <div class="block">
             <label>
                 "kůň"
-                <select name="<?= $controller::RIDING_ANIMAL ?>">
+                <select name="<?= $controller::RIDING_ANIMAL_HEIGHT ?>">
                     <?php /**
                      * @var float $heightInMeters
                      * @var RidingAnimalCode $ridingAnimal
