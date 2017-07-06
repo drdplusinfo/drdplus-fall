@@ -8,6 +8,7 @@ ini_set('display_errors', '1');
 
 $controller = new Controller();
 ?>
+<!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
@@ -31,26 +32,15 @@ $controller = new Controller();
     </label>
 </form>
 <form class="block" action="" method="get">
-    <input type="hidden" name="<?= $controller::SCROLL_FROM_TOP ?>" id="scrollFromTop"
-           value="<?= $controller->getSelectedScrollFromTop() ?>">
     <div class="block remember">
         <label><input type="checkbox" name="<?= $controller::REMEMBER_HISTORY ?>" value="1"
                       <?php if ($controller->shouldRemember()) { ?>checked="checked"<?php } ?>>
             Pamatovat <span class="hint">(i při zavření prohlížeče)</span></label>
     </div>
     <div class="block">
-        <div class="panel">
-            <h2 id="Na blízko"><a href="#Na blízko" class="inner">Na blízko</a></h2>
-            <div class="panel">
-                <?php include __DIR__ . '/melee_weapon.php' ?>
-            </div>
-        </div>
-        <div class="panel">
-            <h2 id="Zbroj"><a href="#Zbroj" class="inner">Zbroj</a></h2>
-            <div class="block"><?php include __DIR__ . '/armor.php'; ?></div>
-        </div>
-        <div class="panel"><?php include __DIR__ . '/profession_and_body_properties.php'; ?></div>
-        <div class="panel"><?php include __DIR__ . '/ride_and_animal_enemy.php'; ?></div>
+        <div class="panel"><?php include __DIR__ . '/parts/falling.php'; ?></div>
+        <div class="panel"><?php include __DIR__ . '/parts/agility.php'; ?></div>
+        <div class="panel"><?php include __DIR__ . '/parts/armor.php'; ?></div>
     </div>
 </form>
 <div class="block issues">
