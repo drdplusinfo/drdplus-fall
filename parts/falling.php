@@ -65,5 +65,16 @@ use DrdPlus\Codes\Transport\RidingAnimalCode;
         <div class="block"><label>výška <input type="number" name="<?= $controller::HEIGHT_OF_FALL ?>"> metrů</label>
         </div>
     </div>
+    <div class="block">
+        <label>Padáš na povrch
+            <select name="<?= $controller::SURFACE ?>">
+                <?php foreach ($controller->getSurfaces() as $surface) { ?>
+                    <option value="<?= $surface->getValue() ?>"
+                            <?php if ($controller->isSurfaceSelected($surface)) { ?>selected<?php } ?>>
+                        <?= "{$surface->translateTo('cs')} ({$controller->getWoundsModifierBySurface($surface)})" ?></option>
+                    <?php } ?>
+            </select>
+        </label>
+    </div>
     <div class="block"><input type="submit" value="Přepočítat"></div>
 </div>

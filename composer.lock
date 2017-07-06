@@ -482,12 +482,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jaroslavtyc/doctrineum-boolean.git",
-                "reference": "b045615252071132d52dd4eb8a379427929eb8fd"
+                "reference": "d62e808413db64e8dbe978387fe00c229f5bd356"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jaroslavtyc/doctrineum-boolean/zipball/b045615252071132d52dd4eb8a379427929eb8fd",
-                "reference": "b045615252071132d52dd4eb8a379427929eb8fd",
+                "url": "https://api.github.com/repos/jaroslavtyc/doctrineum-boolean/zipball/d62e808413db64e8dbe978387fe00c229f5bd356",
+                "reference": "d62e808413db64e8dbe978387fe00c229f5bd356",
                 "shasum": ""
             },
             "require": {
@@ -520,7 +520,7 @@
                 }
             ],
             "description": "Enumeration type for Doctrine - booleans only",
-            "time": "2017-02-19 12:26:24"
+            "time": "2017-07-06 08:13:01"
         },
         {
             "name": "doctrineum/float",
@@ -767,12 +767,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jaroslavtyc/drd-plus-codes.git",
-                "reference": "378d411a2c762f817d0c0e82a232c06c916f01f9"
+                "reference": "0ebb8e1a52c2739faa3b73e4e7ca1488fc884a1d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jaroslavtyc/drd-plus-codes/zipball/378d411a2c762f817d0c0e82a232c06c916f01f9",
-                "reference": "378d411a2c762f817d0c0e82a232c06c916f01f9",
+                "url": "https://api.github.com/repos/jaroslavtyc/drd-plus-codes/zipball/0ebb8e1a52c2739faa3b73e4e7ca1488fc884a1d",
+                "reference": "0ebb8e1a52c2739faa3b73e4e7ca1488fc884a1d",
                 "shasum": ""
             },
             "require": {
@@ -798,7 +798,7 @@
                 "MIT"
             ],
             "description": "Codes of Drd+ races, properties",
-            "time": "2017-07-05 19:04:09"
+            "time": "2017-07-06 08:02:21"
         },
         {
             "name": "drd-plus/configurator-skeleton",
@@ -882,12 +882,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jaroslavtyc/drd-plus-tables.git",
-                "reference": "42e2135839d30e349a6331df50764282cfc88b2e"
+                "reference": "732bf6f555c3edb736b8281b8127763797b16df6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jaroslavtyc/drd-plus-tables/zipball/42e2135839d30e349a6331df50764282cfc88b2e",
-                "reference": "42e2135839d30e349a6331df50764282cfc88b2e",
+                "url": "https://api.github.com/repos/jaroslavtyc/drd-plus-tables/zipball/732bf6f555c3edb736b8281b8127763797b16df6",
+                "reference": "732bf6f555c3edb736b8281b8127763797b16df6",
                 "shasum": ""
             },
             "require": {
@@ -900,7 +900,7 @@
                 "granam/integer": "dev-master",
                 "granam/number": "dev-master",
                 "granam/strict-object": "dev-master",
-                "php": ">=7.0",
+                "php": ">=7.1",
                 "roave/security-advisories": "dev-master"
             },
             "require-dev": {
@@ -919,7 +919,7 @@
                 "MIT"
             ],
             "description": "Drd+ tables and their units conversion",
-            "time": "2017-07-03 06:26:28"
+            "time": "2017-07-06 10:49:32"
         },
         {
             "name": "drd/dice-rolls",

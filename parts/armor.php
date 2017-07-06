@@ -2,9 +2,11 @@
 namespace DrdPlus\Fight;
 /** @var Controller $controller */
 ?>
-<div class="block"><h2 id="Zbroj"><a href="#Zbroj" class="inner">Zbroj</a></h2></div>
 <div class="block">
-    <div class="panel">
+    <h2 id="zbroj"><a href="#zbroj" class="inner">Zbroj</a></h2>
+</div>
+<div class="block">
+    <div class="block">
         <label><select name="<?= $controller::BODY_ARMOR ?>">
                 <?php foreach ($controller->getPossibleBodyArmors() as $bodyArmor) { ?>
                     <option value="<?= $bodyArmor->getValue() ?>"
@@ -13,9 +15,10 @@ namespace DrdPlus\Fight;
                     </option>
                 <?php } ?>
             </select>
+            <span class="hint">(může snížit zranění podle povrchu)</span>
         </label>
     </div>
-    <div class="panel">
+    <div class="block">
         <label>
             <select name="<?= $controller::HELM ?>">
                 <?php foreach ($controller->getPossibleHelms() as $helm) { ?>
@@ -28,5 +31,4 @@ namespace DrdPlus\Fight;
         </label>
     </div>
 </div>
-<div class="block hint">(navrhne snížení zranění podle ochrany zbroje)</div>
 <div class="block"><input type="submit" value="Přepočítat"></div>

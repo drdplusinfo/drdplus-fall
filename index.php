@@ -39,7 +39,7 @@ $controller = new Controller();
     </div>
     <div class="block">
         <div class="panel"><?php include __DIR__ . '/parts/falling.php'; ?></div>
-        <div class="panel"><?php include __DIR__ . '/parts/agility.php'; ?></div>
+        <div class="panel"><?php include __DIR__ . '/parts/agility_an_luck.php'; ?></div>
         <div class="panel"><?php include __DIR__ . '/parts/armor.php'; ?></div>
     </div>
 </form>

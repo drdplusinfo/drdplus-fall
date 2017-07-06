@@ -3,15 +3,17 @@ namespace DrdPlus\Fight;
 
 use DrdPlus\Codes\Armaments\BodyArmorCode;
 use DrdPlus\Codes\Armaments\HelmCode;
-use DrdPlus\Codes\Properties\PropertyCode;
+use DrdPlus\Codes\Environment\LandingSurfaceCode;
 use DrdPlus\Codes\Transport\RidingAnimalCode;
 use DrdPlus\Codes\Transport\RidingAnimalMovementCode;
 use DrdPlus\Properties\Base\Agility;
 use DrdPlus\Tables\Tables;
+use Granam\Integer\PositiveIntegerObject;
 
 class Controller extends \DrdPlus\Configurator\Skeleton\Controller
 {
-    const AGILITY = PropertyCode::AGILITY;
+    const AGILITY = 'agility';
+    const LUCK = 'luck';
     const BODY_ARMOR = 'body_armor';
     const HELM = 'helm';
     const FALLING_FROM = 'falling_from';
@@ -21,6 +23,7 @@ class Controller extends \DrdPlus\Configurator\Skeleton\Controller
     const RIDING_MOVEMENT = 'riding_movement';
     const RIDING_ANIMAL_HEIGHT = 'riding_animal_height';
     const JUMPING = 'jumping';
+    const SURFACE = 'surface';
 
     public function __construct()
     {
@@ -39,17 +42,27 @@ class Controller extends \DrdPlus\Configurator\Skeleton\Controller
 
     public function isBodyArmorSelected(BodyArmorCode $bodyArmorCode): bool
     {
-        return $this->getHistory()->getValue(self::BODY_ARMOR) === $bodyArmorCode->getValue();
+        return $this->getValueFromRequest(self::BODY_ARMOR) === $bodyArmorCode->getValue();
     }
 
     public function getSelectedAgility(): Agility
     {
-        $selectedAgility = $this->getHistory()->getValue(self::AGILITY);
+        $selectedAgility = $this->getValueFromRequest(self::AGILITY);
         if ($selectedAgility === null) {
             return Agility::getIt(0);
         }
 
         return Agility::getIt($selectedAgility);
+    }
+
+    public function getSelectedLuck():? int
+    {
+        $luck = $this->getValueFromRequest(self::LUCK);
+        if ($luck) {
+            return (int)$luck;
+        }
+
+        return null;
     }
 
     /**
@@ -64,17 +77,17 @@ class Controller extends \DrdPlus\Configurator\Skeleton\Controller
 
     public function isHelmSelected(HelmCode $helmCode): bool
     {
-        return $this->getHistory()->getValue(self::HELM) === $helmCode->getValue();
+        return $this->getValueFromRequest(self::HELM) === $helmCode->getValue();
     }
 
     public function isFallingFromHorseback(): bool
     {
-        return (bool)$this->getHistory()->getValue(self::FALLING_FROM_HORSEBACK);
+        return (bool)$this->getValueFromRequest(self::FALLING_FROM_HORSEBACK);
     }
 
     public function isFallingFromHeight(): bool
     {
-        return (bool)$this->getHistory()->getValue(self::FALLING_FROM_HEIGHT);
+        return (bool)$this->getValueFromRequest(self::FALLING_FROM_HEIGHT);
     }
 
     public function getRidingAnimalsWithHeight(): array
@@ -153,39 +166,77 @@ class Controller extends \DrdPlus\Configurator\Skeleton\Controller
         return Tables::getIt()->getBodyArmorsTable()->getProtectionOf($bodyArmorCode);
     }
 
-    public function getProtectionOfSelectedBodyArmor(): int
-    {
-        return $this->getProtectionOfBodyArmor($this->getSelectedBodyArmor());
-    }
-
-    private function getSelectedBodyArmor(): BodyArmorCode
-    {
-        $selectedBodyArmor = $this->getHistory()->getValue(self::BODY_ARMOR);
-        if (!$selectedBodyArmor) {
-            return BodyArmorCode::getIt(BodyArmorCode::WITHOUT_ARMOR);
-        }
-
-        return BodyArmorCode::getIt($selectedBodyArmor);
-    }
-
     public function getProtectionOfHelm(HelmCode $helmCode): int
     {
         return Tables::getIt()->getHelmsTable()->getProtectionOf($helmCode);
     }
 
-    public function getProtectionOfSelectedHelm(): int
+    /**
+     * @return array|LandingSurfaceCode[]
+     */
+    public function getSurfaces(): array
     {
-        return $this->getProtectionOfHelm($this->getSelectedHelm());
+        return array_map(function (string $surface) {
+            return LandingSurfaceCode::getIt($surface);
+        }, LandingSurfaceCode::getPossibleValues());
     }
 
-    private function getSelectedHelm(): HelmCode
+    public function isSurfaceSelected(LandingSurfaceCode $landingSurfaceCode): bool
     {
-        $selectedHelm = $this->getHistory()->getValue(self::HELM);
-        if (!$selectedHelm) {
-            return HelmCode::getIt(HelmCode::WITHOUT_HELM);
+        return $this->getValueFromRequest(self::SURFACE) === $landingSurfaceCode->getValue();
+    }
+
+    /**
+     * Also agility is taken into account (for water).
+     *
+     * @param LandingSurfaceCode $landingSurfaceCode
+     * @return int
+     */
+    public function getWoundsModifierBySurface(LandingSurfaceCode $landingSurfaceCode): int
+    {
+        /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
+        return Tables::getIt()->getLandingSurfacesTable()->getWoundsModifier(
+            $landingSurfaceCode,
+            $this->getSelectedAgility(),
+            new PositiveIntegerObject($this->getProtectionOfBodyArmor($this->getSelectedBodyArmor()))
+        );
+    }
+
+    private function getSelectedBodyArmor(): BodyArmorCode
+    {
+        $bodyArmor = $this->getValueFromRequest(self::BODY_ARMOR);
+        if ($bodyArmor) {
+            return BodyArmorCode::getIt($bodyArmor);
         }
 
-        return HelmCode::getIt($selectedHelm);
+        return BodyArmorCode::getIt(BodyArmorCode::WITHOUT_ARMOR);
     }
 
+    public function getWoundsByFall(): int
+    {
+        if ($this->isFallingFromHorseback()) {
+            $woundsFromFallFromHorse = Tables::getIt()->getWoundsOnFallFromHorseTable()
+                ->getWoundsOnFallFromHorse(
+                    $this->getSelectedRidingAnimalMovement(),
+                    $this->isJumping(),
+                    Tables::getIt()->getWoundsTable()
+                );
+
+            return 0;
+        } elseif ($this->isFallingFromHeight()) {
+            return 0;
+        }
+
+        return 0;
+    }
+
+    private function getSelectedRidingAnimalMovement(): RidingAnimalMovementCode
+    {
+        $selectedMovement = $this->getValueFromRequest(self::RIDING_MOVEMENT);
+        if (!$selectedMovement) {
+            return RidingAnimalMovementCode::getIt(RidingAnimalMovementCode::STILL);
+        }
+
+        return RidingAnimalMovementCode::getIt($selectedMovement);
+    }
 }
