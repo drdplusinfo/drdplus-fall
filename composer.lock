@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "087e45ab38514e9511205df6a991468c",
+    "content-hash": "00c2f98587bc186b99939427ff4571fb",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -423,6 +423,60 @@
             "time": "2015-11-06T14:35:42+00:00"
         },
         {
+            "name": "doctrine/instantiator",
+            "version": "1.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/doctrine/instantiator.git",
+                "reference": "8e884e78f9f0eb1329e445619e04456e64d8051d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/doctrine/instantiator/zipball/8e884e78f9f0eb1329e445619e04456e64d8051d",
+                "reference": "8e884e78f9f0eb1329e445619e04456e64d8051d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3,<8.0-DEV"
+            },
+            "require-dev": {
+                "athletic/athletic": "~0.1.8",
+                "ext-pdo": "*",
+                "ext-phar": "*",
+                "phpunit/phpunit": "~4.0",
+                "squizlabs/php_codesniffer": "~2.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Doctrine\\Instantiator\\": "src/Doctrine/Instantiator/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marco Pivetta",
+                    "email": "ocramius@gmail.com",
+                    "homepage": "http://ocramius.github.com/"
+                }
+            ],
+            "description": "A small, lightweight utility to instantiate objects in PHP without invoking their constructors",
+            "homepage": "https://github.com/doctrine/instantiator",
+            "keywords": [
+                "constructor",
+                "instantiate"
+            ],
+            "time": "2015-06-14T21:17:01+00:00"
+        },
+        {
             "name": "doctrine/lexer",
             "version": "v1.0.1",
             "source": {
@@ -477,6 +531,82 @@
             "time": "2014-09-09T13:34:57+00:00"
         },
         {
+            "name": "doctrine/orm",
+            "version": "v2.5.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/doctrine/doctrine2.git",
+                "reference": "e6c434196c8ef058239aaa0724b4aadb0107940b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/e6c434196c8ef058239aaa0724b4aadb0107940b",
+                "reference": "e6c434196c8ef058239aaa0724b4aadb0107940b",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/cache": "~1.4",
+                "doctrine/collections": "~1.2",
+                "doctrine/common": ">=2.5-dev,<2.8-dev",
+                "doctrine/dbal": ">=2.5-dev,<2.6-dev",
+                "doctrine/instantiator": "~1.0.1",
+                "ext-pdo": "*",
+                "php": ">=5.4",
+                "symfony/console": "~2.5|~3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0",
+                "symfony/yaml": "~2.3|~3.0"
+            },
+            "suggest": {
+                "symfony/yaml": "If you want to use YAML Metadata Mapping Driver"
+            },
+            "bin": [
+                "bin/doctrine",
+                "bin/doctrine.php"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.6.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Doctrine\\ORM\\": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Roman Borschel",
+                    "email": "roman@code-factory.org"
+                },
+                {
+                    "name": "Benjamin Eberlei",
+                    "email": "kontakt@beberlei.de"
+                },
+                {
+                    "name": "Guilherme Blanco",
+                    "email": "guilhermeblanco@gmail.com"
+                },
+                {
+                    "name": "Jonathan Wage",
+                    "email": "jonwage@gmail.com"
+                }
+            ],
+            "description": "Object-Relational-Mapper for PHP",
+            "homepage": "http://www.doctrine-project.org",
+            "keywords": [
+                "database",
+                "orm"
+            ],
+            "time": "2016-12-18T15:42:34+00:00"
+        },
+        {
             "name": "doctrineum/boolean",
             "version": "dev-master",
             "source": {
@@ -521,6 +651,108 @@
             ],
             "description": "Enumeration type for Doctrine - booleans only",
             "time": "2017-07-06 08:13:01"
+        },
+        {
+            "name": "doctrineum/datetime-immutable",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jaroslavtyc/doctrineum-datetime-immutable.git",
+                "reference": "7e8d2e4681d0dee910821459c8d5541fe903638b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jaroslavtyc/doctrineum-datetime-immutable/zipball/7e8d2e4681d0dee910821459c8d5541fe903638b",
+                "reference": "7e8d2e4681d0dee910821459c8d5541fe903638b",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/dbal": "~2.4",
+                "doctrineum/self-registering-type": "dev-master",
+                "granam/strict-object": "dev-master",
+                "granam/string": "dev-master",
+                "granam/tools": "dev-master",
+                "php": ">=7.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "~0.9",
+                "phpunit/phpunit": "~6.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Doctrineum\\": "Doctrineum/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jaroslav Týc",
+                    "email": "mail@jaroslavtyc.com",
+                    "homepage": "https://www.jaroslavtyc.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "DateTimeImmutable as a type for Doctrine",
+            "keywords": [
+                "datetime",
+                "doctrine",
+                "immutable"
+            ],
+            "time": "2017-02-19 12:55:19"
+        },
+        {
+            "name": "doctrineum/entity",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jaroslavtyc/doctrineum-entity.git",
+                "reference": "ed2c2be19684cbab4c0ccc2f38221a0a09684e0f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jaroslavtyc/doctrineum-entity/zipball/ed2c2be19684cbab4c0ccc2f38221a0a09684e0f",
+                "reference": "ed2c2be19684cbab4c0ccc2f38221a0a09684e0f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0"
+            },
+            "require-dev": {
+                "doctrine/orm": ">=2.5",
+                "mockery/mockery": "~0.9",
+                "phpunit/phpunit": "~6.0"
+            },
+            "type": "project",
+            "autoload": {
+                "psr-4": {
+                    "Doctrineum\\": "Doctrineum/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jaroslav Týc",
+                    "homepage": "https://www.jaroslavtyc.com",
+                    "role": "Original author"
+                }
+            ],
+            "description": "Doctrine entity tests against real SQL persistence",
+            "homepage": "https://github.com/jaroslavtyc/doctrineum-entity",
+            "keywords": [
+                "doctrine",
+                "entity",
+                "object",
+                "php",
+                "test"
+            ],
+            "time": "2017-02-19 12:59:16"
         },
         {
             "name": "doctrineum/float",
@@ -720,6 +952,47 @@
             "time": "2017-02-19 13:17:58"
         },
         {
+            "name": "drd-plus/background",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jaroslavtyc/drd-plus-background.git",
+                "reference": "fdc7691ea6b169bc2b4033c86106d3d17ac39771"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jaroslavtyc/drd-plus-background/zipball/fdc7691ea6b169bc2b4033c86106d3d17ac39771",
+                "reference": "fdc7691ea6b169bc2b4033c86106d3d17ac39771",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/orm": "2.*",
+                "doctrineum/entity": "dev-master",
+                "doctrineum/integer": "dev-master",
+                "drd-plus/professions": "dev-master",
+                "drd-plus/tables": "dev-master",
+                "php": ">=7.0",
+                "roave/security-advisories": "dev-master"
+            },
+            "require-dev": {
+                "granam/exceptions-hierarchy": "~4.0",
+                "mockery/mockery": "~0.9",
+                "phpunit/phpunit": "~6.0"
+            },
+            "type": "project",
+            "autoload": {
+                "psr-4": {
+                    "DrdPlus\\": "DrdPlus/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Background of a person for Drd+",
+            "time": "2017-05-31 05:47:32"
+        },
+        {
             "name": "drd-plus/calculations",
             "version": "dev-master",
             "source": {
@@ -767,12 +1040,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jaroslavtyc/drd-plus-codes.git",
-                "reference": "0ebb8e1a52c2739faa3b73e4e7ca1488fc884a1d"
+                "reference": "d6174889bbac847e32d96de79809665607530534"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jaroslavtyc/drd-plus-codes/zipball/0ebb8e1a52c2739faa3b73e4e7ca1488fc884a1d",
-                "reference": "0ebb8e1a52c2739faa3b73e4e7ca1488fc884a1d",
+                "url": "https://api.github.com/repos/jaroslavtyc/drd-plus-codes/zipball/d6174889bbac847e32d96de79809665607530534",
+                "reference": "d6174889bbac847e32d96de79809665607530534",
                 "shasum": ""
             },
             "require": {
@@ -798,7 +1071,7 @@
                 "MIT"
             ],
             "description": "Codes of Drd+ races, properties",
-            "time": "2017-07-06 08:02:21"
+            "time": "2017-07-09 05:59:11"
         },
         {
             "name": "drd-plus/configurator-skeleton",
@@ -806,18 +1079,22 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jaroslavtyc/drd-plus-configurator-skeleton.git",
-                "reference": "6cb8a6009880f3b23d3c3af932b4f819d6fe86a7"
+                "reference": "0cdcd0109e839a829e601a07b224afbe2177abf6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jaroslavtyc/drd-plus-configurator-skeleton/zipball/6cb8a6009880f3b23d3c3af932b4f819d6fe86a7",
-                "reference": "6cb8a6009880f3b23d3c3af932b4f819d6fe86a7",
+                "url": "https://api.github.com/repos/jaroslavtyc/drd-plus-configurator-skeleton/zipball/0cdcd0109e839a829e601a07b224afbe2177abf6",
+                "reference": "0cdcd0109e839a829e601a07b224afbe2177abf6",
                 "shasum": ""
             },
             "require": {
                 "granam/strict-object": "dev-master",
                 "php": ">=7.1",
                 "roave/security-advisories": "dev-master"
+            },
+            "require-dev": {
+                "mockery/mockery": "^0.9.9",
+                "phpunit/phpunit": "^6.2"
             },
             "type": "project",
             "autoload": {
@@ -830,31 +1107,26 @@
                 "MIT"
             ],
             "description": "Style and functionality helper of a configurator Drd+",
-            "time": "2017-07-04 06:47:46"
+            "time": "2017-07-09 06:59:35"
         },
         {
-            "name": "drd-plus/properties",
+            "name": "drd-plus/hunting-and-fishing",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/jaroslavtyc/drd-plus-properties.git",
-                "reference": "f16fa8987513f9f97528030f6becf60a4abb9bc3"
+                "url": "https://github.com/jaroslavtyc/drd-plus-hunting-and-fishing.git",
+                "reference": "c70c7bcd077487f86b3abeec17040dad76dd1674"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jaroslavtyc/drd-plus-properties/zipball/f16fa8987513f9f97528030f6becf60a4abb9bc3",
-                "reference": "f16fa8987513f9f97528030f6becf60a4abb9bc3",
+                "url": "https://api.github.com/repos/jaroslavtyc/drd-plus-hunting-and-fishing/zipball/c70c7bcd077487f86b3abeec17040dad76dd1674",
+                "reference": "c70c7bcd077487f86b3abeec17040dad76dd1674",
                 "shasum": ""
             },
             "require": {
-                "doctrineum/boolean": "dev-master",
-                "doctrineum/float": "dev-master",
-                "doctrineum/integer": "dev-master",
-                "drd-plus/calculations": "dev-master",
-                "drd-plus/codes": "dev-master",
+                "drd-plus/rolls-on": "dev-master",
                 "drd-plus/tables": "dev-master",
                 "granam/strict-object": "dev-master",
-                "granam/string": "dev-master",
                 "php": ">=7.0",
                 "roave/security-advisories": "dev-master"
             },
@@ -873,8 +1145,260 @@
             "license": [
                 "MIT"
             ],
+            "description": "Catch from hunting and fishing for Drd+",
+            "time": "2017-06-07 07:25:42"
+        },
+        {
+            "name": "drd-plus/lighting",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jaroslavtyc/drd-plus-lighting.git",
+                "reference": "9195f3a26cfc46ee1a41e55f9dcedfdd3b379216"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jaroslavtyc/drd-plus-lighting/zipball/9195f3a26cfc46ee1a41e55f9dcedfdd3b379216",
+                "reference": "9195f3a26cfc46ee1a41e55f9dcedfdd3b379216",
+                "shasum": ""
+            },
+            "require": {
+                "drd-plus/calculations": "dev-master",
+                "drd-plus/rolls-on": "dev-master",
+                "drd-plus/tables": "dev-master",
+                "granam/integer": "dev-master",
+                "granam/strict-object": "dev-master",
+                "php": ">=7.0",
+                "roave/security-advisories": "dev-master"
+            },
+            "require-dev": {
+                "mockery/mockery": "~0.9",
+                "phpunit/phpunit": "~6.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "DrdPlus\\": "DrdPlus/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Effects of insufficient lighting or to bright light for Drd+",
+            "time": "2017-05-22 10:30:34"
+        },
+        {
+            "name": "drd-plus/profession-levels",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jaroslavtyc/drd-plus-profession-levels.git",
+                "reference": "df4da160bf43442d46a82779c0c9a05789d1d7b1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jaroslavtyc/drd-plus-profession-levels/zipball/df4da160bf43442d46a82779c0c9a05789d1d7b1",
+                "reference": "df4da160bf43442d46a82779c0c9a05789d1d7b1",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/orm": "~2.0",
+                "doctrineum/datetime-immutable": "dev-master",
+                "doctrineum/entity": "dev-master",
+                "drd-plus/codes": "dev-master",
+                "drd-plus/professions": "dev-master",
+                "drd-plus/properties": "dev-master",
+                "php": ">=7.1",
+                "roave/security-advisories": "dev-master"
+            },
+            "require-dev": {
+                "granam/exceptions-hierarchy": "~4.0",
+                "mockery/mockery": "~0.9",
+                "phpunit/phpunit": "~6.0"
+            },
+            "type": "project",
+            "autoload": {
+                "psr-4": {
+                    "DrdPlus\\": "DrdPlus/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Levels of professions for Drd+",
+            "time": "2017-06-20 09:49:11"
+        },
+        {
+            "name": "drd-plus/professions",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jaroslavtyc/drd-plus-professions.git",
+                "reference": "a4066332b96ba26a1672a76f3a49c7082b0dc0d9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jaroslavtyc/drd-plus-professions/zipball/a4066332b96ba26a1672a76f3a49c7082b0dc0d9",
+                "reference": "a4066332b96ba26a1672a76f3a49c7082b0dc0d9",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/orm": "2.*",
+                "drd-plus/codes": "dev-master",
+                "drd-plus/properties": "dev-master",
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "doctrineum/entity": "dev-master",
+                "granam/exceptions-hierarchy": "~4.0",
+                "mockery/mockery": "~0.9",
+                "phpunit/phpunit": "~6.0"
+            },
+            "type": "project",
+            "autoload": {
+                "psr-4": {
+                    "DrdPlus\\": "DrdPlus/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Professions of Drd+",
+            "time": "2017-07-08 09:26:16"
+        },
+        {
+            "name": "drd-plus/properties",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jaroslavtyc/drd-plus-properties.git",
+                "reference": "0ca97be76fab29b67d01aafb73209e5a9a239e7f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jaroslavtyc/drd-plus-properties/zipball/0ca97be76fab29b67d01aafb73209e5a9a239e7f",
+                "reference": "0ca97be76fab29b67d01aafb73209e5a9a239e7f",
+                "shasum": ""
+            },
+            "require": {
+                "doctrineum/boolean": "dev-master",
+                "doctrineum/float": "dev-master",
+                "doctrineum/integer": "dev-master",
+                "drd-plus/calculations": "dev-master",
+                "drd-plus/codes": "dev-master",
+                "drd-plus/tables": "dev-master",
+                "granam/strict-object": "dev-master",
+                "granam/string": "dev-master",
+                "php": ">=7.1",
+                "roave/security-advisories": "dev-master"
+            },
+            "require-dev": {
+                "granam/exceptions-hierarchy": "~4.0",
+                "mockery/mockery": "~0.9",
+                "phpunit/phpunit": "~6.0"
+            },
+            "type": "project",
+            "autoload": {
+                "psr-4": {
+                    "DrdPlus\\": "DrdPlus/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
             "description": "Drd+ properties",
-            "time": "2017-05-31 05:26:00"
+            "time": "2017-07-10 05:36:48"
+        },
+        {
+            "name": "drd-plus/rolls-on",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jaroslavtyc/drd-plus-rolls-on.git",
+                "reference": "5eb6646d77207bbbfbd0802407cf91e5a5e0afc1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jaroslavtyc/drd-plus-rolls-on/zipball/5eb6646d77207bbbfbd0802407cf91e5a5e0afc1",
+                "reference": "5eb6646d77207bbbfbd0802407cf91e5a5e0afc1",
+                "shasum": ""
+            },
+            "require": {
+                "drd-plus/properties": "dev-master",
+                "drd/dice-rolls": "dev-master",
+                "granam/boolean": "dev-master",
+                "granam/integer": "dev-master",
+                "granam/strict-object": "dev-master",
+                "php": ">=7.0",
+                "roave/security-advisories": "dev-master"
+            },
+            "require-dev": {
+                "granam/exceptions-hierarchy": "~4.0",
+                "mockery/mockery": "~0.9",
+                "phpunit/phpunit": "~6.0"
+            },
+            "type": "project",
+            "autoload": {
+                "psr-4": {
+                    "DrdPlus\\": "DrdPlus/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Drd+ rolls by dices covering specific situations",
+            "time": "2017-02-20 07:15:53"
+        },
+        {
+            "name": "drd-plus/skills",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jaroslavtyc/drd-plus-skills.git",
+                "reference": "870995a36b5549f2c03d5a0d787fa481dddd9ba9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jaroslavtyc/drd-plus-skills/zipball/870995a36b5549f2c03d5a0d787fa481dddd9ba9",
+                "reference": "870995a36b5549f2c03d5a0d787fa481dddd9ba9",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/orm": "^2.5",
+                "doctrineum/datetime-immutable": "dev-master",
+                "doctrineum/entity": "dev-master",
+                "drd-plus/background": "dev-master",
+                "drd-plus/hunting-and-fishing": "dev-master",
+                "drd-plus/lighting": "dev-master",
+                "drd-plus/profession-levels": "dev-master",
+                "granam/integer": "dev-master",
+                "granam/strict-object": "dev-master",
+                "php": ">=7.1",
+                "roave/security-advisories": "dev-master"
+            },
+            "require-dev": {
+                "drd-plus/professions": "dev-master",
+                "granam/exceptions-hierarchy": "~4.0",
+                "mockery/mockery": "~0.9",
+                "phpunit/phpunit": "~6.0"
+            },
+            "type": "project",
+            "autoload": {
+                "psr-4": {
+                    "DrdPlus\\": "DrdPlus/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Skills for Drd+",
+            "time": "2017-07-10 05:30:50"
         },
         {
             "name": "drd-plus/tables",
@@ -882,12 +1406,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jaroslavtyc/drd-plus-tables.git",
-                "reference": "732bf6f555c3edb736b8281b8127763797b16df6"
+                "reference": "51be3dd60df03df43991f71ec05941016d4a9ef6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jaroslavtyc/drd-plus-tables/zipball/732bf6f555c3edb736b8281b8127763797b16df6",
-                "reference": "732bf6f555c3edb736b8281b8127763797b16df6",
+                "url": "https://api.github.com/repos/jaroslavtyc/drd-plus-tables/zipball/51be3dd60df03df43991f71ec05941016d4a9ef6",
+                "reference": "51be3dd60df03df43991f71ec05941016d4a9ef6",
                 "shasum": ""
             },
             "require": {
@@ -919,7 +1443,7 @@
                 "MIT"
             ],
             "description": "Drd+ tables and their units conversion",
-            "time": "2017-07-06 10:49:32"
+            "time": "2017-07-10 05:26:02"
         },
         {
             "name": "drd/dice-rolls",
@@ -1083,17 +1607,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jaroslavtyc/granam-integer.git",
-                "reference": "c0d65103db025f7aeafa5bf26f00995e70869880"
+                "reference": "c67cd25718147ce2d91b9db7bff83363b2c65bed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jaroslavtyc/granam-integer/zipball/c0d65103db025f7aeafa5bf26f00995e70869880",
-                "reference": "c0d65103db025f7aeafa5bf26f00995e70869880",
+                "url": "https://api.github.com/repos/jaroslavtyc/granam-integer/zipball/c67cd25718147ce2d91b9db7bff83363b2c65bed",
+                "reference": "c67cd25718147ce2d91b9db7bff83363b2c65bed",
                 "shasum": ""
             },
             "require": {
                 "granam/number": "dev-master",
-                "php": ">=7.0"
+                "granam/object-history": "dev-master",
+                "php": ">=7.1"
             },
             "require-dev": {
                 "granam/exceptions-hierarchy": "~4.0",
@@ -1124,7 +1649,7 @@
                 "integer",
                 "php"
             ],
-            "time": "2017-02-23 17:44:59"
+            "time": "2017-07-08 09:27:38"
         },
         {
             "name": "granam/number",
@@ -1175,6 +1700,42 @@
                 "php"
             ],
             "time": "2017-02-19 12:17:52"
+        },
+        {
+            "name": "granam/object-history",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jaroslavtyc/granam-object-history.git",
+                "reference": "6b6c6472d005fe2d904af980c7e0b0f5002c241f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jaroslavtyc/granam-object-history/zipball/6b6c6472d005fe2d904af980c7e0b0f5002c241f",
+                "reference": "6b6c6472d005fe2d904af980c7e0b0f5002c241f",
+                "shasum": ""
+            },
+            "require": {
+                "granam/tools": "dev-master",
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "granam/exceptions-hierarchy": "~4.0",
+                "mockery/mockery": "~0.9",
+                "phpunit/phpunit": "~6.0"
+            },
+            "type": "project",
+            "autoload": {
+                "psr-4": {
+                    "Granam\\": "Granam/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Changes of an object fetched from debug_backtrace",
+            "time": "2017-07-06 19:52:25"
         },
         {
             "name": "granam/scalar",
@@ -1381,6 +1942,53 @@
             "time": "2017-07-04 14:50:24"
         },
         {
+            "name": "psr/log",
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/log.git",
+                "reference": "4ebe3a8bf773a19edfe0a84b6585ba3d401b724d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/log/zipball/4ebe3a8bf773a19edfe0a84b6585ba3d401b724d",
+                "reference": "4ebe3a8bf773a19edfe0a84b6585ba3d401b724d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\Log\\": "Psr/Log/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "http://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interface for logging libraries",
+            "homepage": "https://github.com/php-fig/log",
+            "keywords": [
+                "log",
+                "psr",
+                "psr-3"
+            ],
+            "time": "2016-10-10T12:19:37+00:00"
+        },
+        {
             "name": "roave/security-advisories",
             "version": "dev-master",
             "source": {
@@ -1515,43 +2123,57 @@
             ],
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it",
             "time": "2017-06-22T16:43:17+00:00"
-        }
-    ],
-    "packages-dev": [
+        },
         {
-            "name": "doctrine/instantiator",
-            "version": "1.0.5",
+            "name": "symfony/console",
+            "version": "v3.3.4",
             "source": {
                 "type": "git",
-                "url": "https://github.com/doctrine/instantiator.git",
-                "reference": "8e884e78f9f0eb1329e445619e04456e64d8051d"
+                "url": "https://github.com/symfony/console.git",
+                "reference": "a97e45d98c59510f085fa05225a1acb74dfe0546"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/instantiator/zipball/8e884e78f9f0eb1329e445619e04456e64d8051d",
-                "reference": "8e884e78f9f0eb1329e445619e04456e64d8051d",
+                "url": "https://api.github.com/repos/symfony/console/zipball/a97e45d98c59510f085fa05225a1acb74dfe0546",
+                "reference": "a97e45d98c59510f085fa05225a1acb74dfe0546",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3,<8.0-DEV"
+                "php": ">=5.5.9",
+                "symfony/debug": "~2.8|~3.0",
+                "symfony/polyfill-mbstring": "~1.0"
+            },
+            "conflict": {
+                "symfony/dependency-injection": "<3.3"
             },
             "require-dev": {
-                "athletic/athletic": "~0.1.8",
-                "ext-pdo": "*",
-                "ext-phar": "*",
-                "phpunit/phpunit": "~4.0",
-                "squizlabs/php_codesniffer": "~2.0"
+                "psr/log": "~1.0",
+                "symfony/config": "~3.3",
+                "symfony/dependency-injection": "~3.3",
+                "symfony/event-dispatcher": "~2.8|~3.0",
+                "symfony/filesystem": "~2.8|~3.0",
+                "symfony/http-kernel": "~2.8|~3.0",
+                "symfony/process": "~2.8|~3.0"
+            },
+            "suggest": {
+                "psr/log": "For using the console logger",
+                "symfony/event-dispatcher": "",
+                "symfony/filesystem": "",
+                "symfony/process": ""
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "3.3-dev"
                 }
             },
             "autoload": {
                 "psr-4": {
-                    "Doctrine\\Instantiator\\": "src/Doctrine/Instantiator/"
-                }
+                    "Symfony\\Component\\Console\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -1559,19 +2181,135 @@
             ],
             "authors": [
                 {
-                    "name": "Marco Pivetta",
-                    "email": "ocramius@gmail.com",
-                    "homepage": "http://ocramius.github.com/"
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
                 }
             ],
-            "description": "A small, lightweight utility to instantiate objects in PHP without invoking their constructors",
-            "homepage": "https://github.com/doctrine/instantiator",
-            "keywords": [
-                "constructor",
-                "instantiate"
-            ],
-            "time": "2015-06-14T21:17:01+00:00"
+            "description": "Symfony Console Component",
+            "homepage": "https://symfony.com",
+            "time": "2017-07-03T13:19:36+00:00"
         },
+        {
+            "name": "symfony/debug",
+            "version": "v3.3.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/debug.git",
+                "reference": "63b85a968486d95ff9542228dc2e4247f16f9743"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/debug/zipball/63b85a968486d95ff9542228dc2e4247f16f9743",
+                "reference": "63b85a968486d95ff9542228dc2e4247f16f9743",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.9",
+                "psr/log": "~1.0"
+            },
+            "conflict": {
+                "symfony/http-kernel": ">=2.3,<2.3.24|~2.4.0|>=2.5,<2.5.9|>=2.6,<2.6.2"
+            },
+            "require-dev": {
+                "symfony/http-kernel": "~2.8|~3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Debug\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Debug Component",
+            "homepage": "https://symfony.com",
+            "time": "2017-07-05T13:02:37+00:00"
+        },
+        {
+            "name": "symfony/polyfill-mbstring",
+            "version": "v1.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-mbstring.git",
+                "reference": "f29dca382a6485c3cbe6379f0c61230167681937"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/f29dca382a6485c3cbe6379f0c61230167681937",
+                "reference": "f29dca382a6485c3cbe6379f0c61230167681937",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "suggest": {
+                "ext-mbstring": "For best performance"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.4-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Polyfill\\Mbstring\\": ""
+                },
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony polyfill for the Mbstring extension",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "mbstring",
+                "polyfill",
+                "portable",
+                "shim"
+            ],
+            "time": "2017-06-09T14:24:12+00:00"
+        }
+    ],
+    "packages-dev": [
         {
             "name": "granam/exceptions-hierarchy",
             "version": "4.0.2",
@@ -3125,7 +3863,8 @@
         "roave/security-advisories": 20,
         "granam/strict-object": 20,
         "drd-plus/tables": 20,
-        "drd-plus/configurator-skeleton": 20
+        "drd-plus/configurator-skeleton": 20,
+        "drd-plus/skills": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

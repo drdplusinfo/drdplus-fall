@@ -28,6 +28,7 @@ namespace DrdPlus\Fight;
                     </option>
                 <?php } ?>
             </select>
+            <span class="hint">(přičítá se ke zbroji)</span>
         </label>
     </div>
 </div>

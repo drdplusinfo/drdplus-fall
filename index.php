@@ -16,6 +16,7 @@ $controller = new Controller();
     <link href="css/generic/graphics.css" rel="stylesheet" type="text/css">
     <link href="css/generic/main.css" rel="stylesheet" type="text/css">
     <link href="css/generic/socials.css" rel="stylesheet" type="text/css">
+    <link href="css/main.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="js/generic/main.js"></script>
     <script type="text/javascript" src="js/generic/facebook.js" async></script>
     <noscript>
@@ -39,7 +40,7 @@ $controller = new Controller();
     </div>
     <div class="block">
         <div class="panel"><?php include __DIR__ . '/parts/falling.php'; ?></div>
-        <div class="panel"><?php include __DIR__ . '/parts/agility_an_luck.php'; ?></div>
+        <div class="panel"><?php include __DIR__ . '/parts/reaction.php'; ?></div>
         <div class="panel"><?php include __DIR__ . '/parts/armor.php'; ?></div>
     </div>
 </form>
