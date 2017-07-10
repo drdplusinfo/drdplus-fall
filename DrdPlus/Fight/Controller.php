@@ -42,6 +42,7 @@ class Controller extends \DrdPlus\Configurator\Skeleton\Controller
     const SURFACE = 'surface';
     const WEIGHT = 'weight';
     const JUMP_IS_CONTROLLED = 'jump_is_controlled';
+    const HORSE_IS_JUMPING = 'horse_is_jumping';
 
     public function __construct()
     {
@@ -279,7 +280,7 @@ class Controller extends \DrdPlus\Configurator\Skeleton\Controller
                 : $this->getSelectedHeightOfFall(),
             BodyWeight::getIt($this->getSelectedWeight()->getBonus()),
             $this->getSelected1d6Roll(),
-            $this->isControlledJump(),
+            $this->jumpIsControlled(),
             $this->getSelectedAgility(),
             $this->getSelectedAthletics(),
             $this->getSelectedLandingSurface(),
@@ -293,7 +294,7 @@ class Controller extends \DrdPlus\Configurator\Skeleton\Controller
             $woundsAdditionOnFallFromHorse = Tables::getIt()->getWoundsOnFallFromHorseTable()
                 ->getWoundsAdditionOnFallFromHorse(
                     $this->getSelectedRidingAnimalMovement(),
-                    $this->isControlledJump(),
+                    $this->horseIsJumping(),
                     Tables::getIt()->getWoundsTable()
                 );
             $woundsFromFall = (new WoundsBonus(
@@ -354,9 +355,14 @@ class Controller extends \DrdPlus\Configurator\Skeleton\Controller
         return new Roll1d6(new Dice1d6Roll(new IntegerObject($roll)));
     }
 
-    public function isControlledJump(): bool
+    public function jumpIsControlled(): bool
     {
         return (bool)$this->getValueFromRequest(self::JUMP_IS_CONTROLLED);
+    }
+
+    public function horseIsJumping(): bool
+    {
+        return (bool)$this->getValueFromRequest(self::HORSE_IS_JUMPING);
     }
 
     public function getSelectedLandingSurface(): LandingSurfaceCode

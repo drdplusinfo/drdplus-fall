@@ -29,6 +29,12 @@ use DrdPlus\Codes\Transport\RidingAnimalCode;
                     <?php } ?>
                 </select>
             </label>
+            <label>
+                při skoku
+                <input type="checkbox"
+                       name="<?= $controller::HORSE_IS_JUMPING ?>"
+                       <?php if ($controller->horseIsJumping()) { ?>checked="checked"<?php } ?>>
+            </label>
         </div>
         <div class="panel">
         </div>

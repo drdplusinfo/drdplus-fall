@@ -12,7 +12,7 @@ namespace DrdPlus\Fight;
             <label>
                 skáčeš <span class="hint">(pád tě nepřekvapil)</span>
                 <input type="checkbox" name="<?= $controller::JUMP_IS_CONTROLLED ?>"
-                       <?php if ($controller->isControlledJump()) { ?>checked="checked" <?php } ?>>
+                       <?php if ($controller->jumpIsControlled()) { ?>checked="checked" <?php } ?>>
             </label>
         </div>
     </div>
