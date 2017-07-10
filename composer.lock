@@ -1194,12 +1194,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jaroslavtyc/drd-plus-profession-levels.git",
-                "reference": "df4da160bf43442d46a82779c0c9a05789d1d7b1"
+                "reference": "0a57dd1763e0ac106dcb091ad632aca5fd440bca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jaroslavtyc/drd-plus-profession-levels/zipball/df4da160bf43442d46a82779c0c9a05789d1d7b1",
-                "reference": "df4da160bf43442d46a82779c0c9a05789d1d7b1",
+                "url": "https://api.github.com/repos/jaroslavtyc/drd-plus-profession-levels/zipball/0a57dd1763e0ac106dcb091ad632aca5fd440bca",
+                "reference": "0a57dd1763e0ac106dcb091ad632aca5fd440bca",
                 "shasum": ""
             },
             "require": {
@@ -1228,7 +1228,7 @@
                 "MIT"
             ],
             "description": "Levels of professions for Drd+",
-            "time": "2017-06-20 09:49:11"
+            "time": "2017-07-10 06:30:23"
         },
         {
             "name": "drd-plus/professions",
@@ -1275,12 +1275,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jaroslavtyc/drd-plus-properties.git",
-                "reference": "0ca97be76fab29b67d01aafb73209e5a9a239e7f"
+                "reference": "fe90d51f900e113e3866165341d1d97dae79e7c4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jaroslavtyc/drd-plus-properties/zipball/0ca97be76fab29b67d01aafb73209e5a9a239e7f",
-                "reference": "0ca97be76fab29b67d01aafb73209e5a9a239e7f",
+                "url": "https://api.github.com/repos/jaroslavtyc/drd-plus-properties/zipball/fe90d51f900e113e3866165341d1d97dae79e7c4",
+                "reference": "fe90d51f900e113e3866165341d1d97dae79e7c4",
                 "shasum": ""
             },
             "require": {
@@ -1311,7 +1311,7 @@
                 "MIT"
             ],
             "description": "Drd+ properties",
-            "time": "2017-07-10 05:36:48"
+            "time": "2017-07-10 06:22:01"
         },
         {
             "name": "drd-plus/rolls-on",
@@ -1360,12 +1360,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jaroslavtyc/drd-plus-skills.git",
-                "reference": "870995a36b5549f2c03d5a0d787fa481dddd9ba9"
+                "reference": "afce789572bf038d2cf43064b3ba32fb376c183e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jaroslavtyc/drd-plus-skills/zipball/870995a36b5549f2c03d5a0d787fa481dddd9ba9",
-                "reference": "870995a36b5549f2c03d5a0d787fa481dddd9ba9",
+                "url": "https://api.github.com/repos/jaroslavtyc/drd-plus-skills/zipball/afce789572bf038d2cf43064b3ba32fb376c183e",
+                "reference": "afce789572bf038d2cf43064b3ba32fb376c183e",
                 "shasum": ""
             },
             "require": {
@@ -1398,7 +1398,7 @@
                 "MIT"
             ],
             "description": "Skills for Drd+",
-            "time": "2017-07-10 05:30:50"
+            "time": "2017-07-10 06:28:45"
         },
         {
             "name": "drd-plus/tables",
@@ -1406,12 +1406,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jaroslavtyc/drd-plus-tables.git",
-                "reference": "51be3dd60df03df43991f71ec05941016d4a9ef6"
+                "reference": "d5fd9ceedf6d0bb6b427d7e43b5c2e2e49ee7b8d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jaroslavtyc/drd-plus-tables/zipball/51be3dd60df03df43991f71ec05941016d4a9ef6",
-                "reference": "51be3dd60df03df43991f71ec05941016d4a9ef6",
+                "url": "https://api.github.com/repos/jaroslavtyc/drd-plus-tables/zipball/d5fd9ceedf6d0bb6b427d7e43b5c2e2e49ee7b8d",
+                "reference": "d5fd9ceedf6d0bb6b427d7e43b5c2e2e49ee7b8d",
                 "shasum": ""
             },
             "require": {
@@ -1443,7 +1443,7 @@
                 "MIT"
             ],
             "description": "Drd+ tables and their units conversion",
-            "time": "2017-07-10 05:26:02"
+            "time": "2017-07-10 13:45:24"
         },
         {
             "name": "drd/dice-rolls",

@@ -34,9 +34,9 @@ namespace DrdPlus\Fight;
     </div>
     <div class="block">
         <div class="panel">
-            <label>štěstí
+            <label>smůla
                 <input type="number" class="single-number" name="<?= $controller::ROLL_1D6 ?>" min="1" max="6"
-                       value="<?= $controller->getSelectedLuck() ?>" placeholder="1k6">
+                       value="<?= $controller->getSelectedLuck() ?>" placeholder="1k6"> <span class="hint">(1k6)</span>
             </label>
         </div>
     </div>

@@ -33,8 +33,8 @@ class Controller extends \DrdPlus\Configurator\Skeleton\Controller
     const BODY_ARMOR = 'body_armor';
     const HELM = 'helm';
     const FALLING_FROM = 'falling_from';
-    const FALLING_FROM_HORSEBACK = 'falling_from_horseback';
-    const FALLING_FROM_HEIGHT = 'falling_from_height';
+    const HORSEBACK = 'horseback';
+    const HEIGHT = 'height';
     const HEIGHT_OF_FALL = 'height_of_fall';
     const RIDING_MOVEMENT = 'riding_movement';
     const RIDING_ANIMAL_HEIGHT = 'riding_animal_height';
@@ -130,12 +130,12 @@ class Controller extends \DrdPlus\Configurator\Skeleton\Controller
 
     public function isFallingFromHorseback(): bool
     {
-        return (bool)$this->getValueFromRequest(self::FALLING_FROM_HORSEBACK);
+        return $this->getValueFromRequest(self::FALLING_FROM) === self::HORSEBACK;
     }
 
     public function isFallingFromHeight(): bool
     {
-        return (bool)$this->getValueFromRequest(self::FALLING_FROM_HEIGHT);
+        return $this->getValueFromRequest(self::FALLING_FROM) === self::HEIGHT;
     }
 
     public function getRidingAnimalsWithHeight(): array
@@ -287,8 +287,7 @@ class Controller extends \DrdPlus\Configurator\Skeleton\Controller
                 $this->getProtectionOfBodyArmor($this->getSelectedBodyArmor())
                 + $this->getProtectionOfHelm($this->getSelectedHelm())
             ),
-            Tables::getIt()->getWoundsTable(),
-            Tables::getIt()->getLandingSurfacesTable()
+            Tables::getIt()
         );
         if ($this->isFallingFromHorseback()) {
             $woundsAdditionOnFallFromHorse = Tables::getIt()->getWoundsOnFallFromHorseTable()
