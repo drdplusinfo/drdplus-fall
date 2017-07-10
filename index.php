@@ -43,6 +43,7 @@ $controller = new Controller();
         <div class="panel"><?php include __DIR__ . '/parts/reaction.php'; ?></div>
         <div class="panel"><?php include __DIR__ . '/parts/armor.php'; ?></div>
     </div>
+    <div class="block"><?php include __DIR__ . '/parts/result.php'; ?></div>
 </form>
 <div class="block issues">
     <a href="https://github.com/jaroslavtyc/drd-plus-fall/issues">Máš nápad 😀? Vidíš chybu 😱?️ Sem s tím!</a>

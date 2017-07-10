@@ -265,13 +265,13 @@ class Controller extends \DrdPlus\Configurator\Skeleton\Controller
         return HelmCode::getIt(HelmCode::WITHOUT_HELM);
     }
 
-    public function getWoundsByFall(): int
+    public function getWoundsByFall():? int
     {
         if (!$this->isFallingFromHeight() && !$this->isFallingFromHorseback()) {
-            return 0;
+            return null;
         }
         if (!$this->getSelectedWeight() || !$this->getSelected1d6Roll()) {
-            return 0;
+            return null;
         }
         $woundsFromFall = Tables::getIt()->getJumpsAndFallsTable()->getWoundsFromJumpOrFall(
             $this->isFallingFromHorseback()
