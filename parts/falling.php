@@ -30,7 +30,7 @@ use DrdPlus\Codes\Transport\RidingAnimalCode;
                 </select>
             </label>
             <label>
-                při skoku
+                při jeho skoku
                 <input type="checkbox"
                        name="<?= $controller::HORSE_IS_JUMPING ?>"
                        <?php if ($controller->horseIsJumping()) { ?>checked="checked"<?php } ?>>

@@ -10,7 +10,7 @@ namespace DrdPlus\Fight;
     <div class="block">
         <div class="panel">
             <label>
-                skáčeš <span class="hint">(pád tě nepřekvapil)</span>
+                skočils <span class="hint">(pád tě nepřekvapil)</span>
                 <input type="checkbox" name="<?= $controller::JUMP_IS_CONTROLLED ?>"
                        <?php if ($controller->jumpIsControlled()) { ?>checked="checked" <?php } ?>>
             </label>
