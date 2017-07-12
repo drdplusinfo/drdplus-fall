@@ -68,15 +68,21 @@ class Controller extends \DrdPlus\Configurator\Skeleton\Controller
 
     public function getSelectedAgility(): Agility
     {
-        if ($this->isWithoutReaction()) {
-            return Agility::getIt(-6);
-        }
         $selectedAgility = $this->getValueFromRequest(self::AGILITY);
         if ($selectedAgility === null) {
             return Agility::getIt(0);
         }
 
         return Agility::getIt($selectedAgility);
+    }
+
+    private function getSelectedAgilityWithReaction(): Agility
+    {
+        if ($this->isWithoutReaction()) {
+            return Agility::getIt(-6);
+        }
+
+        return $this->getSelectedAgility();
     }
 
     public function isWithoutReaction(): bool
@@ -243,7 +249,7 @@ class Controller extends \DrdPlus\Configurator\Skeleton\Controller
         /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
         return Tables::getIt()->getLandingSurfacesTable()->getWoundsModifier(
             $landingSurfaceCode,
-            $this->getSelectedAgility(),
+            $this->getSelectedAgilityWithReaction(),
             new PositiveIntegerObject($this->getProtectionOfBodyArmor($this->getSelectedBodyArmor()))
         );
     }
@@ -281,9 +287,10 @@ class Controller extends \DrdPlus\Configurator\Skeleton\Controller
                 ? $this->getSelectedRidingAnimalHeight()
                 : $this->getSelectedHeightOfFall(),
             BodyWeight::getIt($this->getSelectedBodyWeight()->getBonus()),
+            $this->getSelectedItemsWeight(),
             $this->getSelected1d6Roll(),
             $this->isJumpControlled(),
-            $this->getSelectedAgility(),
+            $this->getSelectedAgilityWithReaction(),
             $this->getSelectedAthletics(),
             $this->getSelectedLandingSurface(),
             new PositiveIntegerObject($this->getProtectionOfBodyArmor($this->getSelectedBodyArmor())),
