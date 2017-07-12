@@ -56,28 +56,36 @@ use DrdPlus\Codes\Transport\RidingAnimalCode;
             </div>
         </div>
         <div class="block">
-            <label>padáš na
+            <label>spadeš na
                 <select name="<?= $controller::SURFACE ?>">
                     <?php foreach ($controller->getSurfaces() as $surface) { ?>
                         <option value="<?= $surface->getValue() ?>"
                                 <?php if ($controller->isSurfaceSelected($surface)) { ?>selected<?php } ?>>
-                            <?= "{$surface->translateTo('cs')} ({$controller->getWoundsModifierBySurface($surface)})" ?></option>
+                            <?= "{$surface->translateTo('cs')} ({$controller->getWoundsModifierBySurface($surface)} ZZ)" ?></option>
                     <?php } ?>
                 </select>
             </label>
         </div>
         <div class="block">
-            <label>zraníš si hlavu (+2 ZZ)
+            <label>padáš na hlavu <span class="hint">(+2 ZZ)</span>
                 <input name="<?= $controller::HEAD ?>" value="1" type="checkbox"
                        <?php if ($controller->isHitToHead()) { ?>checked="checked" <?php } ?>>
             </label>
         </div>
         <div class="block">
-            <label>tvoje váha <span class="hint">včetně věcí, které spadly na tebe</span>
-                <input name="<?= $controller::WEIGHT ?>" type="number" placeholder="váha v kg" class="few-numbers"
+            <label>tvoje váha
+                <input name="<?= $controller::BODY_WEIGHT ?>" type="number" placeholder="váha v kg" class="few-numbers"
                        min="0" max="250"
                        required
-                       value="<?= $controller->getSelectedWeight() ? $controller->getSelectedWeight()->getValue() : '' ?>">
+                       value="<?= $controller->getSelectedBodyWeight() ? $controller->getSelectedBodyWeight()->getValue() : '' ?>">
+            </label>
+        </div>
+        <div class="block">
+            <label title="třeba poník váží 240 kg, válečný kůň 700 kg, slon 6 tun, ale nespadnou na tebe celí">váha
+                věcí, které spadly na tebe <span class="hint">(zbroj nepočítej)</span>
+                <input name="<?= $controller::ITEMS_WEIGHT ?>" type="number" placeholder="váha v kg" class="few-numbers"
+                       min="0" max="10000"
+                       value="<?= $controller->getSelectedItemsWeight() ? $controller->getSelectedItemsWeight()->getValue() : '' ?>">
             </label>
         </div>
         <div class="block"><input type="submit" value="Přepočítat"></div>

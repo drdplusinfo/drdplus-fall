@@ -13,7 +13,7 @@ namespace DrdPlus\Fight;
                     </option>
                 <?php } ?>
             </select>
-            <span class="hint">(může snížit zranění podle povrchu)</span>
+            <span class="hint">(může snížit zranění z dopadu na ostrý povrch)</span>
         </label>
     </div>
     <div class="block">

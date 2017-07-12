@@ -40,7 +40,8 @@ class Controller extends \DrdPlus\Configurator\Skeleton\Controller
     const RIDING_ANIMAL_HEIGHT = 'riding_animal_height';
     const JUMPING = 'jumping';
     const SURFACE = 'surface';
-    const WEIGHT = 'weight';
+    const BODY_WEIGHT = 'body_weight';
+    const ITEMS_WEIGHT = 'items_weight';
     const JUMP_IS_CONTROLLED = 'jump_is_controlled';
     const HORSE_IS_JUMPING = 'horse_is_jumping';
     const HEAD = 'head';
@@ -272,14 +273,14 @@ class Controller extends \DrdPlus\Configurator\Skeleton\Controller
         if (!$this->isFallingFromHeight() && !$this->isFallingFromHorseback()) {
             return null;
         }
-        if (!$this->getSelectedWeight() || !$this->getSelected1d6Roll()) {
+        if (!$this->getSelectedBodyWeight() || !$this->getSelected1d6Roll()) {
             return null;
         }
         $woundsFromFall = Tables::getIt()->getJumpsAndFallsTable()->getWoundsFromJumpOrFall(
             $this->isFallingFromHorseback()
                 ? $this->getSelectedRidingAnimalHeight()
                 : $this->getSelectedHeightOfFall(),
-            BodyWeight::getIt($this->getSelectedWeight()->getBonus()),
+            BodyWeight::getIt($this->getSelectedBodyWeight()->getBonus()),
             $this->getSelected1d6Roll(),
             $this->isJumpControlled(),
             $this->getSelectedAgility(),
@@ -335,9 +336,19 @@ class Controller extends \DrdPlus\Configurator\Skeleton\Controller
         return RidingAnimalMovementCode::getIt($selectedMovement);
     }
 
-    public function getSelectedWeight():? Weight
+    public function getSelectedBodyWeight():? Weight
     {
-        $weight = $this->getValueFromRequest(self::WEIGHT);
+        $weight = $this->getValueFromRequest(self::BODY_WEIGHT);
+        if (!$weight) {
+            return null;
+        }
+
+        return new Weight($weight, Weight::KG, Tables::getIt()->getWeightTable());
+    }
+
+    public function getSelectedItemsWeight():? Weight
+    {
+        $weight = $this->getValueFromRequest(self::ITEMS_WEIGHT);
         if (!$weight) {
             return null;
         }

@@ -8,7 +8,7 @@ namespace DrdPlus\Fight;
     <div class="block">
         <div class="panel">
             <label>
-                skočils <span class="hint">(pád tě nepřekvapil)</span>
+                skočils <span class="hint">(pád tě nepřekvapil = výška -2 metry)</span>
                 <input type="checkbox" name="<?= $controller::JUMP_IS_CONTROLLED ?>"
                        <?php if ($controller->isJumpControlled()) { ?>checked="checked" <?php } ?>>
             </label>
