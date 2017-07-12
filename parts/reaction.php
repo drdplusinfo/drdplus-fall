@@ -26,7 +26,7 @@ namespace DrdPlus\Fight;
         <div class="panel">
             <label>obratnost
                 <input type="number" class="single-number" name="<?= $controller::AGILITY ?>" min="-40" max="40"
-                       value="<?= $controller->getSelectedAgility()->getValue() ?>">
+                       required value="<?= $controller->getSelectedAgility()->getValue() ?>">
             </label>
         </div>
     </div>
@@ -34,6 +34,7 @@ namespace DrdPlus\Fight;
         <div class="panel">
             <label>smůla
                 <input type="number" class="single-number" name="<?= $controller::ROLL_1D6 ?>" min="1" max="6"
+                       required
                        value="<?= $controller->getSelectedLuck() ?>" placeholder="1k6"> <span class="hint">(1k6)</span>
             </label>
         </div>

@@ -12,6 +12,7 @@ use DrdPlus\Codes\Transport\RidingAnimalCode;
             <label>
                 <input type="radio" value="<?= $controller::HORSEBACK ?>"
                        name="<?= $controller::FALLING_FROM ?>"
+                       required
                        <?php if ($controller->isFallingFromHorseback()) { ?>checked="checked" <?php } ?>>
                 <strong>Padáš z "koně"</strong>
             </label>
@@ -43,6 +44,7 @@ use DrdPlus\Codes\Transport\RidingAnimalCode;
                 <label>
                     <input type="radio" value="<?= $controller::HEIGHT ?>"
                            name="<?= $controller::FALLING_FROM ?>"
+                           required
                            <?php if ($controller->isFallingFromHeight()) { ?>checked="checked" <?php } ?>>
                     <strong>Padáš z výšky</strong>
                 </label>
@@ -74,6 +76,7 @@ use DrdPlus\Codes\Transport\RidingAnimalCode;
             <label>tvoje váha <span class="hint">včetně věcí, které spadly na tebe</span>
                 <input name="<?= $controller::WEIGHT ?>" type="number" placeholder="váha v kg" class="few-numbers"
                        min="0" max="250"
+                       required
                        value="<?= $controller->getSelectedWeight() ? $controller->getSelectedWeight()->getValue() : '' ?>">
             </label>
         </div>
