@@ -228,7 +228,7 @@ class Controller extends \DrdPlus\Configurator\Skeleton\Controller
 
     public function isSurfaceSelected(LandingSurfaceCode $landingSurfaceCode): bool
     {
-        return $this->getValueFromRequest(self::SURFACE) === $landingSurfaceCode->getValue();
+        return $this->getSelectedLandingSurface()->getValue() === $landingSurfaceCode->getValue();
     }
 
     /**
