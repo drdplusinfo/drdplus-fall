@@ -33,7 +33,7 @@ use DrdPlus\Codes\Transport\RidingAnimalCode;
                 při jeho skoku
                 <input type="checkbox"
                        name="<?= $controller::HORSE_IS_JUMPING ?>"
-                       <?php if ($controller->horseIsJumping()) { ?>checked="checked"<?php } ?>>
+                       <?php if ($controller->isHorseJumping()) { ?>checked="checked"<?php } ?>>
             </label>
         </div>
         <div class="panel">
@@ -65,6 +65,12 @@ use DrdPlus\Codes\Transport\RidingAnimalCode;
             </label>
         </div>
         <div class="block">
+            <label>zraníš si hlavu (+2 ZZ)
+                <input name="<?= $controller::HEAD ?>" value="1" type="checkbox"
+                       <?php if ($controller->isHitToHead()) { ?>checked="checked" <?php } ?>>
+            </label>
+        </div>
+        <div class="block">
             <label>tvoje váha <span class="hint">včetně věcí, které spadly na tebe</span>
                 <input name="<?= $controller::WEIGHT ?>" type="number" placeholder="váha v kg" class="few-numbers"
                        min="0" max="250"
@@ -73,3 +79,4 @@ use DrdPlus\Codes\Transport\RidingAnimalCode;
         </div>
         <div class="block"><input type="submit" value="Přepočítat"></div>
     </div>
+</div>

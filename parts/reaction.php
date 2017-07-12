@@ -5,14 +5,12 @@ namespace DrdPlus\Fight;
 ?>
 <div class="block">
     <h2 id="akce_a_reakce"><a href="#akce_a_reakce" class="inner">Akce a reakce</a></h2>
-</div>
-<div class="block">
     <div class="block">
         <div class="panel">
             <label>
                 skočils <span class="hint">(pád tě nepřekvapil)</span>
                 <input type="checkbox" name="<?= $controller::JUMP_IS_CONTROLLED ?>"
-                       <?php if ($controller->jumpIsControlled()) { ?>checked="checked" <?php } ?>>
+                       <?php if ($controller->isJumpControlled()) { ?>checked="checked" <?php } ?>>
             </label>
         </div>
     </div>

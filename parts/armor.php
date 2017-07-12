@@ -4,8 +4,6 @@ namespace DrdPlus\Fight;
 ?>
 <div class="block">
     <h2 id="zbroj"><a href="#zbroj" class="inner">Zbroj</a></h2>
-</div>
-<div class="block">
     <div class="block">
         <label><select name="<?= $controller::BODY_ARMOR ?>">
                 <?php foreach ($controller->getPossibleBodyArmors() as $bodyArmor) { ?>
@@ -28,7 +26,7 @@ namespace DrdPlus\Fight;
                     </option>
                 <?php } ?>
             </select>
-            <span class="hint">(přičítá se ke zbroji)</span>
+            <span class="hint">(při zranění hlavy)</span>
         </label>
     </div>
 </div>
