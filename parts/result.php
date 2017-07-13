@@ -5,5 +5,5 @@ namespace DrdPlus\Fight;
 ?>
 <div class="block">
     <h2 id="zraneni"><a href="#zraneni">Zranění</a></h2>
-    <strong><?= $controller->getWoundsByFall() ?? '?'; ?></strong>
+    <strong id="result"><?= $controller->getWoundsByFall() ?? '?'; ?></strong>
 </div>

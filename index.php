@@ -17,7 +17,6 @@ $controller = new Controller();
     <link href="css/generic/main.css" rel="stylesheet" type="text/css">
     <link href="css/generic/socials.css" rel="stylesheet" type="text/css">
     <link href="css/main.css" rel="stylesheet" type="text/css">
-    <script type="text/javascript" src="js/generic/main.js"></script>
     <script type="text/javascript" src="js/generic/facebook.js" async></script>
     <noscript>
         <link rel="stylesheet" type="text/css" href="css/generic/no_script.css">
@@ -32,7 +31,7 @@ $controller = new Controller();
         <span class="hint">(včetně dlouhodobé paměti)</span>
     </label>
 </form>
-<form class="block" action="" method="get">
+<form class="block" action="" method="get" id="configurator">
     <div class="block remember">
         <label><input type="checkbox" name="<?= $controller::REMEMBER_HISTORY ?>" value="1"
                       <?php if ($controller->shouldRemember()) { ?>checked="checked"<?php } ?>>
@@ -56,5 +55,6 @@ $controller = new Controller();
     <a href="https://github.com/jaroslavtyc/drd-plus-fall/"
        title="Fork me on GitHub"><img class="github" src="/images/generic/GitHub-Mark-64px.png"></a>
 </div>
+<script type="text/javascript" src="js/generic/main.js"></script>
 </body>
 </html>
