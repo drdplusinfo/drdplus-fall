@@ -91,6 +91,7 @@ use DrdPlus\Codes\Transport\RidingAnimalCode;
                        min="0" max="250"
                        required
                        value="<?= $controller->getSelectedBodyWeight() ? $controller->getSelectedBodyWeight()->getValue() : '' ?>">
+                kg
             </label>
         </div>
         <div class="block">
@@ -99,6 +100,7 @@ use DrdPlus\Codes\Transport\RidingAnimalCode;
                 <input name="<?= $controller::ITEMS_WEIGHT ?>" type="number" placeholder="váha v kg" class="few-numbers"
                        min="0" max="10000"
                        value="<?= $controller->getSelectedItemsWeight() ? $controller->getSelectedItemsWeight()->getValue() : '' ?>">
+                kg
             </label>
         </div>
         <div class="block"><input type="submit" value="Přepočítat"></div>

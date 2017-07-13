@@ -33,9 +33,33 @@ namespace DrdPlus\Fight;
     <div class="block">
         <div class="panel">
             <label>smůla
-                <input type="number" class="single-number" name="<?= $controller::ROLL_1D6 ?>" min="1" max="6"
-                       required
-                       value="<?= $controller->getSelectedLuck() ?>" placeholder="1k6"> <span class="hint">(1k6)</span>
+                <select name="<?= $controller::ROLL_1D6 ?>">
+                    <?php foreach (range(1, 6) as $roll) { ?>
+                        <option value="<?= $roll ?>"
+                            <?php if ($controller->getSelected1d6Roll()->getValue() === $roll) { ?>
+                                selected
+                            <?php } ?>>
+                            <?= $roll ?>
+                        </option>
+                    <?php } ?>
+                </select>
+                <span class="hint">(1k6)</span>
+            </label>
+        </div>
+    </div>
+    <div class="block">
+        <div class="panel">
+            <label>atletika
+                <select name="<?= $controller::ATHLETICS ?>">
+                    <?php foreach (['-', 'I', 'II', 'III'] as $rankValue => $rankName) { ?>
+                        <option value="<?= $rankValue ?>"
+                            <?php if ($controller->getSelectedAthletics()->getCurrentSkillRank()->getValue() === $rankValue) { ?>
+                                selected
+                            <?php } ?>>
+                            <?= $rankName ?>
+                        </option>
+                    <?php } ?>
+                </select>
             </label>
         </div>
     </div>

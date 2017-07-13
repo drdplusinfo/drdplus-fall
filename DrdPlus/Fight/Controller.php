@@ -317,10 +317,12 @@ class Controller extends \DrdPlus\Configurator\Skeleton\Controller
                 $this->getSelectedRidingAnimalMovement(),
                 $this->isHorseJumping()
             );
-            $woundsFromFall = (new WoundsBonus(
-                $woundsFromFall->getBonus()->getValue() + $baseOfWoundsModifierByMovement,
-                Tables::getIt()->getWoundsTable()
-            ))->getWounds();
+            if ($baseOfWoundsModifierByMovement !== 0) {
+                $woundsFromFall = (new WoundsBonus(
+                    $woundsFromFall->getBonus()->getValue() + $baseOfWoundsModifierByMovement,
+                    Tables::getIt()->getWoundsTable()
+                ))->getWounds();
+            }
         }
 
         return $woundsFromFall->getValue();
