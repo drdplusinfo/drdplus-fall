@@ -44,7 +44,7 @@ use DrdPlus\Codes\Transport\RidingAnimalCode;
                     <?php foreach ($controller->getRidingAnimalMovements() as $ridingAnimalMovement) { ?>
                         <option value="<?= $ridingAnimalMovement->getValue() ?>"
                                 <?php if ($controller->isRidingAnimalMovementSelected($ridingAnimalMovement)) { ?>selected<?php } ?>>
-                            <?= $ridingAnimalMovement->translateTo('cs') . " ({$controller->getBaseOfWoundsModifierByMovement($ridingAnimalMovement, false)})" ?>
+                            <?= $ridingAnimalMovement->translateTo('cs') . " (+{$controller->getBaseOfWoundsModifierByMovement($ridingAnimalMovement, false)} ZZ)" ?>
                         </option>
                     <?php } ?>
                 </select>
