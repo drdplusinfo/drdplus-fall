@@ -20,6 +20,7 @@ use DrdPlus\Skills\Physical\PhysicalSkillPoint;
 use DrdPlus\Tables\Measurements\Distance\Distance;
 use DrdPlus\Tables\Measurements\Weight\Weight;
 use DrdPlus\Tables\Measurements\Wounds\WoundsBonus;
+use DrdPlus\Tables\Riding\Ride;
 use DrdPlus\Tables\Tables;
 use Granam\Integer\IntegerObject;
 use Granam\Integer\PositiveIntegerObject;
@@ -213,6 +214,19 @@ class Controller extends \DrdPlus\Configurator\Skeleton\Controller
         return $this->getValueFromRequest(self::RIDING_MOVEMENT) === $ridingAnimalMovementCode->getValue();
     }
 
+    public function getBaseOfWoundsModifierByMovement(
+        RidingAnimalMovementCode $ridingAnimalMovementCode,
+        bool $horseIsJumping
+    ): int
+    {
+        return Tables::getIt()->getWoundsOnFallFromHorseTable()
+            ->getWoundsAdditionOnFallFromHorse(
+                $ridingAnimalMovementCode,
+                $horseIsJumping,
+                Tables::getIt()->getWoundsTable()
+            )->getValue();
+    }
+
     public function getProtectionOfBodyArmor(BodyArmorCode $bodyArmorCode): int
     {
         return Tables::getIt()->getBodyArmorsTable()->getProtectionOf($bodyArmorCode);
@@ -299,14 +313,12 @@ class Controller extends \DrdPlus\Configurator\Skeleton\Controller
             Tables::getIt()
         );
         if ($this->isFallingFromHorseback()) {
-            $woundsAdditionOnFallFromHorse = Tables::getIt()->getWoundsOnFallFromHorseTable()
-                ->getWoundsAdditionOnFallFromHorse(
-                    $this->getSelectedRidingAnimalMovement(),
-                    $this->isHorseJumping(),
-                    Tables::getIt()->getWoundsTable()
-                );
+            $baseOfWoundsModifierByMovement = $this->getBaseOfWoundsModifierByMovement(
+                $this->getSelectedRidingAnimalMovement(),
+                $this->isHorseJumping()
+            );
             $woundsFromFall = (new WoundsBonus(
-                $woundsFromFall->getBonus()->getValue() + $woundsAdditionOnFallFromHorse->getValue(),
+                $woundsFromFall->getBonus()->getValue() + $baseOfWoundsModifierByMovement,
                 Tables::getIt()->getWoundsTable()
             ))->getWounds();
         }

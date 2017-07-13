@@ -14,7 +14,7 @@ use DrdPlus\Codes\Transport\RidingAnimalCode;
                        name="<?= $controller::FALLING_FROM ?>"
                        required
                        <?php if ($controller->isFallingFromHorseback()) { ?>checked="checked" <?php } ?>>
-                <strong>Padáš z "koně"</strong>
+                <strong>padáš z "koně"</strong>
             </label>
             <label>
                 <select name="<?= $controller::RIDING_ANIMAL_HEIGHT ?>">
@@ -37,6 +37,19 @@ use DrdPlus\Codes\Transport\RidingAnimalCode;
                        <?php if ($controller->isHorseJumping()) { ?>checked="checked"<?php } ?>>
             </label>
         </div>
+        <div class="block">
+            <label>
+                pohyb koně
+                <select name="<?= $controller::RIDING_MOVEMENT ?>">
+                    <?php foreach ($controller->getRidingAnimalMovements() as $ridingAnimalMovement) { ?>
+                        <option value="<?= $ridingAnimalMovement->getValue() ?>"
+                                <?php if ($controller->isRidingAnimalMovementSelected($ridingAnimalMovement)) { ?>selected<?php } ?>>
+                            <?= $ridingAnimalMovement->translateTo('cs') . " ({$controller->getBaseOfWoundsModifierByMovement($ridingAnimalMovement, false)})" ?>
+                        </option>
+                    <?php } ?>
+                </select>
+            </label>
+        </div>
         <div class="panel">
         </div>
         <div class="block">
@@ -46,7 +59,7 @@ use DrdPlus\Codes\Transport\RidingAnimalCode;
                            name="<?= $controller::FALLING_FROM ?>"
                            required
                            <?php if ($controller->isFallingFromHeight()) { ?>checked="checked" <?php } ?>>
-                    <strong>Padáš z výšky</strong>
+                    <strong>padáš z výšky</strong>
                 </label>
                 <label>
                     <input type="number" name="<?= $controller::HEIGHT_OF_FALL ?>" class="few-numbers" min="0" max="999"
