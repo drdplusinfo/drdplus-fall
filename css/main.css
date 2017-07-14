@@ -34,3 +34,7 @@ h2 a {
 .disabled {
     cursor: not-allowed;
 }
+
+input[type=submit] {
+    display: none;
+}
