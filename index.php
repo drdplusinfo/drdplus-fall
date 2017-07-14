@@ -55,6 +55,7 @@ $controller = new Controller();
     <a href="https://github.com/jaroslavtyc/drd-plus-fall/"
        title="Fork me on GitHub"><img class="github" src="/images/generic/GitHub-Mark-64px.png"></a>
 </div>
+<script type="text/javascript" src="js/main.js"></script>
 <script type="text/javascript" src="js/generic/main.js"></script>
 </body>
 </html>

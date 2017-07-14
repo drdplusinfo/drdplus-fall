@@ -38,7 +38,7 @@ class Controller extends \DrdPlus\Configurator\Skeleton\Controller
     const HEIGHT = 'height';
     const HEIGHT_OF_FALL = 'height_of_fall';
     const RIDING_MOVEMENT = 'riding_movement';
-    const RIDING_ANIMAL_HEIGHT = 'riding_animal_height';
+    const HORSE_HEIGHT = 'horse_height';
     const JUMPING = 'jumping';
     const SURFACE = 'surface';
     const BODY_WEIGHT = 'body_weight';
@@ -196,7 +196,7 @@ class Controller extends \DrdPlus\Configurator\Skeleton\Controller
 
     public function isRidingAnimalSelected(float $heightInMeters): bool
     {
-        return (float)$this->getValueFromRequest(self::RIDING_ANIMAL_HEIGHT) === $heightInMeters;
+        return (float)$this->getValueFromRequest(self::HORSE_HEIGHT) === $heightInMeters;
     }
 
     /**
@@ -331,7 +331,7 @@ class Controller extends \DrdPlus\Configurator\Skeleton\Controller
     private function getSelectedRidingAnimalHeight(): Distance
     {
         return new Distance(
-            (float)$this->getValueFromRequest(self::RIDING_ANIMAL_HEIGHT),
+            (float)$this->getValueFromRequest(self::HORSE_HEIGHT),
             DistanceUnitCode::METER,
             Tables::getIt()->getDistanceTable()
         );

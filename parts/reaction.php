@@ -17,7 +17,7 @@ namespace DrdPlus\Fight;
     <div class="block">
         <div class="panel">
             <label>neovládáš tělo <span class="hint">(obratnost = -6)</span>
-                <input type="checkbox" name="<?= $controller::WITHOUT_REACTION ?>" value="1"
+                <input id="withoutReaction" type="checkbox" name="<?= $controller::WITHOUT_REACTION ?>" value="1"
                        <?php if ($controller->isWithoutReaction()) { ?>checked="checked"<?php } ?>>
             </label>
         </div>
@@ -25,7 +25,7 @@ namespace DrdPlus\Fight;
     <div class="block">
         <div class="panel">
             <label>obratnost
-                <input type="number" class="single-number" name="<?= $controller::AGILITY ?>" min="-40" max="40"
+                <input id="agility" type="number" class="single-number" name="<?= $controller::AGILITY ?>" min="-40" max="40"
                        required value="<?= $controller->getSelectedAgility()->getValue() ?>">
             </label>
         </div>

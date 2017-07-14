@@ -10,14 +10,14 @@ use DrdPlus\Codes\Transport\RidingAnimalCode;
     <div class="block">
         <div class="panel">
             <label>
-                <input type="radio" value="<?= $controller::HORSEBACK ?>"
+                <input id="onHorseback" type="radio" value="<?= $controller::HORSEBACK ?>"
                        name="<?= $controller::FALLING_FROM ?>"
                        required
                        <?php if ($controller->isFallingFromHorseback()) { ?>checked="checked" <?php } ?>>
                 <strong>padáš z "koně"</strong>
             </label>
             <label>
-                <select name="<?= $controller::RIDING_ANIMAL_HEIGHT ?>">
+                <select class="horseRelated" name="<?= $controller::HORSE_HEIGHT ?>">
                     <?php /**
                      * @var float $heightInMeters
                      * @var RidingAnimalCode $ridingAnimal
@@ -32,7 +32,7 @@ use DrdPlus\Codes\Transport\RidingAnimalCode;
             </label>
             <label>
                 při jeho skoku
-                <input type="checkbox"
+                <input type="checkbox" class="horseRelated"
                        name="<?= $controller::HORSE_IS_JUMPING ?>"
                        <?php if ($controller->isHorseJumping()) { ?>checked="checked"<?php } ?>>
             </label>
@@ -40,7 +40,7 @@ use DrdPlus\Codes\Transport\RidingAnimalCode;
         <div class="block">
             <label>
                 pohyb koně
-                <select name="<?= $controller::RIDING_MOVEMENT ?>">
+                <select name="<?= $controller::RIDING_MOVEMENT ?>" class="horseRelated">
                     <?php foreach ($controller->getRidingAnimalMovements() as $ridingAnimalMovement) { ?>
                         <option value="<?= $ridingAnimalMovement->getValue() ?>"
                                 <?php if ($controller->isRidingAnimalMovementSelected($ridingAnimalMovement)) { ?>selected<?php } ?>>
