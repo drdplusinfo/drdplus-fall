@@ -20,9 +20,9 @@ use DrdPlus\Skills\Physical\PhysicalSkillPoint;
 use DrdPlus\Tables\Measurements\Distance\Distance;
 use DrdPlus\Tables\Measurements\Weight\Weight;
 use DrdPlus\Tables\Measurements\Wounds\WoundsBonus;
-use DrdPlus\Tables\Riding\Ride;
 use DrdPlus\Tables\Tables;
 use Granam\Integer\IntegerObject;
+use Granam\Integer\IntegerWithHistory;
 use Granam\Integer\PositiveIntegerObject;
 
 class Controller extends \DrdPlus\Configurator\Skeleton\Controller
@@ -256,12 +256,12 @@ class Controller extends \DrdPlus\Configurator\Skeleton\Controller
      * Also agility is taken into account (for water).
      *
      * @param LandingSurfaceCode $landingSurfaceCode
-     * @return int
+     * @return IntegerWithHistory
      */
-    public function getWoundsModifierBySurface(LandingSurfaceCode $landingSurfaceCode): int
+    public function getWoundsModifierBySurface(LandingSurfaceCode $landingSurfaceCode): IntegerWithHistory
     {
         /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
-        return Tables::getIt()->getLandingSurfacesTable()->getWoundsModifier(
+        return Tables::getIt()->getLandingSurfacesTable()->getBaseOfWoundsModifier(
             $landingSurfaceCode,
             $this->getSelectedAgilityWithReaction(),
             new PositiveIntegerObject($this->getProtectionOfBodyArmor($this->getSelectedBodyArmor()))

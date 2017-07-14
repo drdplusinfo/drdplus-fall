@@ -74,7 +74,7 @@ use DrdPlus\Codes\Transport\RidingAnimalCode;
                     <?php foreach ($controller->getSurfaces() as $surface) { ?>
                         <option value="<?= $surface->getValue() ?>"
                                 <?php if ($controller->isSurfaceSelected($surface)) { ?>selected<?php } ?>>
-                            <?= "{$surface->translateTo('cs')} ({$controller->getWoundsModifierBySurface($surface)} ZZ)" ?></option>
+                            <?= "{$surface->translateTo('cs')} ({$controller->getWoundsModifierBySurface($surface)->getValue()} ZZ)" ?></option>
                     <?php } ?>
                 </select>
             </label>
