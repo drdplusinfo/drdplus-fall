@@ -381,7 +381,7 @@ class Controller extends \DrdPlus\Configurator\Skeleton\Controller
     {
         $roll = $this->getValueFromRequest(self::ROLL_1D6);
         if (!$roll) {
-            return null;
+            return new Roll1d6(new Dice1d6Roll(new IntegerObject(1)));
         }
 
         return new Roll1d6(new Dice1d6Roll(new IntegerObject($roll)));
