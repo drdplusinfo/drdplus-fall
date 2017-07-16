@@ -21,7 +21,7 @@ h2 a {
 }
 
 .background {
-    background: url(/images/background.png) no-repeat center;
+    background: url(/images/background.png) no-repeat;
     background-size: contain;
     position: fixed;
     top: 0;
