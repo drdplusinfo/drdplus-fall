@@ -1,8 +1,8 @@
 <?php
 namespace DrdPlus\Fight;
 
-use Drd\DiceRolls\Templates\DiceRolls\Dice1d6Roll;
-use Drd\DiceRolls\Templates\Rolls\Roll1d6;
+use DrdPlus\DiceRolls\Templates\DiceRolls\Dice1d6Roll;
+use DrdPlus\DiceRolls\Templates\Rolls\Roll1d6;
 use DrdPlus\Background\BackgroundParts\Ancestry;
 use DrdPlus\Background\BackgroundParts\SkillPointsFromBackground;
 use DrdPlus\Codes\Armaments\BodyArmorCode;
