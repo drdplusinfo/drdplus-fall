@@ -25,9 +25,9 @@ $controller = new Controller();
 <body>
 <div id="fb-root"></div>
 <div class="background"></div>
-<form class="block delete" action="/" method="post" onsubmit="return window.confirm('Opravdu smazat?')">
+<form class="block delete" action="/" method="post" onsubmit="return window.confirm('Opravdu smazat včetně historie?')">
     <label>
-        <input type="submit" value="Smazat" name="<?= $controller::DELETE_HISTORY ?>">
+        <input type="submit" value="Smazat" name="<?= $controller::DELETE_HISTORY ?>" class="manual">
         <span class="hint">(včetně dlouhodobé paměti)</span>
     </label>
 </form>

@@ -35,6 +35,6 @@ h2 a {
     cursor: not-allowed;
 }
 
-input[type=submit] {
+input:not(.manual)[type=submit] {
     display: none;
 }
