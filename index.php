@@ -44,10 +44,10 @@ $controller = new Controller();
     <div class="block"><?php include __DIR__ . '/parts/result.php'; ?></div>
 </form>
 <div class="block issues">
-    <a href="https://rpgforum.cz/forum/viewtopic.php?f=238&t=14870">Máš nápad 😀? Vidíš chybu 😱?️ Sem s tím!</a>
-</div>
-<div class="block">
-    <a href="https://github.com/jaroslavtyc/drd-plus-fall/"
+    <a href="https://rpgforum.cz/forum/viewtopic.php?f=238&t=14870"><img src="images/generic/rpgforum-ico.png">
+        Máš nápad 😀? Vidíš chybu 😱?️ Sem s tím!
+    </a>
+    <a class="float-right" href="https://github.com/jaroslavtyc/drd-plus-fall/"
        title="Fork me on GitHub"><img class="github" src="/images/generic/GitHub-Mark-64px.png"></a>
 </div>
 <script type="text/javascript" src="js/main.js"></script>
