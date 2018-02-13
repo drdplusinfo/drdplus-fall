@@ -1,5 +1,5 @@
 <?php
-namespace DrdPlus\Fight;
+namespace DrdPlus\Calculators\Fight;
 
 use DrdPlus\DiceRolls\Templates\DiceRolls\Dice1d6Roll;
 use DrdPlus\DiceRolls\Templates\Rolls\Roll1d6;
@@ -27,25 +27,25 @@ use Granam\Integer\PositiveIntegerObject;
 
 class Controller extends \DrdPlus\Configurator\Skeleton\Controller
 {
-    const AGILITY = 'agility';
-    const WITHOUT_REACTION = 'without_reaction';
-    const ATHLETICS = 'athletics';
-    const ROLL_1D6 = 'roll_1d6';
-    const BODY_ARMOR = 'body_armor';
-    const HELM = 'helm';
-    const FALLING_FROM = 'falling_from';
-    const HORSEBACK = 'horseback';
-    const HEIGHT = 'height';
-    const HEIGHT_OF_FALL = 'height_of_fall';
-    const RIDING_MOVEMENT = 'riding_movement';
-    const HORSE_HEIGHT = 'horse_height';
-    const JUMPING = 'jumping';
-    const SURFACE = 'surface';
-    const BODY_WEIGHT = 'body_weight';
-    const ITEMS_WEIGHT = 'items_weight';
-    const JUMP_IS_CONTROLLED = 'jump_is_controlled';
-    const HORSE_IS_JUMPING = 'horse_is_jumping';
-    const HEAD = 'head';
+    public const AGILITY = 'agility';
+    public const WITHOUT_REACTION = 'without_reaction';
+    public const ATHLETICS = 'athletics';
+    public const ROLL_1D6 = 'roll_1d6';
+    public const BODY_ARMOR = 'body_armor';
+    public const HELM = 'helm';
+    public const FALLING_FROM = 'falling_from';
+    public const HORSEBACK = 'horseback';
+    public const HEIGHT = 'height';
+    public const HEIGHT_OF_FALL = 'height_of_fall';
+    public const RIDING_MOVEMENT = 'riding_movement';
+    public const HORSE_HEIGHT = 'horse_height';
+    public const JUMPING = 'jumping';
+    public const SURFACE = 'surface';
+    public const BODY_WEIGHT = 'body_weight';
+    public const ITEMS_WEIGHT = 'items_weight';
+    public const JUMP_IS_CONTROLLED = 'jump_is_controlled';
+    public const HORSE_IS_JUMPING = 'horse_is_jumping';
+    public const HEAD = 'head';
 
     public function __construct()
     {
@@ -99,6 +99,7 @@ class Controller extends \DrdPlus\Configurator\Skeleton\Controller
         }
         $athletics = new Athletics(ProfessionFirstLevel::createFirstLevel(Commoner::getIt()));
         for ($athleticsRank = 1; $athleticsRank <= $athleticsValue; $athleticsRank++) {
+            /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
             $athletics->increaseSkillRank(PhysicalSkillPoint::createFromFirstLevelSkillPointsFromBackground(
                 ProfessionFirstLevel::createFirstLevel(Commoner::getIt()),
                 SkillPointsFromBackground::getIt(
@@ -113,7 +114,7 @@ class Controller extends \DrdPlus\Configurator\Skeleton\Controller
         return $athletics;
     }
 
-    public function getSelectedLuck():? int
+    public function getSelectedLuck(): ? int
     {
         $luck = $this->getValueFromRequest(self::ROLL_1D6);
         if ($luck) {
@@ -229,11 +230,13 @@ class Controller extends \DrdPlus\Configurator\Skeleton\Controller
 
     public function getProtectionOfBodyArmor(BodyArmorCode $bodyArmorCode): int
     {
+        /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
         return Tables::getIt()->getBodyArmorsTable()->getProtectionOf($bodyArmorCode);
     }
 
     public function getProtectionOfHelm(HelmCode $helmCode): int
     {
+        /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
         return Tables::getIt()->getHelmsTable()->getProtectionOf($helmCode);
     }
 
@@ -288,7 +291,7 @@ class Controller extends \DrdPlus\Configurator\Skeleton\Controller
         return HelmCode::getIt(HelmCode::WITHOUT_HELM);
     }
 
-    public function getWoundsByFall():? int
+    public function getWoundsByFall(): ? int
     {
         if (!$this->isFallingFromHeight() && !$this->isFallingFromHorseback()) {
             return null;
@@ -296,6 +299,7 @@ class Controller extends \DrdPlus\Configurator\Skeleton\Controller
         if (!$this->getSelectedBodyWeight() || !$this->getSelected1d6Roll()) {
             return null;
         }
+        /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
         $woundsFromFall = Tables::getIt()->getJumpsAndFallsTable()->getWoundsFromJumpOrFall(
             $this->isFallingFromHorseback()
                 ? $this->getSelectedRidingAnimalHeight()
@@ -330,6 +334,7 @@ class Controller extends \DrdPlus\Configurator\Skeleton\Controller
 
     private function getSelectedRidingAnimalHeight(): Distance
     {
+        /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
         return new Distance(
             (float)$this->getValueFromRequest(self::HORSE_HEIGHT),
             DistanceUnitCode::METER,
@@ -341,9 +346,11 @@ class Controller extends \DrdPlus\Configurator\Skeleton\Controller
     {
         $heightOfFall = $this->getValueFromRequest(self::HEIGHT_OF_FALL);
         if (!$heightOfFall) {
+            /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
             return new Distance(0, DistanceUnitCode::METER, Tables::getIt()->getDistanceTable());
         }
 
+        /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
         return new Distance($heightOfFall, DistanceUnitCode::METER, Tables::getIt()->getDistanceTable());
     }
 
@@ -357,7 +364,7 @@ class Controller extends \DrdPlus\Configurator\Skeleton\Controller
         return RidingAnimalMovementCode::getIt($selectedMovement);
     }
 
-    public function getSelectedBodyWeight():? Weight
+    public function getSelectedBodyWeight(): ? Weight
     {
         $weight = $this->getValueFromRequest(self::BODY_WEIGHT);
         if (!$weight) {
@@ -367,7 +374,7 @@ class Controller extends \DrdPlus\Configurator\Skeleton\Controller
         return new Weight($weight, Weight::KG, Tables::getIt()->getWeightTable());
     }
 
-    public function getSelectedItemsWeight():? Weight
+    public function getSelectedItemsWeight(): ? Weight
     {
         $weight = $this->getValueFromRequest(self::ITEMS_WEIGHT);
         if (!$weight) {
@@ -377,13 +384,15 @@ class Controller extends \DrdPlus\Configurator\Skeleton\Controller
         return new Weight($weight, Weight::KG, Tables::getIt()->getWeightTable());
     }
 
-    public function getSelected1d6Roll():? Roll1d6
+    public function getSelected1d6Roll(): ? Roll1d6
     {
         $roll = $this->getValueFromRequest(self::ROLL_1D6);
         if (!$roll) {
+            /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
             return new Roll1d6(new Dice1d6Roll(new IntegerObject(1)));
         }
 
+        /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
         return new Roll1d6(new Dice1d6Roll(new IntegerObject($roll)));
     }
 
