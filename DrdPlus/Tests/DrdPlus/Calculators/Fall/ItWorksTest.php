@@ -1,5 +1,5 @@
 <?php
-namespace DrdPlus\Tests\Calculators\Fight;
+namespace DrdPlus\Tests\Calculators\Fall;
 
 use PHPUnit\Framework\TestCase;
 

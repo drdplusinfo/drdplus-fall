@@ -1,5 +1,5 @@
 <?php
-namespace DrdPlus\Calculators\Fight;
+namespace DrdPlus\Calculators\Fall;
 
 use DrdPlus\DiceRolls\Templates\DiceRolls\Dice1d6Roll;
 use DrdPlus\DiceRolls\Templates\Rolls\Roll1d6;

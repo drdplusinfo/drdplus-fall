@@ -1,5 +1,5 @@
 <?php
-namespace DrdPlus\Calculators\Fight;
+namespace DrdPlus\Calculators\Fall;
 
 include_once __DIR__ . '/vendor/autoload.php';
 
