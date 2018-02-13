@@ -15,7 +15,7 @@ $controller = new Controller();
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="css/generic/graphics.css" rel="stylesheet" type="text/css">
     <link href="css/generic/main.css" rel="stylesheet" type="text/css">
-    <link href="css/generic/socials.css" rel="stylesheet" type="text/css">
+    <link href="css/generic/issues.css" rel="stylesheet" type="text/css">
     <link href="css/main.css" rel="stylesheet" type="text/css">
     <noscript>
         <link rel="stylesheet" type="text/css" href="css/generic/no_script.css">
@@ -44,7 +44,8 @@ $controller = new Controller();
     <div class="block"><?php include __DIR__ . '/parts/result.php'; ?></div>
 </form>
 <div class="block issues">
-    <a href="https://rpgforum.cz/forum/viewtopic.php?f=238&t=14870"><img src="images/generic/rpgforum-ico.png">
+    <a href="https://rpgforum.cz/forum/viewtopic.php?f=238&t=14870">
+        <img src="images/generic/rpgforum-ico.png">
         Máš nápad 😀? Vidíš chybu 😱?️ Sem s tím!
     </a>
     <a class="float-right" href="https://github.com/jaroslavtyc/drd-plus-fall/"
