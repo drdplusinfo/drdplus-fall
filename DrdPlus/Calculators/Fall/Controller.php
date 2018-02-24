@@ -21,7 +21,6 @@ use DrdPlus\Tables\Measurements\Distance\Distance;
 use DrdPlus\Tables\Measurements\Weight\Weight;
 use DrdPlus\Tables\Measurements\Wounds\WoundsBonus;
 use DrdPlus\Tables\Tables;
-use Granam\Integer\IntegerObject;
 use Granam\Integer\IntegerWithHistory;
 use Granam\Integer\PositiveIntegerObject;
 
@@ -389,11 +388,11 @@ class Controller extends \DrdPlus\Configurator\Skeleton\Controller
         $roll = $this->getValueFromRequest(self::ROLL_1D6);
         if (!$roll) {
             /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
-            return new Roll1d6(new Dice1d6Roll(new IntegerObject(1)));
+            return new Roll1d6(new Dice1d6Roll(1, 1));
         }
 
         /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
-        return new Roll1d6(new Dice1d6Roll(new IntegerObject($roll)));
+        return new Roll1d6(new Dice1d6Roll($roll, 1));
     }
 
     public function isJumpControlled(): bool
