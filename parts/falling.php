@@ -1,9 +1,7 @@
 <?php
-namespace DrdPlus\Fight;
-
 use DrdPlus\Codes\Transport\RidingAnimalCode;
 
-/** @var Controller $controller */
+/** @var \DrdPlus\Calculators\Fall\Controller $controller */
 ?>
 <div class="panel">
     <h2 id="pad"><a href="#pad">Pád</a></h2>

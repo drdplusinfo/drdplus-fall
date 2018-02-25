@@ -1,7 +1,5 @@
 <?php
-namespace DrdPlus\Fight;
-
-/** @var Controller $controller */
+/** @var \DrdPlus\Calculators\Fall\Controller $controller */
 ?>
 <div class="block">
     <h2 id="zraneni"><a href="#zraneni">Zranění</a></h2>

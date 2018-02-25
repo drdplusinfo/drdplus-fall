@@ -1,14 +1,12 @@
 <?php
-namespace DrdPlus\Fight;
-
-/** @var Controller $controller */
+/** @var \DrdPlus\Calculators\Fall\Controller $controller */
 ?>
 <div class="block">
     <h2 id="akce_a_reakce"><a href="#akce_a_reakce" class="inner">Akce a reakce</a></h2>
     <div class="block">
         <div class="panel">
             <label>
-                skočils <span class="hint">(pád tě nepřekvapil = výška -2 metry)</span>
+                skočils <span class="hint">(pád tě nepřekvapil => výška -2 metry)</span>
                 <input type="checkbox" name="<?= $controller::JUMP_IS_CONTROLLED ?>"
                        <?php if ($controller->isJumpControlled()) { ?>checked="checked" <?php } ?>>
             </label>
@@ -16,7 +14,7 @@ namespace DrdPlus\Fight;
     </div>
     <div class="block">
         <div class="panel">
-            <label>neovládáš tělo <span class="hint">(obratnost = -6)</span>
+            <label>neovládáš tělo <span class="hint">(výsledná obratnost -6)</span>
                 <input id="withoutReaction" type="checkbox" name="<?= $controller::WITHOUT_REACTION ?>" value="1"
                        <?php if ($controller->isWithoutReaction()) { ?>checked="checked"<?php } ?>>
             </label>

@@ -1,6 +1,5 @@
 <?php
-namespace DrdPlus\Fight;
-/** @var Controller $controller */
+/** @var \DrdPlus\Calculators\Fall\Controller $controller */
 ?>
 <div class="block">
     <h2 id="zbroj"><a href="#zbroj" class="inner">Zbroj</a></h2>
