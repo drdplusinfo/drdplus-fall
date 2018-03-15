@@ -18,7 +18,7 @@ $controller = new Controller();
     <link href="css/generic/issues.css" rel="stylesheet" type="text/css">
     <link href="css/main.css" rel="stylesheet" type="text/css">
     <noscript>
-        <link rel="stylesheet" type="text/css" href="css/generic/no_script.css">
+        <link href="css/generic/no_script.css" rel="stylesheet" type="text/css">
     </noscript>
 </head>
 <body>
@@ -32,7 +32,7 @@ $controller = new Controller();
 </form>
 <form class="block" action="" method="get" id="configurator">
     <div class="block remember">
-        <label><input type="checkbox" name="<?= $controller::REMEMBER_HISTORY ?>" value="1"
+        <label><input type="checkbox" name="<?= $controller::REMEMBER_CURRENT ?>" value="1"
                       <?php if ($controller->shouldRemember()) { ?>checked="checked"<?php } ?>>
             Pamatovat <span class="hint">(i při zavření prohlížeče)</span></label>
     </div>
