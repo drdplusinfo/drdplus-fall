@@ -16,7 +16,7 @@ $controller = new Controller();
     <link href="css/generic/graphics.css" rel="stylesheet" type="text/css">
     <link href="css/generic/main.css" rel="stylesheet" type="text/css">
     <link href="css/generic/issues.css" rel="stylesheet" type="text/css">
-    <link href="css/main.css" rel="stylesheet" type="text/css">
+    <link href="css/fall.css" rel="stylesheet" type="text/css">
     <noscript>
         <link href="css/generic/no_script.css" rel="stylesheet" type="text/css">
     </noscript>
@@ -51,7 +51,7 @@ $controller = new Controller();
     <a class="float-right" href="https://github.com/jaroslavtyc/drd-plus-fall/"
        title="Fork me on GitHub"><img class="github" src="/images/generic/GitHub-Mark-64px.png"></a>
 </div>
-<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/fall.js"></script>
 <script type="text/javascript" src="js/generic/main.js"></script>
 </body>
 </html>
