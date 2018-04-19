@@ -113,7 +113,7 @@ class Controller extends \DrdPlus\Configurator\Skeleton\Controller
         return $athletics;
     }
 
-    public function getSelectedLuck(): ? int
+    public function getSelectedLuck(): ?int
     {
         $luck = $this->getValueFromRequest(self::ROLL_1D6);
         if ($luck) {
@@ -290,7 +290,7 @@ class Controller extends \DrdPlus\Configurator\Skeleton\Controller
         return HelmCode::getIt(HelmCode::WITHOUT_HELM);
     }
 
-    public function getWoundsByFall(): ? int
+    public function getWoundsByFall(): ?int
     {
         if (!$this->isFallingFromHeight() && !$this->isFallingFromHorseback()) {
             return null;
@@ -303,7 +303,7 @@ class Controller extends \DrdPlus\Configurator\Skeleton\Controller
             $this->isFallingFromHorseback()
                 ? $this->getSelectedRidingAnimalHeight()
                 : $this->getSelectedHeightOfFall(),
-            BodyWeight::getIt($this->getSelectedBodyWeight()->getBonus()),
+            BodyWeight::getIt($this->getSelectedBodyWeight()),
             $this->getSelectedItemsWeight(),
             $this->getSelected1d6Roll(),
             $this->isJumpControlled(),
@@ -363,7 +363,7 @@ class Controller extends \DrdPlus\Configurator\Skeleton\Controller
         return RidingAnimalMovementCode::getIt($selectedMovement);
     }
 
-    public function getSelectedBodyWeight(): ? Weight
+    public function getSelectedBodyWeight(): ?Weight
     {
         $weight = $this->getValueFromRequest(self::BODY_WEIGHT);
         if (!$weight) {
@@ -373,7 +373,7 @@ class Controller extends \DrdPlus\Configurator\Skeleton\Controller
         return new Weight($weight, Weight::KG, Tables::getIt()->getWeightTable());
     }
 
-    public function getSelectedItemsWeight(): ? Weight
+    public function getSelectedItemsWeight(): ?Weight
     {
         $weight = $this->getValueFromRequest(self::ITEMS_WEIGHT);
         if (!$weight) {
@@ -383,7 +383,7 @@ class Controller extends \DrdPlus\Configurator\Skeleton\Controller
         return new Weight($weight, Weight::KG, Tables::getIt()->getWeightTable());
     }
 
-    public function getSelected1d6Roll(): ? Roll1d6
+    public function getSelected1d6Roll(): ?Roll1d6
     {
         $roll = $this->getValueFromRequest(self::ROLL_1D6);
         if (!$roll) {
