@@ -145,7 +145,8 @@ class FallController extends \DrdPlus\Calculator\Skeleton\Controller
 
     public function isFallingFromHeight(): bool
     {
-        return $this->getCurrentValues()->getCurrentValue(self::FALLING_FROM) === self::HEIGHT;
+        return $this->getCurrentValues()->getCurrentValue(self::FALLING_FROM) === self::HEIGHT
+            || !$this->isFallingFromHorseback(); // as falling from height is default
     }
 
     public function getRidingAnimalsWithHeight(): array
