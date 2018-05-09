@@ -1,7 +1,7 @@
 <?php
-/** @var \DrdPlus\Calculators\Fall\Controller $controller */
+/** @var \DrdPlus\Calculator\Fall\FallController $controller */
 ?>
-<div class="block">
-    <h2 id="zraneni"><a href="#zraneni">Zranění</a></h2>
-    <strong id="result"><?= $controller->getWoundsByFall() ?? '?'; ?></strong>
+<div>
+  <h2 id="zraneni"><a href="#zraneni">Zranění</a></h2>
+  <strong id="result"><?= $controller->getWoundsByFall() ?? '?'; ?></strong>
 </div>

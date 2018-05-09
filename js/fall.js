@@ -25,9 +25,22 @@ function enableInputs(inputs) {
     }
 }
 
+var fallingFromHeight = document.getElementById('fallingFromHeight');
+fallingFromHeight.addEventListener('change', function (event) {
+    var heightRelated = document.getElementsByClassName('height-related');
+    if (!this.checked) {
+        disableInputs(heightRelated);
+    } else {
+        enableInputs(heightRelated);
+    }
+    if (!event.bubbles) {
+        event.stopPropagation();
+    }
+});
+
 var onHorseback = document.getElementById('onHorseback');
 onHorseback.addEventListener('change', function (event) {
-    var horseRelated = document.getElementsByClassName('horseRelated');
+    var horseRelated = document.getElementsByClassName('horse-related');
     if (this.checked) {
         enableInputs(horseRelated);
     } else {
@@ -42,3 +55,4 @@ var changeEvent = new Event('change');
 changeEvent.initEvent('change', false /* can not bubble */, true);
 withoutReaction.dispatchEvent(changeEvent);
 onHorseback.dispatchEvent(changeEvent);
+fallingFromHeight.dispatchEvent(changeEvent);

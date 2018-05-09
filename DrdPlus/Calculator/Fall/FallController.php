@@ -1,5 +1,5 @@
 <?php
-namespace DrdPlus\Calculators\Fall;
+namespace DrdPlus\Calculator\Fall;
 
 use DrdPlus\DiceRolls\Templates\DiceRolls\Dice1d6Roll;
 use DrdPlus\DiceRolls\Templates\Rolls\Roll1d6;
@@ -24,7 +24,7 @@ use DrdPlus\Tables\Tables;
 use Granam\Integer\IntegerWithHistory;
 use Granam\Integer\PositiveIntegerObject;
 
-class Controller extends \DrdPlus\Configurator\Skeleton\Controller
+class FallController extends \DrdPlus\Calculator\Skeleton\Controller
 {
     public const AGILITY = 'agility';
     public const WITHOUT_REACTION = 'without_reaction';
@@ -63,12 +63,12 @@ class Controller extends \DrdPlus\Configurator\Skeleton\Controller
 
     public function isBodyArmorSelected(BodyArmorCode $bodyArmorCode): bool
     {
-        return $this->getValueFromRequest(self::BODY_ARMOR) === $bodyArmorCode->getValue();
+        return $this->getCurrentValues()->getCurrentValue(self::BODY_ARMOR) === $bodyArmorCode->getValue();
     }
 
     public function getSelectedAgility(): Agility
     {
-        $selectedAgility = $this->getValueFromRequest(self::AGILITY);
+        $selectedAgility = $this->getCurrentValues()->getCurrentValue(self::AGILITY);
         if ($selectedAgility === null) {
             return Agility::getIt(0);
         }
@@ -87,12 +87,12 @@ class Controller extends \DrdPlus\Configurator\Skeleton\Controller
 
     public function isWithoutReaction(): bool
     {
-        return (bool)$this->getValueFromRequest(self::WITHOUT_REACTION);
+        return (bool)$this->getCurrentValues()->getCurrentValue(self::WITHOUT_REACTION);
     }
 
     public function getSelectedAthletics(): Athletics
     {
-        $athleticsValue = $this->getValueFromRequest(self::ATHLETICS);
+        $athleticsValue = $this->getCurrentValues()->getCurrentValue(self::ATHLETICS);
         if ($athleticsValue === null) {
             return new Athletics(ProfessionFirstLevel::createFirstLevel(Commoner::getIt()));
         }
@@ -115,7 +115,7 @@ class Controller extends \DrdPlus\Configurator\Skeleton\Controller
 
     public function getSelectedLuck(): ?int
     {
-        $luck = $this->getValueFromRequest(self::ROLL_1D6);
+        $luck = $this->getCurrentValues()->getCurrentValue(self::ROLL_1D6);
         if ($luck) {
             return (int)$luck;
         }
@@ -135,17 +135,17 @@ class Controller extends \DrdPlus\Configurator\Skeleton\Controller
 
     public function isHelmSelected(HelmCode $helmCode): bool
     {
-        return $this->getValueFromRequest(self::HELM) === $helmCode->getValue();
+        return $this->getCurrentValues()->getCurrentValue(self::HELM) === $helmCode->getValue();
     }
 
     public function isFallingFromHorseback(): bool
     {
-        return $this->getValueFromRequest(self::FALLING_FROM) === self::HORSEBACK;
+        return $this->getCurrentValues()->getCurrentValue(self::FALLING_FROM) === self::HORSEBACK;
     }
 
     public function isFallingFromHeight(): bool
     {
-        return $this->getValueFromRequest(self::FALLING_FROM) === self::HEIGHT;
+        return $this->getCurrentValues()->getCurrentValue(self::FALLING_FROM) === self::HEIGHT;
     }
 
     public function getRidingAnimalsWithHeight(): array
@@ -196,7 +196,7 @@ class Controller extends \DrdPlus\Configurator\Skeleton\Controller
 
     public function isRidingAnimalSelected(float $heightInMeters): bool
     {
-        return (float)$this->getValueFromRequest(self::HORSE_HEIGHT) === $heightInMeters;
+        return (float)$this->getCurrentValues()->getCurrentValue(self::HORSE_HEIGHT) === $heightInMeters;
     }
 
     /**
@@ -211,7 +211,7 @@ class Controller extends \DrdPlus\Configurator\Skeleton\Controller
 
     public function isRidingAnimalMovementSelected(RidingAnimalMovementCode $ridingAnimalMovementCode): bool
     {
-        return $this->getValueFromRequest(self::RIDING_MOVEMENT) === $ridingAnimalMovementCode->getValue();
+        return $this->getCurrentValues()->getCurrentValue(self::RIDING_MOVEMENT) === $ridingAnimalMovementCode->getValue();
     }
 
     public function getBaseOfWoundsModifierByMovement(
@@ -272,7 +272,7 @@ class Controller extends \DrdPlus\Configurator\Skeleton\Controller
 
     private function getSelectedBodyArmor(): BodyArmorCode
     {
-        $bodyArmor = $this->getValueFromRequest(self::BODY_ARMOR);
+        $bodyArmor = $this->getCurrentValues()->getCurrentValue(self::BODY_ARMOR);
         if ($bodyArmor) {
             return BodyArmorCode::getIt($bodyArmor);
         }
@@ -282,7 +282,7 @@ class Controller extends \DrdPlus\Configurator\Skeleton\Controller
 
     private function getSelectedHelm(): HelmCode
     {
-        $bodyArmor = $this->getValueFromRequest(self::HELM);
+        $bodyArmor = $this->getCurrentValues()->getCurrentValue(self::HELM);
         if ($bodyArmor) {
             return HelmCode::getIt($bodyArmor);
         }
@@ -335,7 +335,7 @@ class Controller extends \DrdPlus\Configurator\Skeleton\Controller
     {
         /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
         return new Distance(
-            (float)$this->getValueFromRequest(self::HORSE_HEIGHT),
+            (float)$this->getCurrentValues()->getCurrentValue(self::HORSE_HEIGHT),
             DistanceUnitCode::METER,
             Tables::getIt()->getDistanceTable()
         );
@@ -343,7 +343,7 @@ class Controller extends \DrdPlus\Configurator\Skeleton\Controller
 
     public function getSelectedHeightOfFall(): Distance
     {
-        $heightOfFall = $this->getValueFromRequest(self::HEIGHT_OF_FALL);
+        $heightOfFall = $this->getCurrentValues()->getCurrentValue(self::HEIGHT_OF_FALL);
         if (!$heightOfFall) {
             /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
             return new Distance(0, DistanceUnitCode::METER, Tables::getIt()->getDistanceTable());
@@ -355,7 +355,7 @@ class Controller extends \DrdPlus\Configurator\Skeleton\Controller
 
     private function getSelectedRidingAnimalMovement(): RidingAnimalMovementCode
     {
-        $selectedMovement = $this->getValueFromRequest(self::RIDING_MOVEMENT);
+        $selectedMovement = $this->getCurrentValues()->getCurrentValue(self::RIDING_MOVEMENT);
         if (!$selectedMovement) {
             return RidingAnimalMovementCode::getIt(RidingAnimalMovementCode::STILL);
         }
@@ -365,7 +365,7 @@ class Controller extends \DrdPlus\Configurator\Skeleton\Controller
 
     public function getSelectedBodyWeight(): ?Weight
     {
-        $weight = $this->getValueFromRequest(self::BODY_WEIGHT);
+        $weight = $this->getCurrentValues()->getCurrentValue(self::BODY_WEIGHT);
         if (!$weight) {
             return null;
         }
@@ -375,7 +375,7 @@ class Controller extends \DrdPlus\Configurator\Skeleton\Controller
 
     public function getSelectedItemsWeight(): ?Weight
     {
-        $weight = $this->getValueFromRequest(self::ITEMS_WEIGHT);
+        $weight = $this->getCurrentValues()->getCurrentValue(self::ITEMS_WEIGHT);
         if (!$weight) {
             return null;
         }
@@ -385,7 +385,7 @@ class Controller extends \DrdPlus\Configurator\Skeleton\Controller
 
     public function getSelected1d6Roll(): ?Roll1d6
     {
-        $roll = $this->getValueFromRequest(self::ROLL_1D6);
+        $roll = $this->getCurrentValues()->getCurrentValue(self::ROLL_1D6);
         if (!$roll) {
             /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
             return new Roll1d6(new Dice1d6Roll(1, 1));
@@ -397,17 +397,17 @@ class Controller extends \DrdPlus\Configurator\Skeleton\Controller
 
     public function isJumpControlled(): bool
     {
-        return (bool)$this->getValueFromRequest(self::JUMP_IS_CONTROLLED);
+        return (bool)$this->getCurrentValues()->getCurrentValue(self::JUMP_IS_CONTROLLED);
     }
 
     public function isHorseJumping(): bool
     {
-        return (bool)$this->getValueFromRequest(self::HORSE_IS_JUMPING);
+        return (bool)$this->getCurrentValues()->getCurrentValue(self::HORSE_IS_JUMPING);
     }
 
     public function getSelectedLandingSurface(): LandingSurfaceCode
     {
-        $landingSurface = $this->getValueFromRequest(self::SURFACE);
+        $landingSurface = $this->getCurrentValues()->getCurrentValue(self::SURFACE);
         if (!$landingSurface) {
             return LandingSurfaceCode::getIt(LandingSurfaceCode::MEADOW);
         }
@@ -417,6 +417,6 @@ class Controller extends \DrdPlus\Configurator\Skeleton\Controller
 
     public function isHitToHead(): bool
     {
-        return (bool)$this->getValueFromRequest(self::HEAD);
+        return (bool)$this->getCurrentValues()->getCurrentValue(self::HEAD);
     }
 }

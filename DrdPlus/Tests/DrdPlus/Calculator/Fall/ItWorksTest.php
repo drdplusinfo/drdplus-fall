@@ -1,5 +1,5 @@
 <?php
-namespace DrdPlus\Tests\Calculators\Fall;
+namespace DrdPlus\Tests\Calculator\Fall;
 
 use PHPUnit\Framework\TestCase;
 
@@ -19,9 +19,9 @@ class ItWorksTest extends TestCase
     public function I_can_load_it_without_error(): void
     {
         $_SERVER['QUERY_STRING'] = '';
-        ob_start();
+        \ob_start();
         require __DIR__ . '/../../../../../index.php';
-        $content = ob_get_clean();
+        $content = \ob_get_clean();
         self::assertRegExp('~^<!DOCTYPE html>\n.+</html>$~s', $content);
     }
 }
