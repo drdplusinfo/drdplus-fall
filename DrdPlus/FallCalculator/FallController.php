@@ -1,6 +1,7 @@
 <?php
-namespace DrdPlus\Calculator\Fall;
+namespace DrdPlus\FallCalculator;
 
+use DrdPlus\CalculatorSkeleton\Controller;
 use DrdPlus\DiceRolls\Templates\DiceRolls\Dice1d6Roll;
 use DrdPlus\DiceRolls\Templates\Rolls\Roll1d6;
 use DrdPlus\Background\BackgroundParts\Ancestry;
@@ -24,7 +25,7 @@ use DrdPlus\Tables\Tables;
 use Granam\Integer\IntegerWithHistory;
 use Granam\Integer\PositiveIntegerObject;
 
-class FallController extends \DrdPlus\Calculator\Skeleton\Controller
+class FallController extends Controller
 {
     public const AGILITY = 'agility';
     public const WITHOUT_REACTION = 'without_reaction';
@@ -46,9 +47,23 @@ class FallController extends \DrdPlus\Calculator\Skeleton\Controller
     public const HORSE_IS_JUMPING = 'horse_is_jumping';
     public const HEAD = 'head';
 
-    public function __construct()
+    public function __construct(
+        string $sourceCodeUrl,
+        string $documentRoot,
+        string $vendorRoot,
+        string $partsRoot = null,
+        string $genericPartsRoot = null,
+        int $cookiesTtl = null,
+        array $selectedValues = null
+    )
     {
-        parent::__construct('fight' /* cookies postfix */);
+        parent::__construct(
+            $sourceCodeUrl,
+            'fight' /* cookies postfix */,
+            $documentRoot,
+            $vendorRoot,
+            $partsRoot
+        );
     }
 
     /**
