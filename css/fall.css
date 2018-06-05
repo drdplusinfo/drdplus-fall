@@ -27,3 +27,7 @@ h2 a {
 input:not(.manual)[type=submit] {
     display: none;
 }
+
+.background-image {
+    background-size: contain;
+}

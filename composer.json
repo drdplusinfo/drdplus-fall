@@ -32,17 +32,27 @@
   "minimum-stability": "dev",
   "prefer-stable": true,
   "scripts": {
+    "pre-update-cmd": [
+      "if [ -d ./vendor/drd-plus/frontend-skeleton ]; then cd ./vendor/drd-plus/frontend-skeleton && git checkout *.css; fi",
+      "if [ -d ./vendor/drd-plus/calculator-skeleton ]; then cd ./vendor/drd-plus/calculator-skeleton && git checkout *.css; fi"
+    ],
+    "pre-install-cmd": [
+      "if [ -d ./vendor/drd-plus/frontend-skeleton ]; then cd ./vendor/drd-plus/frontend-skeleton && git checkout *.css; fi",
+      "if [ -d ./vendor/drd-plus/calculator-skeleton ]; then cd ./vendor/drd-plus/calculator-skeleton && git checkout *.css; fi"
+    ],
     "pre-autoload-dump": [
+      "rm -f DrdPlus/Tests/FrontendSkeleton && ln -s ../../vendor/drd-plus/calculator-skeleton/DrdPlus/Tests/FrontendSkeleton DrdPlus/Tests/",
+      "rm -f DrdPlus/Tests/CalculatorSkeleton && ln -s ../../vendor/drd-plus/calculator-skeleton/DrdPlus/Tests/CalculatorSkeleton DrdPlus/Tests/",
       "rm -f ./css/generic && ln -s ../vendor/drd-plus/attack-skeleton/css/generic ./css/",
       "rm -f ./js/generic && ln -s ../vendor/drd-plus/attack-skeleton/js/generic ./js/",
       "rm -f ./images/generic && ln -s ../vendor/drd-plus/attack-skeleton/images/generic ./images/",
       "find ./cache -mindepth 2 -type f -exec rm {} +"
     ],
     "post-update-cmd": [
-      "php ./vendor/drd-plus/frontend-skeleton/bin/assets --dir=css"
+      "php ./vendor/bin/assets --dir=css"
     ],
     "post-install-cmd": [
-      "php ./vendor/drd-plus/frontend-skeleton/bin/assets --dir=css"
+      "php ./vendor/bin/assets --dir=css"
     ]
   }
 }
