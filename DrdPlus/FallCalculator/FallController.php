@@ -1,7 +1,7 @@
 <?php
 namespace DrdPlus\FallCalculator;
 
-use DrdPlus\CalculatorSkeleton\Controller;
+use DrdPlus\CalculatorSkeleton\CalculatorController;
 use DrdPlus\DiceRolls\Templates\DiceRolls\Dice1d6Roll;
 use DrdPlus\DiceRolls\Templates\Rolls\Roll1d6;
 use DrdPlus\Background\BackgroundParts\Ancestry;
@@ -25,12 +25,12 @@ use DrdPlus\Tables\Tables;
 use Granam\Integer\IntegerWithHistory;
 use Granam\Integer\PositiveIntegerObject;
 
-class FallController extends Controller
+class FallController extends CalculatorController
 {
     public const AGILITY = 'agility';
     public const WITHOUT_REACTION = 'without_reaction';
     public const ATHLETICS = 'athletics';
-    public const ROLL_1D6 = 'roll_1d6';
+    public const BAD_LUCK = 'bad_luck';
     public const BODY_ARMOR = 'body_armor';
     public const HELM = 'helm';
     public const FALLING_FROM = 'falling_from';
@@ -78,7 +78,15 @@ class FallController extends Controller
 
     public function isBodyArmorSelected(BodyArmorCode $bodyArmorCode): bool
     {
-        return $this->getCurrentValues()->getCurrentValue(self::BODY_ARMOR) === $bodyArmorCode->getValue();
+        return $this->getCurrentBodyArmorCode()->getValue() === $bodyArmorCode->getValue();
+    }
+
+    private function getCurrentBodyArmorCode(): BodyArmorCode
+    {
+        return BodyArmorCode::getIt(
+            $this->getCurrentValues()->getCurrentValue(self::BODY_ARMOR)
+            ?? BodyArmorCode::WITHOUT_ARMOR
+        );
     }
 
     public function getSelectedAgility(): Agility
@@ -128,16 +136,6 @@ class FallController extends Controller
         return $athletics;
     }
 
-    public function getSelectedLuck(): ?int
-    {
-        $luck = $this->getCurrentValues()->getCurrentValue(self::ROLL_1D6);
-        if ($luck) {
-            return (int)$luck;
-        }
-
-        return null;
-    }
-
     /**
      * @return array|HelmCode[]
      */
@@ -150,7 +148,15 @@ class FallController extends Controller
 
     public function isHelmSelected(HelmCode $helmCode): bool
     {
-        return $this->getCurrentValues()->getCurrentValue(self::HELM) === $helmCode->getValue();
+        return $this->getCurrentHelmCode()->getValue() === $helmCode->getValue();
+    }
+
+    private function getCurrentHelmCode(): HelmCode
+    {
+        return HelmCode::getIt(
+            $this->getCurrentValues()->getCurrentValue(self::HELM)
+            ?? HelmCode::WITHOUT_HELM
+        );
     }
 
     public function isFallingFromHorseback(): bool
@@ -311,7 +317,7 @@ class FallController extends Controller
         if (!$this->isFallingFromHeight() && !$this->isFallingFromHorseback()) {
             return null;
         }
-        if (!$this->getSelectedBodyWeight() || !$this->getSelected1d6Roll()) {
+        if (!$this->getSelectedBodyWeight() || !$this->getCurrentBadLuck()) {
             return null;
         }
         /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
@@ -321,7 +327,7 @@ class FallController extends Controller
                 : $this->getSelectedHeightOfFall(),
             BodyWeight::getIt($this->getSelectedBodyWeight()),
             $this->getSelectedItemsWeight(),
-            $this->getSelected1d6Roll(),
+            $this->getCurrentBadLuck(),
             $this->isJumpControlled(),
             $this->getSelectedAgilityWithReaction(),
             $this->getSelectedAthletics(),
@@ -399,9 +405,9 @@ class FallController extends Controller
         return new Weight($weight, Weight::KG, Tables::getIt()->getWeightTable());
     }
 
-    public function getSelected1d6Roll(): ?Roll1d6
+    public function getCurrentBadLuck(): Roll1d6
     {
-        $roll = $this->getCurrentValues()->getCurrentValue(self::ROLL_1D6);
+        $roll = $this->getCurrentValues()->getCurrentValue(self::BAD_LUCK);
         if (!$roll) {
             /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
             return new Roll1d6(new Dice1d6Roll(1, 1));

@@ -1,7 +1,7 @@
 <?php
 use DrdPlus\Codes\Transport\RidingAnimalCode;
 
-/** @var \DrdPlus\Calculator\Fall\FallController $controller */
+/** @var \DrdPlus\FallCalculator\FallController $controller */
 ?>
 <div class="row">
   <h2 id="pad" class="col"><a href="#pad">Pád</a></h2>

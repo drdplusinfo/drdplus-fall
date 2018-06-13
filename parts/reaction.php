@@ -1,5 +1,5 @@
 <?php
-/** @var \DrdPlus\Calculator\Fall\FallController $controller */
+/** @var \DrdPlus\FallCalculator\FallController $controller */
 ?>
 <div class="row">
   <h2 id="akce_a_reakce" class="col"><a href="#akce_a_reakce" class="inner">Akce a reakce</a></h2>
@@ -36,10 +36,10 @@
     <div>
       <div>
         <label>smůla
-          <select name="<?= $controller::ROLL_1D6 ?>">
+          <select name="<?= $controller::BAD_LUCK ?>">
               <?php foreach (range(1, 6) as $roll) { ?>
                 <option value="<?= $roll ?>"
-                    <?php if ($controller->getSelected1d6Roll()->getValue() === $roll) { ?>
+                    <?php if ($controller->getCurrentBadLuck()->getValue() === $roll) { ?>
                       selected
                     <?php } ?>>
                     <?= $roll ?>

@@ -1,5 +1,5 @@
 <?php
-/** @var \DrdPlus\Calculator\Fall\FallController $controller */
+/** @var \DrdPlus\FallCalculator\FallController $controller */
 ?>
 <div class="row">
   <h2 id="zbroj" class="col"><a href="#zbroj" class="inner">Zbroj</a></h2>
