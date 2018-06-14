@@ -1004,12 +1004,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jaroslavtyc/drd-plus-calculator-skeleton.git",
-                "reference": "555301c0883f0de22a3d2df7031fb3f685e8a95c"
+                "reference": "3a33d79757825eaeef501f58217e48a389926ccb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jaroslavtyc/drd-plus-calculator-skeleton/zipball/555301c0883f0de22a3d2df7031fb3f685e8a95c",
-                "reference": "555301c0883f0de22a3d2df7031fb3f685e8a95c",
+                "url": "https://api.github.com/repos/jaroslavtyc/drd-plus-calculator-skeleton/zipball/3a33d79757825eaeef501f58217e48a389926ccb",
+                "reference": "3a33d79757825eaeef501f58217e48a389926ccb",
                 "shasum": ""
             },
             "require": {
@@ -1037,7 +1037,7 @@
                 "MIT"
             ],
             "description": "Style and functionality helper of a DrD+ calculator",
-            "time": "2018-06-13 14:56:49"
+            "time": "2018-06-14 05:23:43"
         },
         {
             "name": "drd-plus/codes",
@@ -1142,12 +1142,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jaroslavtyc/drd-plus-frontend-skeleton.git",
-                "reference": "3badfa61814a34177362d6c97f278f3e4210fe7a"
+                "reference": "dbabca053e1a7f63733d83fa4e4c6121f6be3d36"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jaroslavtyc/drd-plus-frontend-skeleton/zipball/3badfa61814a34177362d6c97f278f3e4210fe7a",
-                "reference": "3badfa61814a34177362d6c97f278f3e4210fe7a",
+                "url": "https://api.github.com/repos/jaroslavtyc/drd-plus-frontend-skeleton/zipball/dbabca053e1a7f63733d83fa4e4c6121f6be3d36",
+                "reference": "dbabca053e1a7f63733d83fa4e4c6121f6be3d36",
                 "shasum": ""
             },
             "require": {
@@ -1188,7 +1188,7 @@
                 "pages",
                 "view"
             ],
-            "time": "2018-06-13 14:20:25"
+            "time": "2018-06-14 05:15:13"
         },
         {
             "name": "drd-plus/hunting-and-fishing",
