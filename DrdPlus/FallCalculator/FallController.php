@@ -12,6 +12,7 @@ use DrdPlus\Codes\Units\DistanceUnitCode;
 use DrdPlus\Codes\Environment\LandingSurfaceCode;
 use DrdPlus\Codes\Transport\RidingAnimalCode;
 use DrdPlus\Codes\Transport\RidingAnimalMovementCode;
+use DrdPlus\FrontendSkeleton\HtmlHelper;
 use DrdPlus\Person\ProfessionLevels\ProfessionFirstLevel;
 use DrdPlus\Professions\Commoner;
 use DrdPlus\Properties\Base\Agility;
@@ -58,6 +59,7 @@ class FallController extends CalculatorController
     )
     {
         parent::__construct(
+            HtmlHelper::createFromGlobals($documentRoot),
             $sourceCodeUrl,
             'fight' /* cookies postfix */,
             $documentRoot,
