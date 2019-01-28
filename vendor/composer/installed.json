@@ -1364,17 +1364,17 @@
     },
     {
         "name": "drdplus/calculator-skeleton",
-        "version": "1.0.22",
-        "version_normalized": "1.0.22.0",
+        "version": "1.0.23",
+        "version_normalized": "1.0.23.0",
         "source": {
             "type": "git",
             "url": "https://github.com/drdplusinfo/drdplus-calculator-skeleton.git",
-            "reference": "785187ee9ae293c77fd3cea7005ff6c662fb2799"
+            "reference": "4a346490663974d8e75de9b191752810097588e9"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/drdplusinfo/drdplus-calculator-skeleton/zipball/785187ee9ae293c77fd3cea7005ff6c662fb2799",
-            "reference": "785187ee9ae293c77fd3cea7005ff6c662fb2799",
+            "url": "https://api.github.com/repos/drdplusinfo/drdplus-calculator-skeleton/zipball/4a346490663974d8e75de9b191752810097588e9",
+            "reference": "4a346490663974d8e75de9b191752810097588e9",
             "shasum": ""
         },
         "require": {
@@ -1394,7 +1394,7 @@
             "phpunit/phpunit": "~7.0",
             "roave/security-advisories": "dev-master"
         },
-        "time": "2019-01-28T11:28:51+00:00",
+        "time": "2019-01-28T13:09:05+00:00",
         "type": "composer-plugin",
         "extra": {
             "class": "DrdPlus\\CalculatorSkeleton\\CalculatorInjectorComposerPlugin"
