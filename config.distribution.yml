@@ -1,0 +1,11 @@
+web:
+  last_stable_version: 'master'
+  protected_access: false
+  menu_position_fixed: false
+  show_home_button: true
+  name: 'DrD+ kalkulátor zranění při pádu'
+  title_smiley:
+  cookies_postfix: 'fall'
+  eshop_url: 'https://obchod.altar.cz/draci-doupe-a-jine-rpg-hry-draci-doupe-plus-c-1_7.html'
+google:
+  analytics_id: 'UA-121206931-1'

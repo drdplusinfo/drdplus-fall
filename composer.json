@@ -1,5 +1,5 @@
 {
-  "name": "drd-plus/fall-calculator",
+  "name": "drdplus/fall-calculator",
   "license": "MIT",
   "type": "project",
   "description": "Have you broke your leg or neck?",
@@ -18,32 +18,21 @@
   },
   "require": {
     "php": ">=7.1",
-    "granam/strict-object": "dev-master",
-    "drd-plus/tables": "dev-master",
-    "drd-plus/calculator-skeleton": "dev-master",
-    "drd-plus/skills": "dev-master"
+    "drdplus/calculator-skeleton": "~1.0",
+    "drdplus/skills": "^1.0",
+    "drdplus/tables": "^1.0"
   },
   "require-dev": {
     "roave/security-advisories": "dev-master",
     "phpunit/phpunit": "~7.0",
-    "mockery/mockery": "~1.0",
-    "granam/exceptions-hierarchy": "dev-master"
+    "mockery/mockery": "~1.0"
   },
-  "minimum-stability": "dev",
-  "prefer-stable": true,
   "scripts": {
     "pre-autoload-dump": [
-      "rm -f DrdPlus/Tests/CalculatorSkeleton && ln -s ../../vendor/drd-plus/calculator-skeleton/DrdPlus/Tests/CalculatorSkeleton DrdPlus/Tests/",
-      "rm -fr ./css/generic && cp -r ./vendor/drd-plus/calculator-skeleton/css/generic ./css/",
-      "rm -f ./js/generic && ln -s ../vendor/drd-plus/calculator-skeleton/js/generic ./js/",
-      "rm -f ./images/generic && ln -s ../vendor/drd-plus/calculator-skeleton/images/generic ./images/",
-      "find ./cache -mindepth 2 -type f -exec rm {} +"
-    ],
-    "post-update-cmd": [
-      "php ./vendor/bin/assets --dir=css"
-    ],
-    "post-install-cmd": [
-      "php ./vendor/bin/assets --dir=css"
+      "rm -f DrdPlus/Tests/CalculatorSkeleton && ln -s ../../vendor/drdplus/calculator-skeleton/DrdPlus/Tests/CalculatorSkeleton DrdPlus/Tests/"
     ]
+  },
+  "config": {
+    "sort-packages": true
   }
 }

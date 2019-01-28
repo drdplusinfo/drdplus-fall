@@ -1,5 +1,5 @@
 <?php
-/** @var \DrdPlus\FallCalculator\FallController $controller */
+/** @var \DrdPlus\Calculators\Fall\CurrentFallValues $currentFallValues */
 ?>
 <div class="row">
   <h2 id="akce_a_reakce" class="col"><a href="#akce_a_reakce" class="inner">Akce a reakce</a></h2>
@@ -9,8 +9,8 @@
     <div>
       <div>
         <label>
-          <input type="checkbox" name="<?= $controller::JUMP_IS_CONTROLLED ?>"
-                 <?php if ($controller->isJumpControlled()) { ?>checked="checked" <?php } ?>>
+          <input type="checkbox" name="<?= $currentFallValues::JUMP_IS_CONTROLLED ?>"
+                 <?php if ($currentFallValues->isJumpControlled()) { ?>checked="checked" <?php } ?>>
           skočils <span class="hint">(pád tě nepřekvapil => výška -2 metry)</span>
         </label>
       </div>
@@ -18,8 +18,8 @@
     <div>
       <div>
         <label>
-          <input id="withoutReaction" type="checkbox" name="<?= $controller::WITHOUT_REACTION ?>" value="1"
-                 <?php if ($controller->isWithoutReaction()) { ?>checked="checked"<?php } ?>>
+          <input id="withoutReaction" type="checkbox" name="<?= $currentFallValues::WITHOUT_REACTION ?>" value="1"
+                 <?php if ($currentFallValues->isWithoutReaction()) { ?>checked="checked"<?php } ?>>
           neovládáš tělo <span class="hint">(výsledná obratnost -6)</span>
         </label>
       </div>
@@ -28,18 +28,18 @@
       <div>
         <label>
           obratnost
-          <input id="agility" type="number" class="single-number" name="<?= $controller::AGILITY ?>" min="-40" max="40"
-                 required value="<?= $controller->getSelectedAgility()->getValue() ?>">
+          <input id="agility" type="number" class="single-number" name="<?= $currentFallValues::AGILITY ?>" min="-40" max="40"
+                 required value="<?= $currentFallValues->getSelectedAgility()->getValue() ?>">
         </label>
       </div>
     </div>
     <div>
       <div>
         <label>smůla
-          <select name="<?= $controller::BAD_LUCK ?>">
+          <select name="<?= $currentFallValues::BAD_LUCK ?>">
               <?php foreach (range(1, 6) as $roll) { ?>
                 <option value="<?= $roll ?>"
-                    <?php if ($controller->getCurrentBadLuck()->getValue() === $roll) { ?>
+                    <?php if ($currentFallValues->getCurrentBadLuck()->getValue() === $roll) { ?>
                       selected
                     <?php } ?>>
                     <?= $roll ?>
@@ -53,10 +53,10 @@
     <div>
       <div>
         <label>atletika
-          <select name="<?= $controller::ATHLETICS ?>">
+          <select name="<?= $currentFallValues::ATHLETICS ?>">
               <?php foreach (['-', 'I', 'II', 'III'] as $rankValue => $rankName) { ?>
                 <option value="<?= $rankValue ?>"
-                    <?php if ($controller->getSelectedAthletics()->getCurrentSkillRank()->getValue() === $rankValue) { ?>
+                    <?php if ($currentFallValues->getSelectedAthletics()->getCurrentSkillRank()->getValue() === $rankValue) { ?>
                       selected
                     <?php } ?>>
                     <?= $rankName ?>

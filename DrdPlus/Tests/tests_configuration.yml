@@ -1,0 +1,10 @@
+public_url: 'https://pad.drdplus.info'
+expected_web_name: 'DrD+ kalkulátor zranění při pádu'
+expected_page_title: 'DrD+ kalkulátor zranění při pádu'
+has_custom_body_content: false
+has_tables: false
+has_notes: false
+has_links_to_altar: false
+has_more_versions: false
+expected_google_analytics_id: 'UA-121206931-1'
+expected_licence: 'MIT'

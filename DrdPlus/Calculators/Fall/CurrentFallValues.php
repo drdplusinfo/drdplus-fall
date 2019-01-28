@@ -1,18 +1,17 @@
 <?php
-namespace DrdPlus\FallCalculator;
+declare(strict_types=1);
 
-use DrdPlus\CalculatorSkeleton\CalculatorController;
-use DrdPlus\DiceRolls\Templates\DiceRolls\Dice1d6Roll;
-use DrdPlus\DiceRolls\Templates\Rolls\Roll1d6;
+namespace DrdPlus\Calculators\Fall;
+
 use DrdPlus\Background\BackgroundParts\Ancestry;
 use DrdPlus\Background\BackgroundParts\SkillPointsFromBackground;
+use DrdPlus\CalculatorSkeleton\CurrentValues;
 use DrdPlus\Codes\Armaments\BodyArmorCode;
 use DrdPlus\Codes\Armaments\HelmCode;
-use DrdPlus\Codes\Units\DistanceUnitCode;
 use DrdPlus\Codes\Environment\LandingSurfaceCode;
 use DrdPlus\Codes\Transport\RidingAnimalCode;
 use DrdPlus\Codes\Transport\RidingAnimalMovementCode;
-use DrdPlus\FrontendSkeleton\HtmlHelper;
+use DrdPlus\Codes\Units\DistanceUnitCode;
 use DrdPlus\Person\ProfessionLevels\ProfessionFirstLevel;
 use DrdPlus\Professions\Commoner;
 use DrdPlus\Properties\Base\Agility;
@@ -23,11 +22,15 @@ use DrdPlus\Tables\Measurements\Distance\Distance;
 use DrdPlus\Tables\Measurements\Weight\Weight;
 use DrdPlus\Tables\Measurements\Wounds\WoundsBonus;
 use DrdPlus\Tables\Tables;
+use Granam\DiceRolls\Templates\DiceRolls\Dice1d6Roll;
+use Granam\DiceRolls\Templates\Rolls\Roll1d6;
 use Granam\Integer\IntegerWithHistory;
 use Granam\Integer\PositiveIntegerObject;
+use Granam\Strict\Object\StrictObject;
 
-class FallController extends CalculatorController
+class CurrentFallValues extends StrictObject
 {
+
     public const AGILITY = 'agility';
     public const WITHOUT_REACTION = 'without_reaction';
     public const ATHLETICS = 'athletics';
@@ -48,24 +51,11 @@ class FallController extends CalculatorController
     public const HORSE_IS_JUMPING = 'horse_is_jumping';
     public const HEAD = 'head';
 
-    public function __construct(
-        string $sourceCodeUrl,
-        string $documentRoot,
-        string $vendorRoot,
-        string $partsRoot = null,
-        string $genericPartsRoot = null,
-        int $cookiesTtl = null,
-        array $selectedValues = null
-    )
+    private $currentValues;
+
+    public function __construct(CurrentValues $currentValues)
     {
-        parent::__construct(
-            HtmlHelper::createFromGlobals($documentRoot),
-            $sourceCodeUrl,
-            'fight' /* cookies postfix */,
-            $documentRoot,
-            $vendorRoot,
-            $partsRoot
-        );
+        $this->currentValues = $currentValues;
     }
 
     /**
@@ -73,9 +63,12 @@ class FallController extends CalculatorController
      */
     public function getPossibleBodyArmors(): array
     {
-        return array_map(function (string $armorValue) {
-            return BodyArmorCode::getIt($armorValue);
-        }, BodyArmorCode::getPossibleValues());
+        return array_map(
+            function (string $armorValue) {
+                return BodyArmorCode::getIt($armorValue);
+            },
+            BodyArmorCode::getPossibleValues()
+        );
     }
 
     public function isBodyArmorSelected(BodyArmorCode $bodyArmorCode): bool
@@ -86,14 +79,14 @@ class FallController extends CalculatorController
     private function getCurrentBodyArmorCode(): BodyArmorCode
     {
         return BodyArmorCode::getIt(
-            $this->getCurrentValues()->getCurrentValue(self::BODY_ARMOR)
+            $this->currentValues->getCurrentValue(self::BODY_ARMOR)
             ?? BodyArmorCode::WITHOUT_ARMOR
         );
     }
 
     public function getSelectedAgility(): Agility
     {
-        $selectedAgility = $this->getCurrentValues()->getCurrentValue(self::AGILITY);
+        $selectedAgility = $this->currentValues->getCurrentValue(self::AGILITY);
         if ($selectedAgility === null) {
             return Agility::getIt(0);
         }
@@ -112,18 +105,17 @@ class FallController extends CalculatorController
 
     public function isWithoutReaction(): bool
     {
-        return (bool)$this->getCurrentValues()->getCurrentValue(self::WITHOUT_REACTION);
+        return (bool)$this->currentValues->getCurrentValue(self::WITHOUT_REACTION);
     }
 
     public function getSelectedAthletics(): Athletics
     {
-        $athleticsValue = $this->getCurrentValues()->getCurrentValue(self::ATHLETICS);
+        $athleticsValue = $this->currentValues->getCurrentValue(self::ATHLETICS);
         if ($athleticsValue === null) {
             return new Athletics(ProfessionFirstLevel::createFirstLevel(Commoner::getIt()));
         }
         $athletics = new Athletics(ProfessionFirstLevel::createFirstLevel(Commoner::getIt()));
         for ($athleticsRank = 1; $athleticsRank <= $athleticsValue; $athleticsRank++) {
-            /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
             $athletics->increaseSkillRank(PhysicalSkillPoint::createFromFirstLevelSkillPointsFromBackground(
                 ProfessionFirstLevel::createFirstLevel(Commoner::getIt()),
                 SkillPointsFromBackground::getIt(
@@ -156,19 +148,19 @@ class FallController extends CalculatorController
     private function getCurrentHelmCode(): HelmCode
     {
         return HelmCode::getIt(
-            $this->getCurrentValues()->getCurrentValue(self::HELM)
+            $this->currentValues->getCurrentValue(self::HELM)
             ?? HelmCode::WITHOUT_HELM
         );
     }
 
     public function isFallingFromHorseback(): bool
     {
-        return $this->getCurrentValues()->getCurrentValue(self::FALLING_FROM) === self::HORSEBACK;
+        return $this->currentValues->getCurrentValue(self::FALLING_FROM) === self::HORSEBACK;
     }
 
     public function isFallingFromHeight(): bool
     {
-        return $this->getCurrentValues()->getCurrentValue(self::FALLING_FROM) === self::HEIGHT
+        return $this->currentValues->getCurrentValue(self::FALLING_FROM) === self::HEIGHT
             || !$this->isFallingFromHorseback(); // as falling from height is default
     }
 
@@ -220,7 +212,7 @@ class FallController extends CalculatorController
 
     public function isRidingAnimalSelected(float $heightInMeters): bool
     {
-        return (float)$this->getCurrentValues()->getCurrentValue(self::HORSE_HEIGHT) === $heightInMeters;
+        return (float)$this->currentValues->getCurrentValue(self::HORSE_HEIGHT) === $heightInMeters;
     }
 
     /**
@@ -235,7 +227,7 @@ class FallController extends CalculatorController
 
     public function isRidingAnimalMovementSelected(RidingAnimalMovementCode $ridingAnimalMovementCode): bool
     {
-        return $this->getCurrentValues()->getCurrentValue(self::RIDING_MOVEMENT) === $ridingAnimalMovementCode->getValue();
+        return $this->currentValues->getCurrentValue(self::RIDING_MOVEMENT) === $ridingAnimalMovementCode->getValue();
     }
 
     public function getBaseOfWoundsModifierByMovement(
@@ -253,13 +245,11 @@ class FallController extends CalculatorController
 
     public function getProtectionOfBodyArmor(BodyArmorCode $bodyArmorCode): int
     {
-        /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
         return Tables::getIt()->getBodyArmorsTable()->getProtectionOf($bodyArmorCode);
     }
 
     public function getProtectionOfHelm(HelmCode $helmCode): int
     {
-        /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
         return Tables::getIt()->getHelmsTable()->getProtectionOf($helmCode);
     }
 
@@ -286,7 +276,6 @@ class FallController extends CalculatorController
      */
     public function getWoundsModifierBySurface(LandingSurfaceCode $landingSurfaceCode): IntegerWithHistory
     {
-        /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
         return Tables::getIt()->getLandingSurfacesTable()->getBaseOfWoundsModifier(
             $landingSurfaceCode,
             $this->getSelectedAgilityWithReaction(),
@@ -296,7 +285,7 @@ class FallController extends CalculatorController
 
     private function getSelectedBodyArmor(): BodyArmorCode
     {
-        $bodyArmor = $this->getCurrentValues()->getCurrentValue(self::BODY_ARMOR);
+        $bodyArmor = $this->currentValues->getCurrentValue(self::BODY_ARMOR);
         if ($bodyArmor) {
             return BodyArmorCode::getIt($bodyArmor);
         }
@@ -306,7 +295,7 @@ class FallController extends CalculatorController
 
     private function getSelectedHelm(): HelmCode
     {
-        $bodyArmor = $this->getCurrentValues()->getCurrentValue(self::HELM);
+        $bodyArmor = $this->currentValues->getCurrentValue(self::HELM);
         if ($bodyArmor) {
             return HelmCode::getIt($bodyArmor);
         }
@@ -319,15 +308,14 @@ class FallController extends CalculatorController
         if (!$this->isFallingFromHeight() && !$this->isFallingFromHorseback()) {
             return null;
         }
-        if (!$this->getSelectedBodyWeight() || !$this->getCurrentBadLuck()) {
+        if (!$this->getCurrentBodyWeight() || !$this->getCurrentBadLuck()) {
             return null;
         }
-        /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
         $woundsFromFall = Tables::getIt()->getJumpsAndFallsTable()->getWoundsFromJumpOrFall(
             $this->isFallingFromHorseback()
                 ? $this->getSelectedRidingAnimalHeight()
                 : $this->getSelectedHeightOfFall(),
-            BodyWeight::getIt($this->getSelectedBodyWeight()),
+            BodyWeight::getIt($this->getCurrentBodyWeight()),
             $this->getSelectedItemsWeight(),
             $this->getCurrentBadLuck(),
             $this->isJumpControlled(),
@@ -357,9 +345,8 @@ class FallController extends CalculatorController
 
     private function getSelectedRidingAnimalHeight(): Distance
     {
-        /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
         return new Distance(
-            (float)$this->getCurrentValues()->getCurrentValue(self::HORSE_HEIGHT),
+            (float)$this->currentValues->getCurrentValue(self::HORSE_HEIGHT),
             DistanceUnitCode::METER,
             Tables::getIt()->getDistanceTable()
         );
@@ -367,19 +354,17 @@ class FallController extends CalculatorController
 
     public function getSelectedHeightOfFall(): Distance
     {
-        $heightOfFall = $this->getCurrentValues()->getCurrentValue(self::HEIGHT_OF_FALL);
+        $heightOfFall = $this->currentValues->getCurrentValue(self::HEIGHT_OF_FALL);
         if (!$heightOfFall) {
-            /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
             return new Distance(0, DistanceUnitCode::METER, Tables::getIt()->getDistanceTable());
         }
 
-        /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
         return new Distance($heightOfFall, DistanceUnitCode::METER, Tables::getIt()->getDistanceTable());
     }
 
     private function getSelectedRidingAnimalMovement(): RidingAnimalMovementCode
     {
-        $selectedMovement = $this->getCurrentValues()->getCurrentValue(self::RIDING_MOVEMENT);
+        $selectedMovement = $this->currentValues->getCurrentValue(self::RIDING_MOVEMENT);
         if (!$selectedMovement) {
             return RidingAnimalMovementCode::getIt(RidingAnimalMovementCode::STILL);
         }
@@ -387,9 +372,9 @@ class FallController extends CalculatorController
         return RidingAnimalMovementCode::getIt($selectedMovement);
     }
 
-    public function getSelectedBodyWeight(): ?Weight
+    public function getCurrentBodyWeight(): ?Weight
     {
-        $weight = $this->getCurrentValues()->getCurrentValue(self::BODY_WEIGHT);
+        $weight = $this->currentValues->getCurrentValue(self::BODY_WEIGHT);
         if (!$weight) {
             return null;
         }
@@ -399,7 +384,7 @@ class FallController extends CalculatorController
 
     public function getSelectedItemsWeight(): ?Weight
     {
-        $weight = $this->getCurrentValues()->getCurrentValue(self::ITEMS_WEIGHT);
+        $weight = $this->currentValues->getCurrentValue(self::ITEMS_WEIGHT);
         if (!$weight) {
             return null;
         }
@@ -409,29 +394,27 @@ class FallController extends CalculatorController
 
     public function getCurrentBadLuck(): Roll1d6
     {
-        $roll = $this->getCurrentValues()->getCurrentValue(self::BAD_LUCK);
+        $roll = $this->currentValues->getCurrentValue(self::BAD_LUCK);
         if (!$roll) {
-            /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
             return new Roll1d6(new Dice1d6Roll(1, 1));
         }
 
-        /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
         return new Roll1d6(new Dice1d6Roll($roll, 1));
     }
 
     public function isJumpControlled(): bool
     {
-        return (bool)$this->getCurrentValues()->getCurrentValue(self::JUMP_IS_CONTROLLED);
+        return (bool)$this->currentValues->getCurrentValue(self::JUMP_IS_CONTROLLED);
     }
 
     public function isHorseJumping(): bool
     {
-        return (bool)$this->getCurrentValues()->getCurrentValue(self::HORSE_IS_JUMPING);
+        return (bool)$this->currentValues->getCurrentValue(self::HORSE_IS_JUMPING);
     }
 
     public function getSelectedLandingSurface(): LandingSurfaceCode
     {
-        $landingSurface = $this->getCurrentValues()->getCurrentValue(self::SURFACE);
+        $landingSurface = $this->currentValues->getCurrentValue(self::SURFACE);
         if (!$landingSurface) {
             return LandingSurfaceCode::getIt(LandingSurfaceCode::MEADOW);
         }
@@ -441,6 +424,6 @@ class FallController extends CalculatorController
 
     public function isHitToHead(): bool
     {
-        return (bool)$this->getCurrentValues()->getCurrentValue(self::HEAD);
+        return (bool)$this->currentValues->getCurrentValue(self::HEAD);
     }
 }

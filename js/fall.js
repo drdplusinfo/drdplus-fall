@@ -1,16 +1,16 @@
 document.addEventListener('DOMContentLoaded', function () {
-    var withoutReaction = document.getElementById('withoutReaction');
-    withoutReaction.addEventListener('change', function (event) {
+    var withoutReaction = document.getElementById('without_reaction');
+    withoutReaction.addEventListener('change', () => toggleAgilityInput(this));
+    toggleAgilityInput(withoutReaction);
+
+    function toggleAgilityInput(input) {
         var agility = document.getElementById('agility');
-        if (this.checked) {
+        if (input.checked) {
             disableInputs([agility]);
         } else {
             enableInputs([agility]);
         }
-        if (!event.bubbles) {
-            event.stopPropagation();
-        }
-    });
+    }
 
     function disableInputs(inputs) {
         for (var inputsLength = inputs.length, index = 0; index < inputsLength; index++) {
@@ -26,35 +26,29 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    var fallingFromHeight = document.getElementById('fallingFromHeight');
-    fallingFromHeight.addEventListener('change', function (event) {
+    var fallingFromHeight = document.getElementById('falling_from_height');
+    fallingFromHeight.addEventListener('change', () => toggleHeightRelated(this));
+    toggleHeightRelated(fallingFromHeight);
+
+    function toggleHeightRelated(input) {
         var heightRelated = document.getElementsByClassName('height-related');
-        if (!this.checked) {
+        if (!input.checked) {
             disableInputs(heightRelated);
         } else {
             enableInputs(heightRelated);
         }
-        if (!event.bubbles) {
-            event.stopPropagation();
-        }
-    });
+    }
 
-    var onHorseback = document.getElementById('onHorseback');
-    onHorseback.addEventListener('change', function (event) {
+    var onHorseback = document.getElementById('on_horseback');
+    onHorseback.addEventListener('change', () => toggleHorseRelated(this));
+    toggleHorseRelated(onHorseback);
+
+    function toggleHorseRelated(input) {
         var horseRelated = document.getElementsByClassName('horse-related');
-        if (this.checked) {
+        if (input.checked) {
             enableInputs(horseRelated);
         } else {
             disableInputs(horseRelated);
         }
-        if (!event.bubbles) {
-            event.stopPropagation();
-        }
-    });
-
-    var changeEvent = new Event('change');
-    changeEvent.initEvent('change', false /* can not bubble */, true);
-    withoutReaction.dispatchEvent(changeEvent);
-    onHorseback.dispatchEvent(changeEvent);
-    fallingFromHeight.dispatchEvent(changeEvent);
+    }
 });
