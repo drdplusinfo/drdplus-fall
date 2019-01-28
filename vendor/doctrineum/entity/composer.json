@@ -1,0 +1,36 @@
+{
+  "name": "doctrineum/entity",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Jaroslav Týc",
+      "homepage": "https://www.jaroslavtyc.com",
+      "role": "Original author"
+    }
+  ],
+  "type": "project",
+  "description": "Doctrine entity tests against real SQL persistence",
+  "keywords": [
+    "php",
+    "object",
+    "Doctrine",
+    "entity",
+    "test"
+  ],
+  "homepage": "https://github.com/jaroslavtyc/doctrineum-entity",
+  "autoload": {
+    "psr-4": {
+      "Doctrineum\\": "Doctrineum/"
+    }
+  },
+  "require": {
+    "php": ">=7.1"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~7.0",
+    "mockery/mockery": "~1.0",
+    "doctrine/orm": ">=2.5"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}

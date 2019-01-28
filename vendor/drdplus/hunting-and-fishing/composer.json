@@ -1,0 +1,23 @@
+{
+  "name": "drdplus/hunting-and-fishing",
+  "license": "MIT",
+  "type": "library",
+  "description": "Catch from hunting and fishing for Drd+",
+  "autoload": {
+    "psr-4": {
+      "DrdPlus\\": "DrdPlus/"
+    }
+  },
+  "require": {
+    "php": ">=7.1",
+    "granam/strict-object": "^3.0",
+    "drdplus/tables": "^1.0",
+    "drdplus/rolls-on": "^1.0"
+  },
+  "require-dev": {
+    "roave/security-advisories": "dev-master",
+    "phpunit/phpunit": "~7.0",
+    "mockery/mockery": "~1.0",
+    "granam/exceptions-hierarchy": "~4.0"
+  }
+}
