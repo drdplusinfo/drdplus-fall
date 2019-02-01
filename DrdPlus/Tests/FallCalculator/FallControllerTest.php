@@ -3,8 +3,7 @@ namespace DrdPlus\Tests\FallCalculator;
 
 use DrdPlus\Codes\Armaments\BodyArmorCode;
 use DrdPlus\Codes\Armaments\HelmCode;
-use DrdPlus\FallCalculator\FallController;
-use DrdPlus\Tests\CalculatorSkeletonWeb\AbstractContentTest;
+use DrdPlus\Tests\RulesSkeleton\Partials\AbstractContentTest;
 use Granam\DiceRolls\Templates\DiceRolls\Dice1d6Roll;
 use Granam\DiceRolls\Templates\Rolls\Roll1d6;
 

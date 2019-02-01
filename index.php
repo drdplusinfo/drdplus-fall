@@ -2,7 +2,7 @@
 namespace DrdPlus\Calculators\Fall;
 
 use DrdPlus\CalculatorSkeleton\CalculatorConfiguration;
-use DrdPlus\CalculatorSkeleton\CalculatorController;
+use DrdPlus\CalculatorSkeleton\CalculatorApplication;
 use DrdPlus\RulesSkeleton\HtmlHelper;
 use DrdPlus\RulesSkeleton\TracyDebugger;
 
@@ -24,7 +24,6 @@ if (\PHP_SAPI !== 'cli') {
 }
 $configuration = CalculatorConfiguration::createFromYml($dirs);
 $servicesContainer = new FallServicesContainer($configuration, $htmlHelper);
-/** @noinspection PhpUnusedLocalVariableInspection */
-$controller = $controller ?? new CalculatorController($servicesContainer);
+$calculatorApplication = $calculatorApplication ?? $controller ?? new CalculatorApplication($servicesContainer);
 
-require __DIR__ . '/vendor/drdplus/calculator-skeleton/index.php';
+$calculatorApplication->run();

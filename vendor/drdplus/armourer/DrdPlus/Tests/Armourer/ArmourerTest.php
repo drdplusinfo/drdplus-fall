@@ -50,6 +50,7 @@ use Granam\Integer\PositiveInteger;
 use Granam\Integer\PositiveIntegerObject;
 use Granam\String\StringTools;
 use Granam\Tests\Tools\TestWithMockery;
+use Mockery\MockInterface;
 
 class ArmourerTest extends TestWithMockery
 {
@@ -165,7 +166,7 @@ class ArmourerTest extends TestWithMockery
     private function I_can_find_out_if_can_use_shield(): void
     {
         $armourer = new Armourer($tables = $this->createTables());
-        $shield = $this->createShield();
+        $shield = $this->createShieldCode();
         $tables->shouldReceive('getArmamentsTableByArmamentCode')
             ->zeroOrMoreTimes()
             ->with($shield)
@@ -186,7 +187,7 @@ class ArmourerTest extends TestWithMockery
     /**
      * @return \Mockery\MockInterface|ShieldCode
      */
-    private function createShield(): ShieldCode
+    private function createShieldCode(): ShieldCode
     {
         $shieldCode = $this->mockery(ShieldCode::class);
         $shieldCode->shouldReceive('isWeapon')
@@ -332,11 +333,13 @@ class ArmourerTest extends TestWithMockery
      * @param string $value
      * @return \Mockery\MockInterface|BodyArmorCode
      */
-    private function createBodyArmorCode($value): BodyArmorCode
+    private function createBodyArmorCode(string $value = null): BodyArmorCode
     {
         $bodyArmorCode = $this->mockery(BodyArmorCode::class);
-        $bodyArmorCode->shouldReceive('getValue')
-            ->andReturn($value);
+        if ($value !== null) {
+            $bodyArmorCode->shouldReceive('getValue')
+                ->andReturn($value);
+        }
 
         return $bodyArmorCode;
     }
@@ -562,7 +565,7 @@ class ArmourerTest extends TestWithMockery
     public function I_can_get_missing_strength_and_sanction_values_for_shield(): void
     {
         $armourer = new Armourer($tables = $this->createTables());
-        $shield = $this->createShield();
+        $shield = $this->createShieldCode();
         $tables->shouldReceive('getArmamentsTableByArmamentCode')
             ->zeroOrMoreTimes()
             ->with($shield)
@@ -928,12 +931,20 @@ class ArmourerTest extends TestWithMockery
     {
         $tables = $this->createTables();
         $tables->shouldReceive('getDistanceTable')
-            ->andReturn($distanceTable = $this->mockery(DistanceTable::class));
+            ->andReturn($distanceTable = $this->createDistanceTable());
         (new Armourer($tables))->getAttackNumberModifierByDistance(
             $this->createDistanceWithBonus(457, 987654321),
             $this->createEncounterRange(123),
             $this->createMaximalRange(456, 6655443322, $distanceTable)
         );
+    }
+
+    /**
+     * @return DistanceTable|MockInterface
+     */
+    private function createDistanceTable(): DistanceTable
+    {
+        return $this->mockery(DistanceTable::class);
     }
 
     /**
@@ -1261,7 +1272,7 @@ class ArmourerTest extends TestWithMockery
     public function I_can_get_required_strength_of_shield(): void
     {
         $tables = $this->createTables();
-        $shield = $this->createShield();
+        $shield = $this->createShieldCode();
         $tables->shouldReceive('getArmamentsTableByArmamentCode')
             ->zeroOrMoreTimes()
             ->with($shield)
@@ -1417,7 +1428,7 @@ class ArmourerTest extends TestWithMockery
     public function I_can_get_offensiveness_of_shield(): void
     {
         $tables = $this->createTables();
-        $shield = $this->createShield();
+        $shield = $this->createShieldCode();
         $tables->shouldReceive('getWeaponlikeTableByWeaponlikeCode')
             ->zeroOrMoreTimes()
             ->with($shield)
@@ -1471,7 +1482,7 @@ class ArmourerTest extends TestWithMockery
     public function I_can_get_wounds_of_shield(): void
     {
         $tables = $this->createTables();
-        $shield = $this->createShield();
+        $shield = $this->createShieldCode();
         $tables->shouldReceive('getWeaponlikeTableByWeaponlikeCode')
             ->zeroOrMoreTimes()
             ->with($shield)
@@ -1525,7 +1536,7 @@ class ArmourerTest extends TestWithMockery
     public function I_can_get_wounds_type_of_shield(): void
     {
         $tables = $this->createTables();
-        $shield = $this->createShield();
+        $shield = $this->createShieldCode();
         $tables->shouldReceive('getWeaponlikeTableByWeaponlikeCode')
             ->zeroOrMoreTimes()
             ->with($shield)
@@ -1675,7 +1686,7 @@ class ArmourerTest extends TestWithMockery
     public function I_can_get_restriction_of_protective_armament(): void
     {
         $tables = $this->createTables();
-        $shield = $this->createShield();
+        $shield = $this->createShieldCode();
         $tables->shouldReceive('getProtectiveArmamentsTable')
             ->zeroOrMoreTimes()
             ->with($shield)
@@ -1957,7 +1968,7 @@ class ArmourerTest extends TestWithMockery
             1249,
             (new Armourer($tables))->getCoverMalusForSkillRank(
                 $this->createPositiveInteger(456),
-                $this->createShield()
+                $this->createShieldCode()
             )
         );
     }
@@ -1985,7 +1996,7 @@ class ArmourerTest extends TestWithMockery
     {
         $tables = $this->createTables();
         $skillRank = $this->createPositiveInteger(123);
-        $shield = $this->createShield();
+        $shield = $this->createShieldCode();
         $tables->shouldReceive('getProtectiveArmamentMissingSkillTableByCode')
             ->zeroOrMoreTimes()
             ->with($shield)
@@ -2006,7 +2017,7 @@ class ArmourerTest extends TestWithMockery
     public function I_can_get_protective_armament_restriction_by_skill_rank(): void
     {
         $tables = $this->createTables();
-        $shield = $this->createShield();
+        $shield = $this->createShieldCode();
 
         $tables->shouldReceive('getProtectiveArmamentsTable')
             ->zeroOrMoreTimes()
@@ -2036,7 +2047,7 @@ class ArmourerTest extends TestWithMockery
     public function I_can_get_zero_as_protective_armament_restriction_by_skill_rank_if_would_result_to_positive(): void
     {
         $tables = $this->createTables();
-        $shield = $this->createShield();
+        $shield = $this->createShieldCode();
 
         $tables->shouldReceive('getProtectiveArmamentsTable')
             ->zeroOrMoreTimes()
@@ -2578,5 +2589,66 @@ class ArmourerTest extends TestWithMockery
                 "$shieldValue should result into instance of " . ShieldCode::class
             );
         }
+    }
+
+    /**
+     * @test
+     */
+    public function I_can_get_cover_of_shield(): void
+    {
+        $tables = $this->createTables();
+        $tables->shouldReceive('getShieldsTable')
+            ->andReturn($shieldsTable = $this->createShieldsTable());
+        $shieldsTable->shouldReceive('getCoverOf')
+            ->with($shieldCode = $this->createShieldCode())
+            ->andReturn(123456);
+        $armourer = new Armourer($tables);
+        self::assertSame(123456, $armourer->getCoverOfShield($shieldCode));
+    }
+
+    /**
+     * @test
+     */
+    public function I_can_get_protection_of_helm(): void
+    {
+        $tables = $this->createTables();
+        $tables->shouldReceive('getHelmsTable')
+            ->andReturn($helmsTable = $this->createHelmsTable());
+        $helmsTable->shouldReceive('getProtectionOf')
+            ->with($helmCode = $this->createHelmCode())
+            ->andReturn(998877);
+        $armourer = new Armourer($tables);
+        self::assertSame(998877, $armourer->getProtectionOfHelm($helmCode));
+    }
+
+    /**
+     * @return HelmsTable|MockInterface
+     */
+    private function createHelmsTable(): HelmsTable
+    {
+        return $this->mockery(HelmsTable::class);
+    }
+
+    /**
+     * @test
+     */
+    public function I_can_get_protection_of_armor(): void
+    {
+        $tables = $this->createTables();
+        $tables->shouldReceive('getBodyArmorsTable')
+            ->andReturn($helmsTable = $this->createBodyArmorsTable());
+        $helmsTable->shouldReceive('getProtectionOf')
+            ->with($bodyArmorCode = $this->createBodyArmorCode())
+            ->andReturn(5544);
+        $armourer = new Armourer($tables);
+        self::assertSame(5544, $armourer->getProtectionOfBodyArmor($bodyArmorCode));
+    }
+
+    /**
+     * @return BodyArmorsTable|MockInterface
+     */
+    private function createBodyArmorsTable(): BodyArmorsTable
+    {
+        return $this->mockery(BodyArmorsTable::class);
     }
 }

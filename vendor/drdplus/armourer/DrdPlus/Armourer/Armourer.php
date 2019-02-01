@@ -1215,4 +1215,34 @@ class Armourer extends StrictObject
         }
         throw new UnknownMeleeWeaponlike("Given '{$meleeWeaponLikeValue}' value is not known as any melee weapon-like code");
     }
+
+    /**
+     * @param ShieldCode $shieldCode
+     * @return int
+     * @throws \DrdPlus\Tables\Armaments\Exceptions\UnknownShield
+     */
+    public function getCoverOfShield(ShieldCode $shieldCode): int
+    {
+        return $this->tables->getShieldsTable()->getCoverOf($shieldCode);
+    }
+
+    /**
+     * @param HelmCode $helmCode
+     * @return int
+     * @throws \DrdPlus\Tables\Armaments\Exceptions\UnknownArmor
+     */
+    public function getProtectionOfHelm(HelmCode $helmCode): int
+    {
+        return $this->tables->getHelmsTable()->getProtectionOf($helmCode);
+    }
+
+    /**
+     * @param BodyArmorCode $bodyArmorCode
+     * @return int
+     * @throws \DrdPlus\Tables\Armaments\Exceptions\UnknownArmor
+     */
+    public function getProtectionOfBodyArmor(BodyArmorCode $bodyArmorCode): int
+    {
+        return $this->tables->getBodyArmorsTable()->getProtectionOf($bodyArmorCode);
+    }
 }
