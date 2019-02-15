@@ -12,7 +12,7 @@ class Commoner extends Profession
     }
 
     /**
-     * @return array
+     * @return array|string[]
      */
     public function getPrimaryProperties(): array
     {

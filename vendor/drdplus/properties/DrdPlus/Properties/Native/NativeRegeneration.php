@@ -1,5 +1,6 @@
 <?php
-declare(strict_types=1);/** be strict for parameter types, https://www.quora.com/Are-strict_types-in-PHP-7-not-a-bad-idea */
+declare(strict_types=1);
+
 namespace DrdPlus\Properties\Native;
 
 use DrdPlus\Codes\Properties\PropertyCode;
@@ -9,9 +10,6 @@ use DrdPlus\Codes\Properties\PropertyCode;
  */
 class NativeRegeneration extends NativeProperty
 {
-    /**
-     * @return PropertyCode
-     */
     public function getCode(): PropertyCode
     {
         return PropertyCode::getIt(PropertyCode::NATIVE_REGENERATION);

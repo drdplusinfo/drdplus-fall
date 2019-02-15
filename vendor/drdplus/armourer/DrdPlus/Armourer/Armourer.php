@@ -18,7 +18,7 @@ use DrdPlus\Codes\Armaments\WeaponCategoryCode;
 use DrdPlus\Codes\Armaments\WeaponlikeCode;
 use DrdPlus\Codes\Body\PhysicalWoundTypeCode;
 use DrdPlus\Codes\ItemHoldingCode;
-use DrdPlus\Properties\Base\Strength;
+use DrdPlus\BaseProperties\Strength;
 use DrdPlus\Properties\Body\Size;
 use DrdPlus\Properties\Combat\EncounterRange;
 use DrdPlus\Properties\Combat\MaximalRange;

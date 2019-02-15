@@ -1,15 +1,16 @@
 <?php
-declare(strict_types=1);/** be strict for parameter types, https://www.quora.com/Are-strict_types-in-PHP-7-not-a-bad-idea */
+declare(strict_types=1);
+
 namespace DrdPlus\Tests\Properties\Combat;
 
 use DrdPlus\Codes\ProfessionCode;
 use DrdPlus\Properties\Body\Height;
 use DrdPlus\Properties\Combat\BaseProperties;
 use DrdPlus\Properties\Combat\Fight;
-use DrdPlus\Properties\Base\Agility;
-use DrdPlus\Properties\Base\Charisma;
-use DrdPlus\Properties\Base\Intelligence;
-use DrdPlus\Properties\Base\Knack;
+use DrdPlus\BaseProperties\Agility;
+use DrdPlus\BaseProperties\Charisma;
+use DrdPlus\BaseProperties\Intelligence;
+use DrdPlus\BaseProperties\Knack;
 use DrdPlus\Tables\Body\CorrectionByHeightTable;
 use DrdPlus\Tables\Tables;
 use DrdPlus\Tests\Properties\Combat\Partials\CharacteristicForGameTest;

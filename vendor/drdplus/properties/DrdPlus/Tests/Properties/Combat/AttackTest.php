@@ -1,9 +1,10 @@
 <?php
-declare(strict_types=1);/** be strict for parameter types, https://www.quora.com/Are-strict_types-in-PHP-7-not-a-bad-idea */
+declare(strict_types=1);
+
 namespace DrdPlus\Tests\Properties\Combat;
 
 use DrdPlus\Properties\Combat\Attack;
-use DrdPlus\Properties\Base\Agility;
+use DrdPlus\BaseProperties\Agility;
 use DrdPlus\Tests\Properties\Combat\Partials\CombatCharacteristicTest;
 
 class AttackTest extends CombatCharacteristicTest
@@ -16,7 +17,7 @@ class AttackTest extends CombatCharacteristicTest
     /**
      * @test
      */
-    public function I_can_get_property_easily()
+    public function I_can_get_property_easily(): void
     {
         for ($value = -5; $value < 10; $value++) {
             $attack = Attack::getIt($this->createAgility($value));
@@ -28,7 +29,7 @@ class AttackTest extends CombatCharacteristicTest
      * @param $value
      * @return \Mockery\MockInterface|Agility
      */
-    private function createAgility($value)
+    private function createAgility(int $value)
     {
         $agility = \Mockery::mock(Agility::class);
         $agility->shouldReceive('getValue')

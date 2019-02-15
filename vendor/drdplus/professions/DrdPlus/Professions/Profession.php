@@ -1,9 +1,9 @@
 <?php
 namespace DrdPlus\Professions;
 
-use Doctrineum\Scalar\ScalarEnum;
 use DrdPlus\Codes\ProfessionCode;
 use DrdPlus\Codes\Properties\PropertyCode;
+use Granam\ScalarEnum\ScalarEnum;
 use Granam\Tools\ValueDescriber;
 
 /**
@@ -18,15 +18,14 @@ abstract class Profession extends ScalarEnum
      */
     public static function getItByCode(ProfessionCode $professionCode): Profession
     {
-        $baseClassName = implode(array_map('ucfirst', explode('_', $professionCode->getValue())));
+        $baseClassName = \implode(\array_map('ucfirst', \explode('_', $professionCode->getValue())));
         /** @var Profession $className */
         $className = __NAMESPACE__ . '\\' . $baseClassName;
-        if (!class_exists($className)) {
+        if (!\class_exists($className)) {
             throw new Exceptions\ProfessionNotFound(
                 'No profession found by code ' . ValueDescriber::describe($professionCode)
             );
         }
-
         return $className::getIt();
     }
 
@@ -35,7 +34,6 @@ abstract class Profession extends ScalarEnum
      */
     protected static function getIt()
     {
-        /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
         return new static(static::getDeterminedCode());
     }
 
@@ -44,10 +42,9 @@ abstract class Profession extends ScalarEnum
      */
     protected static function getDeterminedCode(): string
     {
-        $classBaseName = preg_replace('~.+\\\(\w+)$~', '$1', static::class);
-        $underscored = preg_replace('~([a-z])([A-Z])~', '$1_$2', $classBaseName);
-
-        return strtolower($underscored);
+        $classBaseName = \preg_replace('~.+\\\(\w+)$~', '$1', static::class);
+        $underscored = \preg_replace('~([a-z])([A-Z])~', '$1_$2', $classBaseName);
+        return \strtolower($underscored);
     }
 
     /**

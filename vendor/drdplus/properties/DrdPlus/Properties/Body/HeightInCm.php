@@ -1,9 +1,11 @@
 <?php
-declare(strict_types=1);/** be strict for parameter types, https://www.quora.com/Are-strict_types-in-PHP-7-not-a-bad-idea */
+declare(strict_types=1);
+
 namespace DrdPlus\Properties\Body;
 
 use DrdPlus\Codes\Properties\PropertyCode;
 use DrdPlus\Properties\Partials\AbstractFloatProperty;
+use DrdPlus\Tables\Tables;
 use Granam\Number\NumberInterface;
 
 /**
@@ -11,12 +13,14 @@ use Granam\Number\NumberInterface;
  */
 class HeightInCm extends AbstractFloatProperty implements BodyProperty
 {
-    /**
-     * @return PropertyCode
-     */
     public function getCode(): PropertyCode
     {
         return PropertyCode::getIt(PropertyCode::HEIGHT_IN_CM);
+    }
+
+    public function getHeight(Tables $tables): Height
+    {
+        return Height::getIt($this, $tables);
     }
 
 }

@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace DrdPlus\HuntingAndFishing;
 
-use DrdPlus\DiceRolls\Templates\Rolls\Roll2d6DrdPlus;
+use Granam\DiceRolls\Templates\Rolls\Roll2d6DrdPlus;
 use DrdPlus\Calculations\SumAndRound;
 use DrdPlus\RollsOn\QualityAndSuccess\RollOnQuality;
 use DrdPlus\Tables\Measurements\Amount\Amount;
@@ -52,7 +52,6 @@ class CatchQuality extends RollOnQuality
                 "You can not hunt for less than 30 minutes, got time for hunt only {$time}"
             );
         }
-
         return $timeBonusValue - self::STANDARD_HUNTING_TIME_IN_BONUS;
     }
 }

@@ -1,21 +1,19 @@
 <?php
-declare(strict_types=1);/** be strict for parameter types, https://www.quora.com/Are-strict_types-in-PHP-7-not-a-bad-idea */
+declare(strict_types=1);
+
 namespace DrdPlus\Properties\Partials;
 
-use Doctrineum\Integer\IntegerEnum;
+use DrdPlus\BaseProperties\Property;
 use DrdPlus\Codes\Properties\PropertyCode;
-use DrdPlus\Properties\Property;
 use Granam\Integer\IntegerInterface;
 use Granam\Integer\Tools\ToInteger;
+use Granam\IntegerEnum\IntegerEnum;
 
 /**
  * @method PropertyCode getCode()
  */
 abstract class AbstractIntegerProperty extends IntegerEnum implements Property
 {
-
-    use WithHistoryTrait;
-
     /**
      * @param int|IntegerInterface $value
      * @return AbstractIntegerProperty
@@ -35,18 +33,6 @@ abstract class AbstractIntegerProperty extends IntegerEnum implements Property
     }
 
     /**
-     * Does NOT gives same instance for same value.
-     *
-     * @param int|IntegerInterface $enumValue
-     */
-    protected function __construct($enumValue)
-    {
-        /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
-        parent::__construct($enumValue);
-        $this->noticeChange();
-    }
-
-    /**
      * @param int|IntegerInterface $value
      * @return AbstractIntegerProperty
      * @throws \Granam\Integer\Tools\Exceptions\WrongParameterType
@@ -54,10 +40,7 @@ abstract class AbstractIntegerProperty extends IntegerEnum implements Property
      */
     public function add($value)
     {
-        $increased = static::getIt($this->getValue() + ToInteger::toInteger($value));
-        $increased->adoptHistory($this); // prepends history of predecessor
-
-        return $increased;
+        return static::getIt($this->getValue() + ToInteger::toInteger($value));
     }
 
     /**
@@ -68,9 +51,6 @@ abstract class AbstractIntegerProperty extends IntegerEnum implements Property
      */
     public function sub($value)
     {
-        $decreased = static::getIt($this->getValue() - ToInteger::toInteger($value));
-        $decreased->adoptHistory($this); // prepends history of predecessor
-
-        return $decreased;
+        return static::getIt($this->getValue() - ToInteger::toInteger($value));
     }
 }

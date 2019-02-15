@@ -1,16 +1,16 @@
 <?php
-declare(strict_types=1);/** be strict for parameter types, https://www.quora.com/Are-strict_types-in-PHP-7-not-a-bad-idea */
+declare(strict_types=1);
+
 namespace DrdPlus\Properties\Partials;
 
-use Doctrineum\Float\FloatEnum;
-use DrdPlus\Properties\Property;
-use Granam\Float\FloatInterface;
+use DrdPlus\BaseProperties\Property;
+use Granam\FloatEnum\FloatEnum;
 use Granam\Number\NumberInterface;
 
 /**
  * @method static AbstractFloatProperty getEnum(float|NumberInterface $enumValue)
  */
-abstract class AbstractFloatProperty extends FloatEnum implements Property, FloatInterface
+abstract class AbstractFloatProperty extends FloatEnum implements Property
 {
 
     /**

@@ -14,7 +14,7 @@ use DrdPlus\Codes\Transport\RidingAnimalMovementCode;
 use DrdPlus\Codes\Units\DistanceUnitCode;
 use DrdPlus\Person\ProfessionLevels\ProfessionFirstLevel;
 use DrdPlus\Professions\Commoner;
-use DrdPlus\Properties\Base\Agility;
+use DrdPlus\BaseProperties\Agility;
 use DrdPlus\Properties\Body\BodyWeight;
 use DrdPlus\Skills\Physical\Athletics;
 use DrdPlus\Skills\Physical\PhysicalSkillPoint;

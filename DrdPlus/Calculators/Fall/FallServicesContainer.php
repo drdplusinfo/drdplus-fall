@@ -15,6 +15,7 @@ class FallServicesContainer extends CalculatorServicesContainer
         return [
             'historyDeletion' => $this->getHistoryDeletionBody(),
             'currentFallValues' => $this->getCurrentFallValues(),
+            'calculatorDebugContacts' => $this->getDebugContactsBody(),
         ];
     }
 
@@ -23,7 +24,6 @@ class FallServicesContainer extends CalculatorServicesContainer
         if ($this->currentFallValues === null) {
             $this->currentFallValues = new CurrentFallValues($this->getCurrentValues());
         }
-
         return $this->currentFallValues;
     }
 

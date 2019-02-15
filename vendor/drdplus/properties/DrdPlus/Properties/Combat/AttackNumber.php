@@ -1,5 +1,6 @@
 <?php
-declare(strict_types=1);/** be strict for parameter types, https://www.quora.com/Are-strict_types-in-PHP-7-not-a-bad-idea */
+declare(strict_types=1);
+
 namespace DrdPlus\Properties\Combat;
 
 use DrdPlus\Codes\Properties\CharacteristicForGameCode;
@@ -20,7 +21,6 @@ class AttackNumber extends CharacteristicForGame
      */
     public static function getItFromAttack(Attack $attack): AttackNumber
     {
-        /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
         return new static($attack->getValue());
     }
 
@@ -30,7 +30,6 @@ class AttackNumber extends CharacteristicForGame
      */
     public static function getItFromShooting(Shooting $shooting): AttackNumber
     {
-        /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
         return new static($shooting->getValue());
     }
 

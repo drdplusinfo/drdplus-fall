@@ -1,6 +1,6 @@
 <?php
 declare(strict_types=1);
-/** be strict for parameter types, https://www.quora.com/Are-strict_types-in-PHP-7-not-a-bad-idea */
+
 namespace DrdPlus\Properties\Derived;
 
 use DrdPlus\Codes\Environment\TerrainCode;
@@ -15,22 +15,16 @@ use DrdPlus\Tables\Tables;
 
 /**
  * See PPH page 112, right column, top, @link https://pph.drdplus.info/#pohybova_rychlost
+ * @method MovementSpeed add(int | \Granam\Integer\IntegerInterface $value)
+ * @method MovementSpeed sub(int | \Granam\Integer\IntegerInterface $value)
  */
 class MovementSpeed extends AbstractDerivedProperty
 {
-    /**
-     * @param Speed $speed
-     * @return MovementSpeed
-     */
     public static function getIt(Speed $speed): MovementSpeed
     {
         return new static(SumAndRound::half($speed->getValue()));
     }
 
-    /**
-     * @param Tables $tables
-     * @return SpeedBonus
-     */
     public function getSpeedBonus(Tables $tables): SpeedBonus
     {
         return new SpeedBonus($this->getValue(), $tables->getSpeedTable());
@@ -72,9 +66,6 @@ class MovementSpeed extends AbstractDerivedProperty
         );
     }
 
-    /**
-     * @return PropertyCode
-     */
     public function getCode(): PropertyCode
     {
         return PropertyCode::getIt(PropertyCode::MOVEMENT_SPEED);

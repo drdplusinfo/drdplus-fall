@@ -1,5 +1,5 @@
 <?php
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace DrdPlus\Lighting;
 
@@ -23,49 +23,32 @@ class Contrast extends StrictObject implements PositiveInteger
      */
     private $fromLightToDark;
 
-    /**
-     * @param LightingQuality $previousLightingQuality
-     * @param LightingQuality $currentLightingQuality
-     * @return Contrast
-     */
     public static function createBySimplifiedRules(
         LightingQuality $previousLightingQuality,
         LightingQuality $currentLightingQuality
-    )
+    ): Contrast
     {
         $difference = $previousLightingQuality->getValue() - $currentLightingQuality->getValue();
 
-        return new self($difference, 10, true);
+        return new static($difference, 10);
     }
 
-    /**
-     * @param EyesAdaptation $eyesAdaptation
-     * @param LightingQuality $currentLightingQuality
-     * @param RaceCode $raceCode
-     * @param Tables $tables
-     * @return Contrast
-     */
     public static function createByExtendedRules(
         EyesAdaptation $eyesAdaptation,
         LightingQuality $currentLightingQuality,
         RaceCode $raceCode,
         Tables $tables
-    )
+    ): Contrast
     {
         $difference = $eyesAdaptation->getValue() - $currentLightingQuality->getValue();
 
-        return new self($difference, $tables->getSightRangesTable()->getAdaptability($raceCode), false);
+        return new static($difference, $tables->getSightRangesTable()->getAdaptability($raceCode));
     }
 
-    /**
-     * @param int $lightsDifference
-     * @param int $eyeAdaptability
-     * @param bool $roundForSimplifiedRules
-     */
-    private function __construct($lightsDifference, $eyeAdaptability, $roundForSimplifiedRules)
+    private function __construct(int $lightsDifference, int $eyeAdaptability)
     {
         $this->fromLightToDark = $lightsDifference > 0;
-        $base = abs($lightsDifference) / $eyeAdaptability;
+        $base = \abs($lightsDifference) / $eyeAdaptability;
         /** note: it differs for simplified rules rounding by floor
          * (PPH page 128 left column, @link https://pph.drdplus.jaroslavtyc.com/#oslneni)
          * but standard rounding fits to extended rules and is more generic in DrD+ so it has been unified here
@@ -73,10 +56,7 @@ class Contrast extends StrictObject implements PositiveInteger
         $this->value = SumAndRound::round($base);
     }
 
-    /**
-     * @return int
-     */
-    public function getValue()
+    public function getValue(): int
     {
         return $this->value;
     }
@@ -89,25 +69,19 @@ class Contrast extends StrictObject implements PositiveInteger
         $asString = (string)$this->getValue();
         if ($this->isFromLightToDark()) {
             $asString .= ' (to dark)';
-        } else if ($this->isFromDarkToLight()) {
+        } elseif ($this->isFromDarkToLight()) {
             $asString .= ' (to light)';
         } // else nothing if contrast is zero
 
         return $asString;
     }
 
-    /**
-     * @return bool
-     */
-    public function isFromLightToDark()
+    public function isFromLightToDark(): bool
     {
         return $this->fromLightToDark;
     }
 
-    /**
-     * @return bool
-     */
-    public function isFromDarkToLight()
+    public function isFromDarkToLight(): bool
     {
         return !$this->isFromLightToDark() && $this->getValue() !== 0;
     }

@@ -1,10 +1,11 @@
 <?php
-declare(strict_types=1);/** be strict for parameter types, https://www.quora.com/Are-strict_types-in-PHP-7-not-a-bad-idea */
+declare(strict_types=1);
+
 namespace DrdPlus\Tests\Properties\Partials;
 
-use DrdPlus\Tests\Properties\AbstractStoredPropertyTest;
+use DrdPlus\Tests\BaseProperties\Partials\AbstractSimplePropertyTest;
 
-abstract class AbstractFloatPropertyTest extends AbstractStoredPropertyTest
+abstract class AbstractFloatPropertyTest extends AbstractSimplePropertyTest
 {
     protected function getValuesForTest(): array
     {
@@ -13,6 +14,7 @@ abstract class AbstractFloatPropertyTest extends AbstractStoredPropertyTest
 
     /**
      * @test
+     * @throws \ReflectionException
      */
     public function Has_modifying_methods_return_value_annotated()
     {

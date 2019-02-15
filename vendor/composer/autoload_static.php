@@ -7,11 +7,11 @@ namespace Composer\Autoload;
 class ComposerStaticInit21649f0820def83f5558d5617feb1eaf
 {
     public static $files = array (
-        '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
+        '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         '04c6c5c2f7095ccf6c481d3e53e1776f' => __DIR__ . '/..' . '/mustangostang/spyc/Spyc.php',
-        '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         '7745382c92b7799bf1294b1f43023ba2' => __DIR__ . '/..' . '/tracy/tracy/src/shortcuts.php',
+        '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -28,12 +28,22 @@ class ComposerStaticInit21649f0820def83f5558d5617feb1eaf
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Polyfill\\Ctype\\' => 23,
             'Symfony\\Contracts\\' => 18,
+            'Symfony\\Component\\Process\\' => 26,
+            'Symfony\\Component\\Finder\\' => 25,
+            'Symfony\\Component\\Filesystem\\' => 29,
             'Symfony\\Component\\CssSelector\\' => 30,
             'Symfony\\Component\\Console\\' => 26,
+            'Seld\\PharUtils\\' => 15,
+            'Seld\\JsonLint\\' => 14,
         ),
         'P' => 
         array (
+            'Psr\\Log\\' => 8,
             'PHPMailer\\PHPMailer\\' => 20,
+        ),
+        'J' => 
+        array (
+            'JsonSchema\\' => 11,
         ),
         'G' => 
         array (
@@ -43,16 +53,17 @@ class ComposerStaticInit21649f0820def83f5558d5617feb1eaf
         'D' => 
         array (
             'DrdPlus\\' => 8,
-            'Doctrineum\\' => 11,
-            'Doctrine\\ORM\\' => 13,
             'Doctrine\\Instantiator\\' => 22,
-            'Doctrine\\DBAL\\' => 14,
-            'Doctrine\\Common\\Inflector\\' => 26,
-            'Doctrine\\Common\\Cache\\' => 22,
-            'Doctrine\\Common\\Annotations\\' => 28,
-            'Doctrine\\Common\\' => 16,
             'DeviceDetector\\' => 15,
             'DeepCopy\\' => 9,
+        ),
+        'C' => 
+        array (
+            'Composer\\XdebugHandler\\' => 23,
+            'Composer\\Spdx\\' => 14,
+            'Composer\\Semver\\' => 16,
+            'Composer\\CaBundle\\' => 18,
+            'Composer\\' => 9,
         ),
     );
 
@@ -79,6 +90,18 @@ class ComposerStaticInit21649f0820def83f5558d5617feb1eaf
         array (
             0 => __DIR__ . '/..' . '/symfony/contracts',
         ),
+        'Symfony\\Component\\Process\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/process',
+        ),
+        'Symfony\\Component\\Finder\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/finder',
+        ),
+        'Symfony\\Component\\Filesystem\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/filesystem',
+        ),
         'Symfony\\Component\\CssSelector\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/css-selector',
@@ -87,9 +110,25 @@ class ComposerStaticInit21649f0820def83f5558d5617feb1eaf
         array (
             0 => __DIR__ . '/..' . '/symfony/console',
         ),
+        'Seld\\PharUtils\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/seld/phar-utils/src',
+        ),
+        'Seld\\JsonLint\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/seld/jsonlint/src/Seld/JsonLint',
+        ),
+        'Psr\\Log\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
+        ),
         'PHPMailer\\PHPMailer\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
+        ),
+        'JsonSchema\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/justinrainbow/json-schema/src/JsonSchema',
         ),
         'Gt\\Dom\\' => 
         array (
@@ -98,19 +137,23 @@ class ComposerStaticInit21649f0820def83f5558d5617feb1eaf
         'Granam\\' => 
         array (
             0 => __DIR__ . '/..' . '/granam/boolean/Granam',
-            1 => __DIR__ . '/..' . '/granam/dice-rolls/Granam',
-            2 => __DIR__ . '/..' . '/granam/exceptions-hierarchy/Granam',
-            3 => __DIR__ . '/..' . '/granam/float/Granam',
-            4 => __DIR__ . '/..' . '/granam/git/Granam',
-            5 => __DIR__ . '/..' . '/granam/integer/Granam',
-            6 => __DIR__ . '/..' . '/granam/number/Granam',
-            7 => __DIR__ . '/..' . '/granam/object-history/Granam',
-            8 => __DIR__ . '/..' . '/granam/scalar/Granam',
-            9 => __DIR__ . '/..' . '/granam/strict-object/Granam',
-            10 => __DIR__ . '/..' . '/granam/string/Granam',
-            11 => __DIR__ . '/..' . '/granam/tools/Granam',
-            12 => __DIR__ . '/..' . '/granam/web-content-builder/Granam',
-            13 => __DIR__ . '/..' . '/granam/yaml-reader/Granam',
+            1 => __DIR__ . '/..' . '/granam/boolean-enum/Granam',
+            2 => __DIR__ . '/..' . '/granam/dice-rolls/Granam',
+            3 => __DIR__ . '/..' . '/granam/exceptions-hierarchy/Granam',
+            4 => __DIR__ . '/..' . '/granam/float/Granam',
+            5 => __DIR__ . '/..' . '/granam/float-enum/Granam',
+            6 => __DIR__ . '/..' . '/granam/git/Granam',
+            7 => __DIR__ . '/..' . '/granam/integer/Granam',
+            8 => __DIR__ . '/..' . '/granam/integer-enum/Granam',
+            9 => __DIR__ . '/..' . '/granam/number/Granam',
+            10 => __DIR__ . '/..' . '/granam/object-history/Granam',
+            11 => __DIR__ . '/..' . '/granam/scalar/Granam',
+            12 => __DIR__ . '/..' . '/granam/scalar-enum/Granam',
+            13 => __DIR__ . '/..' . '/granam/strict-object/Granam',
+            14 => __DIR__ . '/..' . '/granam/string/Granam',
+            15 => __DIR__ . '/..' . '/granam/tools/Granam',
+            16 => __DIR__ . '/..' . '/granam/web-content-builder/Granam',
+            17 => __DIR__ . '/..' . '/granam/yaml-reader/Granam',
         ),
         'DrdPlus\\' => 
         array (
@@ -132,45 +175,9 @@ class ComposerStaticInit21649f0820def83f5558d5617feb1eaf
             15 => __DIR__ . '/..' . '/drdplus/tables/DrdPlus',
             16 => __DIR__ . '/..' . '/drdplus/web-versions/DrdPlus',
         ),
-        'Doctrineum\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/doctrineum/boolean/Doctrineum',
-            1 => __DIR__ . '/..' . '/doctrineum/entity/Doctrineum',
-            2 => __DIR__ . '/..' . '/doctrineum/float/Doctrineum',
-            3 => __DIR__ . '/..' . '/doctrineum/integer/Doctrineum',
-            4 => __DIR__ . '/..' . '/doctrineum/scalar/Doctrineum',
-            5 => __DIR__ . '/..' . '/doctrineum/self-registering-type/Doctrineum',
-        ),
-        'Doctrine\\ORM\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/doctrine/orm/lib/Doctrine/ORM',
-        ),
         'Doctrine\\Instantiator\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/instantiator/src/Doctrine/Instantiator',
-        ),
-        'Doctrine\\DBAL\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/doctrine/dbal/lib/Doctrine/DBAL',
-        ),
-        'Doctrine\\Common\\Inflector\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/doctrine/inflector/lib/Doctrine/Common/Inflector',
-        ),
-        'Doctrine\\Common\\Cache\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/doctrine/cache/lib/Doctrine/Common/Cache',
-        ),
-        'Doctrine\\Common\\Annotations\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/doctrine/annotations/lib/Doctrine/Common/Annotations',
-        ),
-        'Doctrine\\Common\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/doctrine/common/lib/Doctrine/Common',
-            1 => __DIR__ . '/..' . '/doctrine/event-manager/lib/Doctrine/Common',
-            2 => __DIR__ . '/..' . '/doctrine/persistence/lib/Doctrine/Common',
-            3 => __DIR__ . '/..' . '/doctrine/reflection/lib/Doctrine/Common',
         ),
         'DeviceDetector\\' => 
         array (
@@ -179,6 +186,26 @@ class ComposerStaticInit21649f0820def83f5558d5617feb1eaf
         'DeepCopy\\' => 
         array (
             0 => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy',
+        ),
+        'Composer\\XdebugHandler\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/composer/xdebug-handler/src',
+        ),
+        'Composer\\Spdx\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/composer/spdx-licenses/src',
+        ),
+        'Composer\\Semver\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/composer/semver/src',
+        ),
+        'Composer\\CaBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/composer/ca-bundle/src',
+        ),
+        'Composer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/composer/composer/src/Composer',
         ),
     );
 
@@ -199,17 +226,6 @@ class ComposerStaticInit21649f0820def83f5558d5617feb1eaf
             'Mockery' => 
             array (
                 0 => __DIR__ . '/..' . '/mockery/mockery/library',
-            ),
-        ),
-        'D' => 
-        array (
-            'Doctrine\\Common\\Lexer\\' => 
-            array (
-                0 => __DIR__ . '/..' . '/doctrine/lexer/lib',
-            ),
-            'Doctrine\\Common\\Collections\\' => 
-            array (
-                0 => __DIR__ . '/..' . '/doctrine/collections/lib',
             ),
         ),
     );

@@ -1,9 +1,10 @@
 <?php
-declare(strict_types=1);/** be strict for parameter types, https://www.quora.com/Are-strict_types-in-PHP-7-not-a-bad-idea */
+declare(strict_types=1);
+
 namespace DrdPlus\Tests\Properties\Restrictions;
 
-use DrdPlus\Tests\Properties\AbstractBooleanStoredPropertyTest;
+use DrdPlus\Tests\Properties\Partials\AbstractBooleanPropertyTest;
 
-class RequiresDmAgreementTest extends AbstractBooleanStoredPropertyTest
+class RequiresDmAgreementTest extends AbstractBooleanPropertyTest
 {
 }

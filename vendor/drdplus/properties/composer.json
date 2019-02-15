@@ -11,14 +11,13 @@
   "require": {
     "php": ">=7.1",
     "granam/string": "^3.0",
-    "granam/strict-object": "^3.0",
-    "doctrineum/scalar": "^3.1",
-    "drdplus/codes": "^1.0",
-    "doctrineum/integer": "^3.1",
-    "doctrineum/float": "^3.1",
-    "doctrineum/boolean": "^2.1",
-    "drdplus/base-properties": "^1.0",
-    "drdplus/tables": "^1.0",
+    "granam/scalar-enum": "~1.0",
+    "granam/integer-enum": "~1.0",
+    "granam/float-enum": "~1.0",
+    "granam/boolean-enum": "~1.0",
+    "drdplus/codes": "~2.0",
+    "drdplus/tables": "~2.0",
+    "drdplus/base-properties": "~2.0",
     "drdplus/calculations": "^1.0"
   },
   "require-dev": {

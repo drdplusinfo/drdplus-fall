@@ -1,14 +1,12 @@
 <?php
-declare(strict_types=1);/** be strict for parameter types, https://www.quora.com/Are-strict_types-in-PHP-7-not-a-bad-idea */
+declare(strict_types=1);
+
 namespace DrdPlus\Properties\Derived\Partials;
 
 use DrdPlus\Properties\Derived\DerivedProperty;
-use DrdPlus\Properties\Partials\WithHistoryTrait;
 use Granam\Integer\IntegerInterface;
 use Granam\Integer\Tools\ToInteger;
 use Granam\Strict\Object\StrictObject;
-
-/** @noinspection SingletonFactoryPatternViolationInspection */
 
 /**
  * Unlike \DrdPlus\Properties\AbstractDerivedProperty this is not an enum because is not intended to be persisted (is
@@ -16,8 +14,6 @@ use Granam\Strict\Object\StrictObject;
  */
 abstract class AbstractDerivedProperty extends StrictObject implements DerivedProperty
 {
-    use WithHistoryTrait;
-
     /**
      * @var int
      */
@@ -31,7 +27,6 @@ abstract class AbstractDerivedProperty extends StrictObject implements DerivedPr
     protected function __construct($value)
     {
         $this->value = ToInteger::toInteger($value);
-        $this->noticeChange();
     }
 
     /**
@@ -42,9 +37,6 @@ abstract class AbstractDerivedProperty extends StrictObject implements DerivedPr
         return (string)$this->getValue();
     }
 
-    /**
-     * @return int
-     */
     public function getValue(): int
     {
         return $this->value;
@@ -58,9 +50,8 @@ abstract class AbstractDerivedProperty extends StrictObject implements DerivedPr
      */
     public function add($value): AbstractDerivedProperty
     {
-        $increased = clone $this; // clones history as well
+        $increased = clone $this;
         $increased->value += ToInteger::toInteger($value);
-        $increased->noticeChange();
 
         return $increased;
     }
@@ -73,9 +64,8 @@ abstract class AbstractDerivedProperty extends StrictObject implements DerivedPr
      */
     public function sub($value): AbstractDerivedProperty
     {
-        $decreased = clone $this; // clones history as well
+        $decreased = clone $this;
         $decreased->value -= ToInteger::toInteger($value);
-        $decreased->noticeChange();
 
         return $decreased;
     }
