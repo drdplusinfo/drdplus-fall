@@ -1,5 +1,6 @@
 <?php
-/** @var \DrdPlus\Calculators\Fall\CurrentFallValues $currentFallValues */
+/** @var \DrdPlus\Calculators\Fall\FallWebPartsContainer $webPartsContainer */
+$currentFallValues = $webPartsContainer->getCurrentFallValues();
 ?>
 <div class="row">
   <h2 id="zbroj" class="col"><a href="#zbroj" class="inner">Zbroj</a></h2>
@@ -14,7 +15,7 @@
               </option>
             <?php } ?>
       </select>
-      <span class="hint">(může snížit zranění při dopadu na ostrý povrch)</span>
+      <span class="hint">(chrání při dopadu na tvrdý či ostrý povrch)</span>
     </label>
   </div>
   <div class="col">
@@ -27,7 +28,7 @@
             </option>
           <?php } ?>
       </select>
-      <span class="hint">(při zranění hlavy)</span>
+      <span class="hint">(chrání při zranění hlavy a tvrdém či ostrém povrchu)</span>
     </label>
   </div>
 </div>

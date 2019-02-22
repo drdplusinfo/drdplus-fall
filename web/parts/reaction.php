@@ -1,5 +1,6 @@
 <?php
-/** @var \DrdPlus\Calculators\Fall\CurrentFallValues $currentFallValues */
+/** @var \DrdPlus\Calculators\Fall\FallWebPartsContainer $webPartsContainer */
+$currentFallValues = $webPartsContainer->getCurrentFallValues();
 ?>
 <div class="row">
   <h2 id="akce_a_reakce" class="col"><a href="#akce_a_reakce" class="inner">Akce a reakce</a></h2>

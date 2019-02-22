@@ -6,5 +6,6 @@
     include __DIR__ . '/../parts/falling.php';
     include __DIR__ . '/../parts/reaction.php';
     include __DIR__ . '/../parts/armor.php';
-    include __DIR__ . '/../parts/result.php'; ?>
+    include __DIR__ . '/../parts/result.php';
+    ?>
 </form>

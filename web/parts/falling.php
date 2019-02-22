@@ -1,7 +1,8 @@
 <?php
 use DrdPlus\Codes\Transport\RidingAnimalCode;
 
-/** @var \DrdPlus\Calculators\Fall\CurrentFallValues $currentFallValues */
+/** @var \DrdPlus\Calculators\Fall\FallWebPartsContainer $webPartsContainer */
+$currentFallValues = $webPartsContainer->getCurrentFallValues();
 ?>
 <div class="row">
   <h2 id="pad" class="col"><a href="#pad">Pád</a></h2>
