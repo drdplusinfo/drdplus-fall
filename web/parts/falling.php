@@ -91,7 +91,7 @@ $currentFallValues = $webPartsContainer->getCurrentFallValues();
         <input name="<?= $currentFallValues::BODY_WEIGHT ?>" type="number" placeholder="váha v kg" class="few-numbers"
                min="0" max="250"
                required
-               value="<?= $currentFallValues->getCurrentBodyWeight() ? $currentFallValues->getCurrentBodyWeight()->getValue() : '' ?>">
+               value="<?= $currentFallValues->getCurrentWeightOfBody() ? $currentFallValues->getCurrentWeightOfBody()->getValue() : '' ?>">
         kg
       </label>
     </div>

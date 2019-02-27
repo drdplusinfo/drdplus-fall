@@ -5,6 +5,7 @@ namespace DrdPlus\Calculators\Fall;
 
 use DrdPlus\CalculatorSkeleton\CalculatorServicesContainer;
 use DrdPlus\RulesSkeleton\Web\WebPartsContainer;
+use DrdPlus\Tables\Tables;
 
 class FallServicesContainer extends CalculatorServicesContainer
 {
@@ -12,6 +13,8 @@ class FallServicesContainer extends CalculatorServicesContainer
     private $currentFallValues;
     /** @var FallWebPartsContainer */
     private $fallWebPartsContainer;
+    /** @var Tables */
+    private $tables;
 
     public function getWebPartsContainer(): WebPartsContainer
     {
@@ -31,9 +34,17 @@ class FallServicesContainer extends CalculatorServicesContainer
     public function getCurrentFallValues(): CurrentFallValues
     {
         if ($this->currentFallValues === null) {
-            $this->currentFallValues = new CurrentFallValues($this->getCurrentValues());
+            $this->currentFallValues = new CurrentFallValues($this->getCurrentValues(), $this->getTables());
         }
         return $this->currentFallValues;
+    }
+
+    public function getTables(): Tables
+    {
+        if ($this->tables === null) {
+            $this->tables = Tables::getIt();
+        }
+        return $this->tables;
     }
 
 }

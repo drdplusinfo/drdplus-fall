@@ -19,7 +19,10 @@ use DrdPlus\Properties\Body\BodyWeight;
 use DrdPlus\Skills\Physical\Athletics;
 use DrdPlus\Skills\Physical\PhysicalSkillPoint;
 use DrdPlus\Tables\Measurements\Distance\Distance;
+use DrdPlus\Tables\Measurements\Partials\Exceptions\RequestedDataOutOfTableRange;
+use DrdPlus\Tables\Measurements\Partials\Exceptions\UnknownBonus;
 use DrdPlus\Tables\Measurements\Weight\Weight;
+use DrdPlus\Tables\Measurements\Wounds\Wounds;
 use DrdPlus\Tables\Measurements\Wounds\WoundsBonus;
 use DrdPlus\Tables\Tables;
 use Granam\DiceRolls\Templates\DiceRolls\Dice1d6Roll;
@@ -52,10 +55,15 @@ class CurrentFallValues extends StrictObject
     public const HEAD = 'head';
 
     private $currentValues;
+    /**
+     * @var Tables
+     */
+    private $tables;
 
-    public function __construct(CurrentValues $currentValues)
+    public function __construct(CurrentValues $currentValues, Tables $tables)
     {
         $this->currentValues = $currentValues;
+        $this->tables = $tables;
     }
 
     /**
@@ -120,10 +128,10 @@ class CurrentFallValues extends StrictObject
                 ProfessionFirstLevel::createFirstLevel(Commoner::getIt()),
                 SkillPointsFromBackground::getIt(
                     new PositiveIntegerObject(8),
-                    Ancestry::getIt(new PositiveIntegerObject(8), Tables::getIt()),
-                    Tables::getIt()
+                    Ancestry::getIt(new PositiveIntegerObject(8), $this->tables),
+                    $this->tables
                 ),
-                Tables::getIt()
+                $this->tables
             ));
         }
 
@@ -235,22 +243,22 @@ class CurrentFallValues extends StrictObject
         bool $horseIsJumping
     ): int
     {
-        return Tables::getIt()->getWoundsOnFallFromHorseTable()
+        return $this->tables->getWoundsOnFallFromHorseTable()
             ->getWoundsAdditionOnFallFromHorse(
                 $ridingAnimalMovementCode,
                 $horseIsJumping,
-                Tables::getIt()->getWoundsTable()
+                $this->tables->getWoundsTable()
             )->getValue();
     }
 
     public function getProtectionOfBodyArmor(BodyArmorCode $bodyArmorCode): int
     {
-        return Tables::getIt()->getBodyArmorsTable()->getProtectionOf($bodyArmorCode);
+        return $this->tables->getBodyArmorsTable()->getProtectionOf($bodyArmorCode);
     }
 
     public function getProtectionOfHelm(HelmCode $helmCode): int
     {
-        return Tables::getIt()->getHelmsTable()->getProtectionOf($helmCode);
+        return $this->tables->getHelmsTable()->getProtectionOf($helmCode);
     }
 
     /**
@@ -276,7 +284,7 @@ class CurrentFallValues extends StrictObject
      */
     public function getWoundsModifierBySurface(LandingSurfaceCode $landingSurfaceCode): IntegerWithHistory
     {
-        return Tables::getIt()->getLandingSurfacesTable()->getBaseOfWoundsModifier(
+        return $this->tables->getLandingSurfacesTable()->getBaseOfWoundsModifier(
             $landingSurfaceCode,
             $this->getSelectedAgilityWithReaction(),
             new PositiveIntegerObject($this->getProtectionOfBodyArmor($this->getSelectedBodyArmor()))
@@ -305,29 +313,23 @@ class CurrentFallValues extends StrictObject
 
     public function getWoundsByFall(): ?int
     {
-        if (!$this->isFallingFromHeight() && !$this->isFallingFromHorseback()) {
+        $isFallingFromHorseback = $this->isFallingFromHorseback();
+        if (!$isFallingFromHorseback && !$this->isFallingFromHeight()) {
             return null;
         }
-        if (!$this->getCurrentBodyWeight() || !$this->getCurrentBadLuck()) {
+        $currentBadLuck = $this->getCurrentBadLuck();
+        if (!$currentBadLuck) {
             return null;
         }
-        $woundsFromFall = Tables::getIt()->getJumpsAndFallsTable()->getWoundsFromJumpOrFall(
-            $this->isFallingFromHorseback()
-                ? $this->getSelectedRidingAnimalHeight()
-                : $this->getSelectedHeightOfFall(),
-            BodyWeight::getIt($this->getCurrentBodyWeight()),
-            $this->getSelectedItemsWeight(),
-            $this->getCurrentBadLuck(),
-            $this->isJumpControlled(),
-            $this->getSelectedAgilityWithReaction(),
-            $this->getSelectedAthletics(),
-            $this->getSelectedLandingSurface(),
-            new PositiveIntegerObject($this->getProtectionOfBodyArmor($this->getSelectedBodyArmor())),
-            $this->isHitToHead(),
-            new PositiveIntegerObject($this->getProtectionOfHelm($this->getSelectedHelm())),
-            Tables::getIt()
-        );
-        if ($this->isFallingFromHorseback()) {
+        $currentBodyWeight = $this->getCurrentBodyWeight();
+        if (!$currentBodyWeight) {
+            return null;
+        }
+        $woundsFromFall = $this->getWoundsFromJumpOrFall($isFallingFromHorseback, $currentBodyWeight);
+        if (!$woundsFromFall) {
+            return null;
+        }
+        if ($isFallingFromHorseback) {
             $baseOfWoundsModifierByMovement = $this->getBaseOfWoundsModifierByMovement(
                 $this->getSelectedRidingAnimalMovement(),
                 $this->isHorseJumping()
@@ -335,7 +337,7 @@ class CurrentFallValues extends StrictObject
             if ($baseOfWoundsModifierByMovement !== 0) {
                 $woundsFromFall = (new WoundsBonus(
                     $woundsFromFall->getBonus()->getValue() + $baseOfWoundsModifierByMovement,
-                    Tables::getIt()->getWoundsTable()
+                    $this->tables->getWoundsTable()
                 ))->getWounds();
             }
         }
@@ -343,12 +345,49 @@ class CurrentFallValues extends StrictObject
         return $woundsFromFall->getValue();
     }
 
+    private function getWoundsFromJumpOrFall(bool $isFallingFromHorseback, BodyWeight $currentBodyWeight): ?Wounds
+    {
+        try {
+            return $this->tables->getJumpsAndFallsTable()->getWoundsFromJumpOrFall(
+                $isFallingFromHorseback
+                    ? $this->getSelectedRidingAnimalHeight()
+                    : $this->getSelectedHeightOfFall(),
+                $currentBodyWeight,
+                $this->getSelectedItemsWeight(),
+                $this->getCurrentBadLuck(),
+                $this->isJumpControlled(),
+                $this->getSelectedAgilityWithReaction(),
+                $this->getSelectedAthletics(),
+                $this->getSelectedLandingSurface(),
+                new PositiveIntegerObject($this->getProtectionOfBodyArmor($this->getSelectedBodyArmor())),
+                $this->isHitToHead(),
+                new PositiveIntegerObject($this->getProtectionOfHelm($this->getSelectedHelm())),
+                $this->tables
+            );
+        } catch (RequestedDataOutOfTableRange | UnknownBonus $problem) {
+            return null;
+        }
+    }
+
+    private function getCurrentBodyWeight(): ?BodyWeight
+    {
+        $currentWeightOfBody = $this->getCurrentWeightOfBody();
+        if (!$currentWeightOfBody) {
+            return null;
+        }
+        try {
+            return BodyWeight::getIt($this->getCurrentWeightOfBody());
+        } catch (RequestedDataOutOfTableRange | UnknownBonus $problem) {
+            return null;
+        }
+    }
+
     private function getSelectedRidingAnimalHeight(): Distance
     {
         return new Distance(
             (float)$this->currentValues->getCurrentValue(self::HORSE_HEIGHT),
             DistanceUnitCode::METER,
-            Tables::getIt()->getDistanceTable()
+            $this->tables->getDistanceTable()
         );
     }
 
@@ -356,10 +395,10 @@ class CurrentFallValues extends StrictObject
     {
         $heightOfFall = $this->currentValues->getCurrentValue(self::HEIGHT_OF_FALL);
         if (!$heightOfFall) {
-            return new Distance(0, DistanceUnitCode::METER, Tables::getIt()->getDistanceTable());
+            return new Distance(0, DistanceUnitCode::METER, $this->tables->getDistanceTable());
         }
 
-        return new Distance($heightOfFall, DistanceUnitCode::METER, Tables::getIt()->getDistanceTable());
+        return new Distance($heightOfFall, DistanceUnitCode::METER, $this->tables->getDistanceTable());
     }
 
     private function getSelectedRidingAnimalMovement(): RidingAnimalMovementCode
@@ -372,14 +411,14 @@ class CurrentFallValues extends StrictObject
         return RidingAnimalMovementCode::getIt($selectedMovement);
     }
 
-    public function getCurrentBodyWeight(): ?Weight
+    public function getCurrentWeightOfBody(): ?Weight
     {
         $weight = $this->currentValues->getCurrentValue(self::BODY_WEIGHT);
         if (!$weight) {
             return null;
         }
 
-        return new Weight($weight, Weight::KG, Tables::getIt()->getWeightTable());
+        return new Weight($weight, Weight::KG, $this->tables->getWeightTable());
     }
 
     public function getSelectedItemsWeight(): ?Weight
@@ -389,7 +428,7 @@ class CurrentFallValues extends StrictObject
             return null;
         }
 
-        return new Weight($weight, Weight::KG, Tables::getIt()->getWeightTable());
+        return new Weight($weight, Weight::KG, $this->tables->getWeightTable());
     }
 
     public function getCurrentBadLuck(): Roll1d6
