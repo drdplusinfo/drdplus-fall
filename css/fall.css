@@ -31,3 +31,7 @@ input:not(.manual)[type=submit] {
 .background-image {
     background-size: contain;
 }
+
+select {
+    max-width: 100%;
+}

@@ -15,8 +15,8 @@ $currentFallValues = $webPartsContainer->getCurrentFallValues();
               </option>
             <?php } ?>
       </select>
-      <span class="hint">(chrání při dopadu na tvrdý či ostrý povrch)</span>
     </label>
+    <div class="hint">(chrání při dopadu na tvrdý či ostrý povrch)</div>
   </div>
   <div class="col">
     <label>
@@ -28,8 +28,8 @@ $currentFallValues = $webPartsContainer->getCurrentFallValues();
             </option>
           <?php } ?>
       </select>
-      <span class="hint">(chrání při zranění hlavy a tvrdém či ostrém povrchu)</span>
     </label>
+    <div class="hint">(chrání při zranění hlavy a tvrdém či ostrém povrchu)</div>
   </div>
 </div>
 <div class="block"><input type="submit" value="Přepočítat"></div>
