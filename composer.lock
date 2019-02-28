@@ -1009,16 +1009,16 @@
         },
         {
             "name": "granam/git",
-            "version": "1.2.0",
+            "version": "1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/granam/git.git",
-                "reference": "b9b55b2f6e0515f8a148b23257c205ca069d1c9d"
+                "reference": "ee6f058dce067067c89237663313f9bc08e0f7de"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/granam/git/zipball/b9b55b2f6e0515f8a148b23257c205ca069d1c9d",
-                "reference": "b9b55b2f6e0515f8a148b23257c205ca069d1c9d",
+                "url": "https://api.github.com/repos/granam/git/zipball/ee6f058dce067067c89237663313f9bc08e0f7de",
+                "reference": "ee6f058dce067067c89237663313f9bc08e0f7de",
                 "shasum": ""
             },
             "require": {
@@ -1048,7 +1048,7 @@
                 "tag",
                 "versions"
             ],
-            "time": "2019-01-23T22:07:32+00:00"
+            "time": "2019-02-27T19:17:43+00:00"
         },
         {
             "name": "granam/integer",
