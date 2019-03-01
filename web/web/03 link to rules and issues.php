@@ -3,7 +3,7 @@
 </div>
 <div class="row">
   <div class="col">
-    <a href="https://pph.drdplus.info/#skoky_a_pady_z_vysky">Pravidla pro zranění při pádu v PPH</a>
+    <a href="https://pph.drdplus.info/?trial=1#skoky_a_pady_z_vysky">Pravidla pro zranění při pádu v PPH</a>
   </div>
   <div class="col">
       <?= /** @var \DrdPlus\Calculators\Fall\FallWebPartsContainer $webPartsContainer */
