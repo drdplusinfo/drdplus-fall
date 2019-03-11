@@ -29,6 +29,7 @@ use Granam\DiceRolls\Templates\DiceRolls\Dice1d6Roll;
 use Granam\DiceRolls\Templates\Rolls\Roll1d6;
 use Granam\Integer\IntegerWithHistory;
 use Granam\Integer\PositiveIntegerObject;
+use Granam\Scalar\Tools\Exceptions\WrongParameterType;
 use Granam\Strict\Object\StrictObject;
 
 class CurrentFallValues extends StrictObject
@@ -364,7 +365,8 @@ class CurrentFallValues extends StrictObject
                 new PositiveIntegerObject($this->getProtectionOfHelm($this->getSelectedHelm())),
                 $this->tables
             );
-        } catch (RequestedDataOutOfTableRange | UnknownBonus $problem) {
+        } catch (RequestedDataOutOfTableRange | UnknownBonus | WrongParameterType /* Some value has been lost on cast. Got 4.4668359215096165E+50, cast into 0 */
+        $problem) {
             return null;
         }
     }

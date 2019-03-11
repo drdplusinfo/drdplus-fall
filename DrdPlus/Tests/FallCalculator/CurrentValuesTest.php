@@ -7,6 +7,7 @@ use DrdPlus\Calculators\Fall\CurrentFallValues;
 use DrdPlus\CalculatorSkeleton\CurrentValues;
 use DrdPlus\Codes\Armaments\BodyArmorCode;
 use DrdPlus\Codes\Armaments\HelmCode;
+use DrdPlus\Tables\Tables;
 use DrdPlus\Tests\CalculatorSkeleton\Partials\AbstractCalculatorContentTest;
 use Granam\DiceRolls\Templates\DiceRolls\Dice1d6Roll;
 use Granam\DiceRolls\Templates\Rolls\Roll1d6;
@@ -35,7 +36,7 @@ class CurrentValuesTest extends AbstractCalculatorContentTest
 
     private function createCurrentFallValues(): CurrentFallValues
     {
-        return new CurrentFallValues($this->createCurrentValues());
+        return new CurrentFallValues($this->createCurrentValues(), Tables::getIt());
     }
 
     /**
