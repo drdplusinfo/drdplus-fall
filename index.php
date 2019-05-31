@@ -3,6 +3,7 @@ namespace DrdPlus\Calculators\Fall;
 
 use DrdPlus\CalculatorSkeleton\CalculatorConfiguration;
 use DrdPlus\CalculatorSkeleton\CalculatorApplication;
+use DrdPlus\RulesSkeleton\Environment;
 use DrdPlus\RulesSkeleton\HtmlHelper;
 use DrdPlus\RulesSkeleton\TracyDebugger;
 
@@ -18,7 +19,7 @@ $documentRoot = $documentRoot ?? (PHP_SAPI !== 'cli' ? \rtrim(\dirname($_SERVER[
 require_once $documentRoot . '/vendor/autoload.php';
 
 $dirs = new FallDirs($documentRoot);
-$htmlHelper = $htmlHelper ?? HtmlHelper::createFromGlobals($dirs);
+$htmlHelper = $htmlHelper ?? HtmlHelper::createFromGlobals($dirs, new Environment());
 if (\PHP_SAPI !== 'cli') {
     TracyDebugger::enable($htmlHelper->isInProduction());
 }

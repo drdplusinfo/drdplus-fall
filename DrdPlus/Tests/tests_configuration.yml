@@ -14,3 +14,4 @@ has_authors: false
 has_character_sheet: false
 has_links_to_journals: false
 has_link_to_single_journal: false
+has_ids: false
