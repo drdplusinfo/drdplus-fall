@@ -26,7 +26,7 @@ use DrdPlus\Tables\Measurements\Wounds\WoundsBonus;
 use DrdPlus\Tables\Tables;
 use Granam\DiceRolls\Templates\DiceRolls\Dice1d6Roll;
 use Granam\DiceRolls\Templates\Rolls\Roll1d6;
-use Granam\Integer\IntegerWithHistory;
+use Granam\Integer\IntegerInterface;
 use Granam\Integer\PositiveIntegerObject;
 use Granam\Scalar\Tools\Exceptions\WrongParameterType;
 use Granam\Strict\Object\StrictObject;
@@ -280,9 +280,9 @@ class CurrentFallValues extends StrictObject
      * Also agility is taken into account (for water).
      *
      * @param LandingSurfaceCode $landingSurfaceCode
-     * @return IntegerWithHistory
+     * @return IntegerInterface
      */
-    public function getWoundsModifierBySurface(LandingSurfaceCode $landingSurfaceCode): IntegerWithHistory
+    public function getWoundsModifierBySurface(LandingSurfaceCode $landingSurfaceCode): IntegerInterface
     {
         return $this->tables->getLandingSurfacesTable()->getBaseOfWoundsModifier(
             $landingSurfaceCode,

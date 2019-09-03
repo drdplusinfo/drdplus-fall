@@ -3,7 +3,6 @@
 namespace DrdPlus\Calculators\Fall;
 
 use DrdPlus\CalculatorSkeleton\CalculatorServicesContainer;
-use DrdPlus\RulesSkeleton\Dirs;
 use DrdPlus\RulesSkeleton\Web\WebPartsContainer;
 use DrdPlus\Tables\Tables;
 
@@ -45,11 +44,5 @@ class FallServicesContainer extends CalculatorServicesContainer
             $this->tables = Tables::getIt();
         }
         return $this->tables;
-    }
-
-    protected function createRoutedDirs(Dirs $dirs): Dirs
-    {
-        $match = $this->getRulesUrlMatcher()->match($this->getRequest()->getCurrentUrl());
-        return new FallDirs($dirs->getProjectRoot(), $match->getPath());
     }
 }

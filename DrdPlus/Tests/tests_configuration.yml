@@ -15,3 +15,6 @@ has_character_sheet: false
 has_links_to_journals: false
 has_link_to_single_journal: false
 has_ids: false
+has_pdf: false
+has_calculations: false
+has_marked_content: false

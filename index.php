@@ -1,8 +1,10 @@
-<?php
+<?php declare(strict_types=1);
+
 namespace DrdPlus\Calculators\Fall;
 
 use DrdPlus\CalculatorSkeleton\CalculatorConfiguration;
 use DrdPlus\CalculatorSkeleton\CalculatorApplication;
+use DrdPlus\RulesSkeleton\Dirs;
 use DrdPlus\RulesSkeleton\Environment;
 use DrdPlus\RulesSkeleton\HtmlHelper;
 use DrdPlus\RulesSkeleton\TracyDebugger;
@@ -18,13 +20,13 @@ $documentRoot = $documentRoot ?? (PHP_SAPI !== 'cli' ? \rtrim(\dirname($_SERVER[
 /** @noinspection PhpIncludeInspection */
 require_once $documentRoot . '/vendor/autoload.php';
 
-$dirs = new FallDirs($documentRoot);
-$htmlHelper = $htmlHelper ?? HtmlHelper::createFromGlobals($dirs, new Environment());
+$dirs = new Dirs($documentRoot);
+$htmlHelper = $htmlHelper ?? HtmlHelper::createFromGlobals($dirs, Environment::createFromGlobals());
 if (\PHP_SAPI !== 'cli') {
     TracyDebugger::enable($htmlHelper->isInProduction());
 }
 $configuration = CalculatorConfiguration::createFromYml($dirs);
 $servicesContainer = new FallServicesContainer($configuration, $htmlHelper);
-$calculatorApplication = $calculatorApplication ?? $controller ?? new CalculatorApplication($servicesContainer);
+$calculatorApplication = $rulesApplication ?? $controller ?? new CalculatorApplication($servicesContainer);
 
 $calculatorApplication->run();
