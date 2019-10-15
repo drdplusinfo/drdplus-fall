@@ -15,12 +15,12 @@ class FallServicesContainer extends CalculatorServicesContainer
     /** @var Tables */
     private $tables;
 
-    public function getWebPartsContainer(): WebPartsContainer
+    public function getRoutedWebPartsContainer(): WebPartsContainer
     {
         if ($this->fallWebPartsContainer === null) {
             $this->fallWebPartsContainer = new FallWebPartsContainer(
                 $this->getPass(),
-                $this->getWebFiles(),
+                $this->getRoutedWebFiles(),
                 $this->getDirs(),
                 $this->getHtmlHelper(),
                 $this->getRequest(),
