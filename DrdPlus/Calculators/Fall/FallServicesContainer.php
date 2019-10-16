@@ -3,6 +3,7 @@
 namespace DrdPlus\Calculators\Fall;
 
 use DrdPlus\CalculatorSkeleton\CalculatorServicesContainer;
+use DrdPlus\RulesSkeleton\Web\WebFiles;
 use DrdPlus\RulesSkeleton\Web\WebPartsContainer;
 use DrdPlus\Tables\Tables;
 
@@ -18,14 +19,27 @@ class FallServicesContainer extends CalculatorServicesContainer
     public function getRoutedWebPartsContainer(): WebPartsContainer
     {
         if ($this->fallWebPartsContainer === null) {
-            $this->fallWebPartsContainer = new FallWebPartsContainer(
-                $this->getPass(),
-                $this->getRoutedWebFiles(),
-                $this->getDirs(),
-                $this->getHtmlHelper(),
-                $this->getRequest(),
-                $this->getCurrentFallValues()
-            );
+            $this->fallWebPartsContainer = $this->createFallWebPartsContainer($this->getRoutedWebFiles());
+        }
+        return $this->fallWebPartsContainer;
+    }
+
+    private function createFallWebPartsContainer(WebFiles $webFiles): FallWebPartsContainer
+    {
+        return new FallWebPartsContainer(
+            $this->getPass(),
+            $webFiles,
+            $this->getDirs(),
+            $this->getHtmlHelper(),
+            $this->getRequest(),
+            $this->getCurrentFallValues()
+        );
+    }
+
+    public function getRootWebPartsContainer(): WebPartsContainer
+    {
+        if ($this->fallWebPartsContainer === null) {
+            $this->fallWebPartsContainer = $this->createFallWebPartsContainer($this->getRootWebFiles());
         }
         return $this->fallWebPartsContainer;
     }
