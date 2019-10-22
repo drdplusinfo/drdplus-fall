@@ -532,17 +532,17 @@
     },
     {
         "name": "drdplus/calculator-skeleton",
-        "version": "1.1.13",
-        "version_normalized": "1.1.13.0",
+        "version": "1.1.14",
+        "version_normalized": "1.1.14.0",
         "source": {
             "type": "git",
             "url": "https://github.com/drdplusinfo/calculator-skeleton.git",
-            "reference": "6a7c044ace115e857b8bd82fe2f4862d353a9291"
+            "reference": "ad5a91099ad9bd4564ac112652d93bc454881399"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/drdplusinfo/calculator-skeleton/zipball/6a7c044ace115e857b8bd82fe2f4862d353a9291",
-            "reference": "6a7c044ace115e857b8bd82fe2f4862d353a9291",
+            "url": "https://api.github.com/repos/drdplusinfo/calculator-skeleton/zipball/ad5a91099ad9bd4564ac112652d93bc454881399",
+            "reference": "ad5a91099ad9bd4564ac112652d93bc454881399",
             "shasum": ""
         },
         "require": {
@@ -558,7 +558,7 @@
             "phpunit/phpunit": "~8.3",
             "roave/security-advisories": "dev-master"
         },
-        "time": "2019-10-16T08:28:21+00:00",
+        "time": "2019-10-18T11:13:37+00:00",
         "type": "composer-plugin",
         "extra": {
             "class": "DrdPlus\\CalculatorSkeleton\\CalculatorInjectorComposerPlugin"
@@ -855,17 +855,17 @@
     },
     {
         "name": "drdplus/rules-skeleton",
-        "version": "1.7.12",
-        "version_normalized": "1.7.12.0",
+        "version": "1.7.17",
+        "version_normalized": "1.7.17.0",
         "source": {
             "type": "git",
             "url": "https://github.com/drdplusinfo/rules-skeleton.git",
-            "reference": "3b0ce9e2f6a2d40f2f2e5f51202d9eb0ecdee1f3"
+            "reference": "4cc52fbe6dd9783c7801f749b5288961ae5c7d0a"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/drdplusinfo/rules-skeleton/zipball/3b0ce9e2f6a2d40f2f2e5f51202d9eb0ecdee1f3",
-            "reference": "3b0ce9e2f6a2d40f2f2e5f51202d9eb0ecdee1f3",
+            "url": "https://api.github.com/repos/drdplusinfo/rules-skeleton/zipball/4cc52fbe6dd9783c7801f749b5288961ae5c7d0a",
+            "reference": "4cc52fbe6dd9783c7801f749b5288961ae5c7d0a",
             "shasum": ""
         },
         "require": {
@@ -898,7 +898,7 @@
             "phpunit/phpunit": "^8.3",
             "roave/security-advisories": "dev-master"
         },
-        "time": "2019-10-17T06:34:14+00:00",
+        "time": "2019-10-22T12:06:18+00:00",
         "bin": [
             "bin/fix_web_permissions.sh"
         ],
@@ -1131,8 +1131,8 @@
         "authors": [
             {
                 "name": "Jaroslav Týc",
-                "role": "Original author",
-                "homepage": "http://jaroslavtyc.com"
+                "homepage": "http://jaroslavtyc.com",
+                "role": "Original author"
             }
         ],
         "description": "Lightweight boolean container with stand-alone converter",
@@ -1184,9 +1184,9 @@
         "authors": [
             {
                 "name": "Jaroslav Týc",
-                "role": "Developer",
                 "email": "mail@jaroslavtyc.com",
-                "homepage": "https://www.jaroslavtyc.com"
+                "homepage": "https://www.jaroslavtyc.com",
+                "role": "Developer"
             }
         ],
         "description": "Enumeration with booleans only"
@@ -1231,8 +1231,8 @@
         "authors": [
             {
                 "name": "Jaroslav Týc",
-                "role": "Original author",
-                "homepage": "https://www.jaroslavtyc.com"
+                "homepage": "https://www.jaroslavtyc.com",
+                "role": "Original author"
             }
         ],
         "description": "Configurable roll of a dice",
@@ -1330,8 +1330,8 @@
         "authors": [
             {
                 "name": "Jaroslav Týc",
-                "role": "Original author",
-                "homepage": "https://www.jaroslavtyc.com"
+                "homepage": "https://www.jaroslavtyc.com",
+                "role": "Original author"
             }
         ],
         "description": "Converter and wrapping object for a float value",
@@ -1382,9 +1382,9 @@
         "authors": [
             {
                 "name": "Jaroslav Týc",
-                "role": "Developer",
                 "email": "mail@jaroslavtyc.com",
-                "homepage": "https://www.jaroslavtyc.com"
+                "homepage": "https://www.jaroslavtyc.com",
+                "role": "Developer"
             }
         ],
         "description": "Enumeration with floats only"
@@ -1473,8 +1473,8 @@
         "authors": [
             {
                 "name": "Jaroslav Týc",
-                "role": "Original author",
-                "homepage": "http://jaroslavtyc.com"
+                "homepage": "http://jaroslavtyc.com",
+                "role": "Original author"
             }
         ],
         "description": "Lightweight integer container with stand-alone converter",
@@ -1526,9 +1526,9 @@
         "authors": [
             {
                 "name": "Jaroslav Týc",
-                "role": "Developer",
                 "email": "mail@jaroslavtyc.com",
-                "homepage": "https://www.jaroslavtyc.com"
+                "homepage": "https://www.jaroslavtyc.com",
+                "role": "Developer"
             }
         ],
         "description": "Enumeration with integers only"
@@ -1572,8 +1572,8 @@
         "authors": [
             {
                 "name": "Jaroslav Týc",
-                "role": "Original author",
-                "homepage": "http://jaroslavtyc.com"
+                "homepage": "http://jaroslavtyc.com",
+                "role": "Original author"
             }
         ],
         "description": "Converter and wrapping object for a number (float or integer) value",
@@ -1625,8 +1625,8 @@
         "authors": [
             {
                 "name": "Jaroslav Týc",
-                "role": "Original author",
-                "homepage": "http://jaroslavtyc.com"
+                "homepage": "http://jaroslavtyc.com",
+                "role": "Original author"
             }
         ],
         "description": "Lightweight scalar-type container",
@@ -1676,9 +1676,9 @@
         "authors": [
             {
                 "name": "Jaroslav Týc",
-                "role": "Developer",
                 "email": "mail@jaroslavtyc.com",
-                "homepage": "https://www.jaroslavtyc.com"
+                "homepage": "https://www.jaroslavtyc.com",
+                "role": "Developer"
             }
         ],
         "description": "Enumeration with scalar values",
@@ -1724,8 +1724,8 @@
         "authors": [
             {
                 "name": "Jaroslav Týc",
-                "role": "Original author",
-                "homepage": "https://www.jaroslavtyc.com"
+                "homepage": "https://www.jaroslavtyc.com",
+                "role": "Original author"
             }
         ],
         "description": "Base object, checking access to undefined properties and methods",
@@ -1839,8 +1839,8 @@
         "authors": [
             {
                 "name": "Jaroslav Týc",
-                "role": "Original author",
-                "homepage": "http://jaroslavtyc.com"
+                "homepage": "http://jaroslavtyc.com",
+                "role": "Original author"
             }
         ],
         "description": "Toolbox",
@@ -2281,18 +2281,18 @@
         "authors": [
             {
                 "name": "Arne Blankerts",
-                "role": "Developer",
-                "email": "arne@blankerts.de"
+                "email": "arne@blankerts.de",
+                "role": "Developer"
             },
             {
                 "name": "Sebastian Heuer",
-                "role": "Developer",
-                "email": "sebastian@phpeople.de"
+                "email": "sebastian@phpeople.de",
+                "role": "Developer"
             },
             {
                 "name": "Sebastian Bergmann",
-                "role": "Developer",
-                "email": "sebastian@phpunit.de"
+                "email": "sebastian@phpunit.de",
+                "role": "Developer"
             }
         ],
         "description": "Component for reading phar.io manifest information from a PHP Archive (PHAR)"
@@ -2539,9 +2539,9 @@
         "authors": [
             {
                 "name": "Greg Bowler",
-                "role": "Developer",
                 "email": "greg.bowler@g105b.com",
-                "homepage": "https://www.g105b.com"
+                "homepage": "https://www.g105b.com",
+                "role": "Developer"
             }
         ],
         "description": "Convert CSS selectors to XPath queries."
@@ -5223,8 +5223,8 @@
         "authors": [
             {
                 "name": "Arne Blankerts",
-                "role": "Developer",
-                "email": "arne@blankerts.de"
+                "email": "arne@blankerts.de",
+                "role": "Developer"
             }
         ],
         "description": "A small library for converting tokenized PHP source code into XML and potentially other formats"
